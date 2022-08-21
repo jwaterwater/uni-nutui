@@ -1,0 +1,101 @@
+{
+	"pages": [ //pages数组中第一项表示应用启动页，参考：https://uniapp.dcloud.io/collocation/pages
+		{
+			"path": "pages/index/index",
+			"style": {
+				"navigationBarTitleText": "uni-nutui"
+			}
+		},
+        {
+        	"path": "nutui/packages/__VUE/button/demo",
+        	"style": {
+        		"navigationBarTitleText": "Button"
+        	}
+        },
+        {
+        	"path": "nutui/packages/__VUE/cell/demo",
+        	"style": {
+        		"navigationBarTitleText": "Cell"
+        	}
+        },
+        {
+        	"path": "nutui/packages/__VUE/icon/demo",
+        	"style": {
+        		"navigationBarTitleText": "Icon"
+        	}
+        },
+        {
+        	"path": "nutui/packages/__VUE/image/demo",
+        	"style": {
+        		"navigationBarTitleText": "Image"
+        	}
+        },
+        {
+        	"path": "nutui/packages/__VUE/overlay/demo",
+        	"style": {
+        		"navigationBarTitleText": "OverLay"
+        	}
+        },
+        {
+        	"path": "nutui/packages/__VUE/popup/demo",
+        	"style": {
+        		"navigationBarTitleText": "Popup"
+        	}
+        },
+        
+        {
+        	"path": "nutui/packages/__VUE/divider/demo",
+        	"style": {
+        		"navigationBarTitleText": "Divider"
+        	}
+        },
+        {
+        	"path": "nutui/packages/__VUE/grid/demo",
+        	"style": {
+        		"navigationBarTitleText": "Grid"
+        	}
+        },
+        {
+        	"path": "nutui/packages/__VUE/layout/demo",
+        	"style": {
+        		"navigationBarTitleText": "Layout"
+        	}
+        },
+        
+        {
+        	"path": "nutui/packages/__VUE/sticky/demo",
+        	"style": {
+        		"navigationBarTitleText": "Sticky"
+        	}
+        },
+        
+        {
+        	"path": "nutui/packages/__VUE/elevator/demo",
+        	"style": {
+        		"navigationBarTitleText": "Elevator"
+        	}
+        },
+        
+        {
+        	"path": "nutui/packages/__VUE/tabbar/demo",
+        	"style": {
+        		"navigationBarTitleText": "Tabbar"
+        	}
+        }
+        
+	],
+	"globalStyle": {
+		"navigationBarTextStyle": "black",
+		"navigationBarTitleText": "uni-app",
+		"navigationBarBackgroundColor": "#F8F8F8",
+		"backgroundColor": "#F8F8F8"
+	},
+    "easycom": {
+      "autoscan": true,
+      "custom": {
+        "nut-(.*)?-(.*)": "@/nutui/packages/__VUE/$1$2/index.vue", // 匹配components目录内的vue文件
+        "nut-(.*)": "@/nutui/packages/__VUE/$1/index.vue"
+      }
+    },
+	"uniIdRouter": {}
+}
