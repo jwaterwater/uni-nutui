@@ -34,8 +34,11 @@
         </ul>
       </template>
       <template v-slot:btn>
-        <nut-icon name="retweet" color="#fff"> </nut-icon>
-        <span class="text">{{ myActive ? translate('cus1') : translate('cus2') }}</span>
+          <view style="display: flex;align-items: center;">
+              <span class="text" style="color: #fff;font-size: 10px;line-height: 13px;">{{ myActive ? translate('cus1') : translate('cus2') }}</span>
+              <nut-icon name="retweet" color="#fff"> </nut-icon>
+          </view>
+        
       </template>
     </nut-fixednav>
 
@@ -138,3 +141,6 @@ export default createDemo({
   }
 });
 </script>
+<style lang="scss">
+    @import './index.scss'
+</style>

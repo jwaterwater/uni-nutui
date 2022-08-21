@@ -61,6 +61,7 @@ export default create({
     onActivated(lock);
 
     const style = computed(() => {
+        console.log(props.overlayStyle)
       return {
         animationDuration: `${props.duration}s`,
         zIndex: props.zIndex,

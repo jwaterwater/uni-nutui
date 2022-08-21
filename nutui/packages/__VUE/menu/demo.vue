@@ -1,5 +1,9 @@
 <template>
-  <div class="demo full">
+  <div style="height: 100%;"
+   
+    :class="state.lock?'lock':'unlock'"
+   class="demo full">
+      {{state.lock?'lock':'unlock'}}
     <h2 class="h2">{{ translate('basic') }}</h2>
     <nut-menu>
       <nut-menu-item v-model="state.value1" :options="options1" />
@@ -43,7 +47,7 @@
 </template>
 
 <script lang="ts">
-import { reactive, ref, computed } from 'vue';
+import { reactive, ref, computed,provide } from 'vue';
 import { createComponent } from '@/nutui/packages/utils/create';
 const { createDemo, translate } = createComponent('menu');
 import { useTranslate } from '@/nutui/sites/assets/util/useTranslate';
@@ -123,12 +127,18 @@ const initTranslate = () =>
 export default createDemo({
   props: {},
   setup() {
+      
     initTranslate();
     const state = reactive({
       value1: 0,
       value2: 'a',
-      value3: 0
+      value3: 0,
+      lock: false
     });
+    
+    provide('lockPage',(isLock) => {
+        state.lock = isLock
+    })
 
     const options1 = computed(() => [
       { text: translate('allProducts'), value: 0 },
@@ -186,3 +196,14 @@ export default createDemo({
   }
 });
 </script>
+<style>
+    page {
+        height: 100%;
+    }
+    .lock {
+        overflow: hidden;
+    }
+    .unlock {
+        overflow: auto;
+    }
+</style>

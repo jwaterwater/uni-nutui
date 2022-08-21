@@ -5,7 +5,7 @@
       :visible="visible"
       :close-on-click-overlay="closeOnClickOverlay"
       :class="overlayClass"
-      :style="overlayStyle"
+      :overlayStyle="overlayStyle"
       :z-index="zIndex"
       :lock-scroll="lockScroll"
       :duration="duration"
@@ -32,12 +32,13 @@
       :visible="visible"
       :close-on-click-overlay="closeOnClickOverlay"
       :class="overlayClass"
-      :style="overlayStyle"
+      :overlayStyle="overlayStyle"
       :z-index="zIndex"
       :lock-scroll="lockScroll"
       :duration="duration"
       @click="onClickOverlay"
     />
+    
     <Transition :name="transitionName" @after-enter="onOpened" @after-leave="onClosed">
         
       <view v-show="visible" :class="classes" :style="popStyle" @click="onClick">
@@ -69,6 +70,7 @@ import {
   toRefs,
   ref
 } from 'vue';
+import { inject } from 'vue'
 import { useLockScroll } from './use-lock-scroll';
 import overlayProps from './../overlay/props';
 import overlay from '../overlay/index.vue';
@@ -157,6 +159,7 @@ export default create({
       virtualHost: true
   },
   setup(props, { emit }) {
+      const lockPage = inject('lockPage',(isLock)=>{},false)
     const popupRef = ref();
     const state = reactive({
       zIndex: props.zIndex,
@@ -193,7 +196,7 @@ export default create({
         _zIndex = Number(props.zIndex);
       }
       emit('update:visible', true);
-      lockScroll();
+      lockPage(true)
       state.zIndex = ++_zIndex;
       if (props.destroyOnClose) {
         state.showSlot = true;
@@ -202,11 +205,12 @@ export default create({
     };
 
     const close = () => {
-      unlockScroll();
+        console.log('close','pupup')
+      lockPage(false)
       emit('update:visible', false);
       if (props.destroyOnClose) {
         setTimeout(() => {
-          state.showSlot = false;
+          state.showSlot = false
           emit('close');
         }, +props.duration * 1000);
       }
@@ -292,6 +296,7 @@ export default create({
         state.closed = value;
       }
     );
+    
 
     return {
       ...toRefs(state),

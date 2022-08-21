@@ -77,6 +77,19 @@
         },
         
         {
+        	"path": "nutui/packages/__VUE/fixednav/demo",
+        	"style": {
+        		"navigationBarTitleText": "FixedNav"
+        	}
+        },
+        {
+        	"path": "nutui/packages/__VUE/menu/demo",
+        	"style": {
+        		"navigationBarTitleText": "Menu"
+        	}
+        },
+        
+        {
         	"path": "nutui/packages/__VUE/tabbar/demo",
         	"style": {
         		"navigationBarTitleText": "Tabbar"

@@ -9,9 +9,9 @@
           @click="selected(item, $event)"
           :key="item.id || index"
         >
-          <img :src="item.icon" />
+          <nut-icon :name="item.icon"></nut-icon>
           <view class="span">{{ item.text }}</view>
-          <view class="b" v-if="item.num">{{ item.num }}</view>
+          <view class="span" v-if="item.num">{{ item.num }}</view>
         </view>
       </view>
     </slot>
@@ -34,6 +34,9 @@ const { componentName, create, translate } = createComponent('fixednav');
 export default create({
   components: {
     [overlay.name]: overlay
+  },
+  options: {
+      addGlobalClass: true
   },
   props: {
     visible: {

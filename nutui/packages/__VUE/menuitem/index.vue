@@ -9,7 +9,7 @@
     >
     </div>
     <nut-popup
-      :style="
+      :popStyle="
         parent.props.direction === 'down' ? { top: parent.offset.value + 'px' } : { bottom: parent.offset.value + 'px' }
       "
       :overlayStyle="
@@ -22,7 +22,7 @@
       pop-class="nut-menu__pop"
       overlayClass="nut-menu__overlay"
       :overlay="parent.props.overlay"
-      @closed="handleClose"
+      @close="handleClose"
       :lockScroll="parent.props.lockScroll"
       :isWrapTeleport="false"
       :close-on-click-overlay="parent.props.closeOnClickOverlay"
@@ -169,6 +169,7 @@ export default create({
     };
 
     const handleClose = () => {
+        console.log('onclose')
       state.showWrapper = false;
       state.isShowPlaceholderElement = false;
     };

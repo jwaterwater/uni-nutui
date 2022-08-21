@@ -23,10 +23,10 @@
   </view>
 </template>
 <script lang="ts">
-import { reactive, provide, computed, ref, onMounted, onUnmounted } from 'vue';
+import { reactive, provide, computed, ref,getCurrentInstance } from 'vue';
 import { createComponent } from '@/nutui/packages/utils/create';
-import { useRect } from '@/nutui/packages/utils/useRect';
 const { componentName, create } = createComponent('menu');
+import { onPageScroll } from '@dcloudio/uni-app'
 export default create({
   props: {
     activeColor: {
@@ -43,7 +43,7 @@ export default create({
     },
     duration: {
       type: [Number, String],
-      default: 0
+      default: 0.3
     },
     closeOnClickOverlay: {
       type: Boolean,
@@ -59,7 +59,37 @@ export default create({
     },
     titleClass: [String]
   },
-  setup(props, { emit, slots }) {
+  
+  methods: {
+      updateOffset () {
+          setTimeout(() => {
+            uni.createSelectorQuery().in(this)
+              .select('.nut-menu__bar.opened')
+              .boundingClientRect((rect) => {
+                  console.log(rect,'rect')
+                  console.log(this.offset,'rect')
+                if (this.direction === 'down') {
+                  this.offset = rect.bottom;
+                } else {
+                  this.offset = uni.getSystemInfoSync().windowHeight - rect.top;
+                }
+              })
+              .exec();
+          }, 100);
+      },
+      toggleItem (active) {
+          this.children.forEach((item, index) => {
+            if (index === active) {
+              this.updateOffset();
+              item.toggle();
+            } else if (item.state.showPopup) {
+              item.toggle(false, { immediate: true });
+            }
+          });
+      }
+  },
+ 
+  setup(props) {
     const barRef = ref<HTMLElement>();
     const offset = ref(0);
     const isScrollFixed = ref(false);
@@ -107,39 +137,18 @@ export default create({
       };
     });
 
-    const updateOffset = () => {
-      if (barRef.value) {
-        const rect = useRect(barRef);
-
-        if (props.direction === 'down') {
-          offset.value = rect.bottom;
-        } else {
-          offset.value = window.innerHeight - rect.top;
-        }
-      }
-    };
+   
+    
+   
 
     linkChildren({ props, offset });
 
-    const toggleItem = (active: number) => {
-      children.forEach((item, index) => {
-        if (index === active) {
-          updateOffset();
-          item.toggle();
-        } else if (item.state.showPopup) {
-          item.toggle(false, { immediate: true });
-        }
-      });
-    };
+    
 
-    const getScrollTop = (el: Element | Window) => {
-      return Math.max(0, 'scrollTop' in el ? el.scrollTop : el.pageYOffset);
-    };
-
-    const onScroll = () => {
+    const onScroll = (res: { scrollTop: number }) => {
       const { scrollFixed } = props;
 
-      const scrollTop = getScrollTop(window);
+      const scrollTop = res.scrollTop;
 
       isScrollFixed.value = scrollTop > (typeof scrollFixed === 'boolean' ? 30 : Number(scrollFixed));
     };
@@ -159,24 +168,16 @@ export default create({
       return str;
     };
 
-    onMounted(() => {
+    onPageScroll((res) => {
       const { scrollFixed } = props;
 
       if (scrollFixed) {
-        window.addEventListener('scroll', onScroll);
-      }
-    });
-
-    onUnmounted(() => {
-      const { scrollFixed } = props;
-
-      if (scrollFixed) {
-        window.removeEventListener('scroll', onScroll);
+        onScroll(res);
       }
     });
 
     return {
-      toggleItem,
+        offset,
       children,
       opened,
       classes,
@@ -187,5 +188,5 @@ export default create({
 });
 </script>
 <style lang="scss">
-@import './index.scss'
+    @import './index.scss'
 </style>

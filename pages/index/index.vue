@@ -1,5 +1,5 @@
 <template>
-	<view class="content">
+	<page class="content">
 		<nut-cell-group title="基础组件">
 		    <nut-cell to="/nutui/packages/__VUE/button/demo" title="Button 按钮" is-link></nut-cell>
             <nut-cell to="/nutui/packages/__VUE/cell/demo" title="Cell 单元格" is-link></nut-cell>
@@ -17,9 +17,17 @@
         
         
         <nut-cell-group title="导航组件">
+            <!--
             <nut-cell to="/nutui/packages/__VUE/elevator/demo" title="Elevator 电梯楼层" is-link></nut-cell>
+            -->
+            <nut-cell to="/nutui/packages/__VUE/fixednav/demo" title="FixedNav 悬浮导航" is-link></nut-cell>
+            <!--
+            
+            <nut-cell to="/nutui/packages/__VUE/fixednav/demo" title="Indicator 指示器" is-link></nut-cell>
+            -->
+            <nut-cell to="/nutui/packages/__VUE/menu/demo" title="Menu 菜单" is-link></nut-cell>
         </nut-cell-group>
-	</view>
+	</page>
 </template>
 
 <script setup>
@@ -27,5 +35,7 @@
 </script>
 
 <style>
-	
+	.content {
+        overflow: hidden !important;
+    }
 </style>
