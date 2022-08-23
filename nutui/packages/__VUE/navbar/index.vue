@@ -1,5 +1,5 @@
 <template>
-  <view v-if="fixed && placeholder" class="nut-navbar--placeholder" ref="navBarWrap">
+  <view v-if="fixed && placeholder" class="nut-navbar--placeholder" :style="{ height: navHeight + 'px' }">
     <view :class="classes" :style="styles" ref="navBarHtml">
       <view class="nut-navbar__left" @click="handleLeft">
         <nut-icon v-if="leftShow" color="#979797" name="left"></nut-icon>
@@ -36,7 +36,7 @@
 </template>
 
 <script lang="ts">
-import { onMounted, computed, toRefs, ref, nextTick } from 'vue';
+import { onMounted, computed, toRefs, ref } from 'vue';
 import { createComponent } from '@/nutui/packages/utils/create';
 const { componentName, create } = createComponent('navbar');
 export default create({
@@ -69,10 +69,22 @@ export default create({
     }
   },
   emits: ['on-click-back', 'on-click-title', 'on-click-icon', 'on-click-right'],
+  mounted () {
+    if (this.fixed && this.placeholder) {
+        setTimeout(async () => {
+          const query = uni.createSelectorQuery().in(this);
+          query
+            .select('.navBarHtml')
+            .boundingClientRect((rec: any) => {
+              this.navHeight = rec.height;
+              console.log('navBarHtml', this.navHeight);
+            })
+            .exec();
+        }, 100);
+    }
+  },
   setup(props, { emit }) {
     const { border, fixed, safeAreaInsetTop, placeholder, zIndex } = toRefs(props);
-    const navBarWrap = ref(null);
-    const navBarHtml = ref(null);
     let navHeight = ref(0);
     const classes = computed(() => {
       const prefixCls = componentName;
@@ -90,14 +102,7 @@ export default create({
       };
     });
 
-    onMounted(() => {
-      if (fixed.value && placeholder.value) {
-        nextTick(() => {
-          navHeight = navBarHtml?.value?.getBoundingClientRect().height;
-          navBarWrap.value.style.height = navHeight + 'px';
-        });
-      }
-    });
+  
 
     function handleLeft() {
       emit('on-click-back');
@@ -115,8 +120,7 @@ export default create({
     }
 
     return {
-      navBarWrap,
-      navBarHtml,
+      navHeight,
       classes,
       styles,
       handleLeft,
@@ -127,6 +131,7 @@ export default create({
   }
 });
 </script>
-<style lang="scss">
+
+<style lang="scss" :scoped="false">
 @import './index.scss'
 </style>

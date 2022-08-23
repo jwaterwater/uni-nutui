@@ -90,6 +90,14 @@
         },
         
         {
+        	"path": "nutui/packages/__VUE/navbar/demo",
+        	"style": {
+        		"navigationBarTitleText": "Navbar"
+        	}
+        },
+        
+        
+        {
         	"path": "nutui/packages/__VUE/tabbar/demo",
         	"style": {
         		"navigationBarTitleText": "Tabbar"

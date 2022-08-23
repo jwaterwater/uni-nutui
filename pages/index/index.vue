@@ -26,6 +26,8 @@
             <nut-cell to="/nutui/packages/__VUE/fixednav/demo" title="Indicator 指示器" is-link></nut-cell>
             -->
             <nut-cell to="/nutui/packages/__VUE/menu/demo" title="Menu 菜单" is-link></nut-cell>
+            <nut-cell to="/nutui/packages/__VUE/navbar/demo" title="Navbar 头部导航" is-link></nut-cell>
+            <nut-cell to="/nutui/packages/__VUE/menu/demo" title="Menu 菜单" is-link></nut-cell>
         </nut-cell-group>
 	</page>
 </template>

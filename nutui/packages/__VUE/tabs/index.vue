@@ -5,6 +5,6 @@ import { component } from './common';
 const { create } = createComponent('tabs');
 export default create(component);
 </script>
-<style lang="scss">
+<style lang="scss" :scoped="false">
 @import './index.scss'
 </style>
