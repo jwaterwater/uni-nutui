@@ -39,6 +39,7 @@
             <nut-cell to="/nutui/packages/__VUE/calendar/demo" title="Calendar 日历" is-link></nut-cell>
             -->
             <nut-cell to="/nutui/packages/__VUE/cascader/demo" title="Cascader 级联选择器" is-link></nut-cell>
+            <nut-cell to="/nutui/packages/__VUE/checkbox/demo" title="Checkbox 复选按钮" is-link></nut-cell>
         </nut-cell-group>
         
         

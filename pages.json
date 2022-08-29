@@ -137,6 +137,13 @@
         	"style": {
         		"navigationBarTitleText": "Cascader"
         	}
+        },
+        
+        {
+        	"path": "nutui/packages/__VUE/checkbox/demo",
+        	"style": {
+        		"navigationBarTitleText": "Checkbox"
+        	}
         }
         
         

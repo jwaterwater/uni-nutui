@@ -1,3 +1,8 @@
+<template>
+    <view :class="getClass">
+        <slot></slot>
+    </view>
+</template>
 <script lang="ts">
 import { h, watch, provide, computed, ComponentInternalInstance, reactive, ComponentPublicInstance } from 'vue';
 import { createComponent } from '@/nutui/packages/utils/create';
@@ -80,15 +85,12 @@ export default create({
 
     useExpose({ toggleAll, toggleReverse });
 
-    return () => {
-      return h(
-        'view',
-        {
-          class: `${componentName}`
-        },
-        slots.default?.()
-      );
-    };
+    const getClass = computed(()=>`${componentName}`)
+
+    return {
+        getClass
+    }
+   
   }
 });
 </script>

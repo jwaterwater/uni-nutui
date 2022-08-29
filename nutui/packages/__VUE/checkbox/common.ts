@@ -1,4 +1,4 @@
-import { h, computed, inject, getCurrentInstance, onMounted, reactive, watch } from 'vue';
+ import { h, computed, inject, getCurrentInstance, onMounted, reactive, watch } from 'vue';
 
 export const component = (componentName: string, nutIcon: object) => {
   return {
@@ -88,8 +88,10 @@ export const component = (componentName: string, nutIcon: object) => {
 
       const emitChange = (value: string | boolean, label?: string) => {
         updateType = 'click';
+        console.log('value',value)
         emit('update:modelValue', value);
-        emit('change', value, label);
+        //emit('change', value, label);
+        emit('change', value);
       };
 
       watch(
@@ -105,33 +107,35 @@ export const component = (componentName: string, nutIcon: object) => {
 
       const renderIcon = () => {
         const { iconName, iconSize, iconActiveName, iconClassPrefix, iconFontClassName, iconIndeterminateName } = props;
-        return h(nutIcon, {
-          name: !pValue.value ? iconName : state.partialSelect ? iconIndeterminateName : iconActiveName,
-          size: iconSize,
-          class: color.value,
-          classPrefix: iconClassPrefix,
-          fontClassName: iconFontClassName
-        });
+        return h(nutIcon, );
       };
+      
+      const iconParams = computed(()=>{
+          const { iconName, iconSize, iconActiveName, iconClassPrefix, iconFontClassName, iconIndeterminateName } = props;
+          return {
+              name: !pValue.value ? iconName : state.partialSelect ? iconIndeterminateName : iconActiveName,
+              size: iconSize,
+              class: color.value,
+              classPrefix: iconClassPrefix,
+              fontClassName: iconFontClassName
+            }
+      })
 
-      const renderLabel = () => {
-        return h(
-          'view',
-          {
-            class: `${componentName}__label ${pDisabled.value ? `${componentName}__label--disabled` : ''}`
-          },
-          slots.default?.()
-        );
-      };
+    
+      const getLabelClass = computed(()=>{
+          return `${componentName}__label ${pDisabled.value ? `${componentName}__label--disabled` : ''}`
+      })
 
       const handleClick = (e: MouseEvent | TouchEvent) => {
         if (pDisabled.value) return;
         if (checked.value && state.partialSelect) {
           state.partialSelect = false;
-          emitChange(checked.value, slots.default?.()[0].children as string);
+          //emitChange(checked.value, slots.default?.()[0]?.children as string);
+          emitChange(checked.value);
           return;
         }
-        emitChange(!checked.value, slots.default?.()[0].children as string);
+        //emitChange(!checked.value, slots.default?.()[0]?.children as string);
+        emitChange(!checked.value);
         if (hasParent.value) {
           let value = parent.value.value;
           let max = parent.max.value;
@@ -157,6 +161,16 @@ export const component = (componentName: string, nutIcon: object) => {
         }
       );
 
+      const getClass =   computed(()=>{
+          return `${componentName} ${props.textPosition === 'left' ? `${componentName}--reverse` : ''}`
+      })
+      return {
+          getClass,
+          iconParams,
+          getLabelClass,
+          handleClick
+      }
+      /**
       return () => {
         return h(
           'view',
@@ -167,6 +181,7 @@ export const component = (componentName: string, nutIcon: object) => {
           [renderIcon(), renderLabel()]
         );
       };
+      **/
     }
   };
 };
