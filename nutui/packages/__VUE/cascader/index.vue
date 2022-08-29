@@ -34,11 +34,15 @@ import { CascaderValue, CascaderOption } from './types';
 import { popupProps } from '../popup/index.vue';
 import { createComponent } from '@/nutui/packages/utils/create';
 const { create } = createComponent('cascader');
-import CascaderItem from './cascader-item.vue';
+import CascaderItem from '../cascaderitem/index.vue';
 
 export default create({
   components: {
     [CascaderItem.name]: CascaderItem
+  },
+  options: {
+      virtualHost : true,
+      addGlobalClass: true,
   },
   props: {
     ...popupProps,

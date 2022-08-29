@@ -1,4 +1,4 @@
-<view class="nut-tabs" :class="[direction]">
+<view class="nut-tabs" :class="[direction,popClass]">
     <view class="nut-tabs__titles" :class="{ [type]: type, scrollable: titleScroll, [size]: size }"
         :style="tabsNavStyle">
         <slot v-if="$slots.titles" name="titles"></slot>
@@ -8,7 +8,7 @@
                 :key="item.paneKey">
                 <view class="nut-tabs__titles-item__line" :style="tabsActiveStyle" v-if="type == 'line'"></view>
                 <view class="nut-tabs__titles-item__smile" :style="tabsActiveStyle" v-if="type == 'smile'">
-                    <nut-icon :color="color" name="joy-smile" />
+                    <nut-icon size="12" width="100%" height="100%" :color="color" name="joy-smile" />
                 </view>
                 <view class="nut-tabs__titles-item__text"
                     :class="{ ellipsis: ellipsis }">{{ item.title }}

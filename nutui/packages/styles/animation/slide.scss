@@ -1,0 +1,83 @@
+@keyframes nut-slide-leftIn {
+  from {
+    transform: translate(-100%, 0);
+  }
+
+  to {
+    transform: translate(0, 0);
+  }
+}
+
+@keyframes nut-slide-leftOut {
+  from {
+    transform: translate(0, 0);
+  }
+
+  to {
+    transform: translate(-100%, 0);
+  }
+}
+@include make-animation(nut-slide-left);
+
+@keyframes nut-slide-rightIn {
+  from {
+    transform: translate(100%, 0);
+  }
+
+  to {
+    transform: translate(0, 0);
+  }
+}
+
+@keyframes nut-slide-rightOut {
+  from {
+    transform: translate(0, 0);
+  }
+
+  to {
+    transform: translate(100%, 0);
+  }
+}
+@include make-animation(nut-slide-right);
+
+@keyframes nut-slide-topIn {
+  from {
+    transform: translate(0%, -100%);
+  }
+
+  to {
+    transform: translate(0, 0);
+  }
+}
+
+@keyframes nut-slide-topOut {
+  from {
+    transform: translate(0, 0);
+  }
+
+  to {
+    transform: translate(0%, -100%);
+  }
+}
+@include make-animation(nut-slide-top);
+
+@keyframes nut-slide-bottomIn {
+  from {
+    transform: translate(0%, 100%);
+  }
+
+  to {
+    transform: translate(0, 0);
+  }
+}
+
+@keyframes nut-slide-bottomOut {
+  from {
+    transform: translate(0, 0);
+  }
+
+  to {
+    transform: translate(0%, 100%);
+  }
+}
+@include make-animation(nut-slide-bottom);

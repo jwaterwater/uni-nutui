@@ -20,6 +20,9 @@ export default create({
       default: ''
     }
   },
+  options: {
+      virtualHost : true,
+  },
   emits: ['click'],
   setup: (props: any, context: any) => {
     const classes = computed(() => {

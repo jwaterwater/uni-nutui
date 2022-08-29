@@ -96,13 +96,50 @@
         	}
         },
         
+        {
+        	"path": "nutui/packages/__VUE/pagination/demo",
+        	"style": {
+        		"navigationBarTitleText": "Pagination"
+        	}
+        },
+        {
+        	"path": "nutui/packages/__VUE/sidenavbar/demo",
+        	"style": {
+        		"navigationBarTitleText": "SideNavBar"
+        	}
+        },
+        
         
         {
         	"path": "nutui/packages/__VUE/tabbar/demo",
         	"style": {
         		"navigationBarTitleText": "Tabbar"
         	}
+        },
+        
+        {
+        	"path": "nutui/packages/__VUE/tabs/demo",
+        	"style": {
+        		"navigationBarTitleText": "Tabs"
+        	}
+        },
+        
+        
+        {
+        	"path": "nutui/packages/__VUE/calendar/demo",
+        	"style": {
+        		"navigationBarTitleText": "Calendar"
+        	}
+        },
+        
+        {
+        	"path": "nutui/packages/__VUE/cascader/demo",
+        	"style": {
+        		"navigationBarTitleText": "Cascader"
+        	}
         }
+        
+        
         
 	],
 	"globalStyle": {

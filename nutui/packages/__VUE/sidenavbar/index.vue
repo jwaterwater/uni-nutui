@@ -18,6 +18,9 @@ export default create({
       default: 15
     }
   },
+  options: {
+      addGlobalClass: true,
+  },
   emits: [],
   setup: (props: any, context: any) => {
     const list = ref(null) as Ref;

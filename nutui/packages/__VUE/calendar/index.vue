@@ -94,6 +94,10 @@ export default create({
   components: {
     [CalendarItem.name]: CalendarItem
   },
+  options: {
+    virtualHost: true,
+    addGlobalClass: true,
+  },
   props: {
     type: {
       type: String,

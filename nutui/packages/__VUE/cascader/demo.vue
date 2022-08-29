@@ -50,6 +50,7 @@
       </nut-form-item>
     </nut-form>
 
+<!--
     <h2 class="h2">{{ translate('title2') }}</h2>
     <nut-form>
       <nut-form-item :label="translate('addressTip')">
@@ -72,7 +73,7 @@
         ></nut-cascader>
       </nut-form-item>
     </nut-form>
-
+-->
     <h2 class="h2">{{ translate('title3') }}</h2>
     <nut-form>
       <nut-form-item :label="translate('addressTip')">
@@ -341,3 +342,6 @@ export default createDemo({
   }
 });
 </script>
+<style lang="scss">
+    @import '@/nutui/packages/__VUE/cascader/index.scss'
+</style>

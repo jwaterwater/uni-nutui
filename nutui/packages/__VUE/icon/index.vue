@@ -22,14 +22,18 @@ export default create({
   props: {
     name: { type: String, default: '' },
     size: { type: [String, Number], default: '' },
+    width: { type: [String, Number], default: '' },
+    height: { type: [String, Number], default: '' },
     classPrefix: { type: String, default: 'nut-icon' },
+    popClass: { type: String, default: '' },
     fontClassName: { type: String, default: 'nutui-iconfont' },
     color: { type: String, default: '' },
     tag: { type: String as PropType<keyof HTMLElementTagNameMap>, default: 'i' }
   },
   emits: ['click'],
   options: {
-      virtualHost: true
+      virtualHost: true,
+      addGlobalClass: true,
   },
   setup(props, { emit, slots }) {
     const handleClick = (event: Event) => {
@@ -44,7 +48,7 @@ export default create({
     const classes = computed(() => {
       return isImage()
             ? `${componentName}__img`
-            : `${props.fontClassName} ${componentName} ${props.classPrefix}-${props.name}`
+            : `${props.fontClassName} ${componentName} ${props.classPrefix}-${props.name} ${props.popClass}`
     });
     
     const getStyle = computed(() => {
@@ -52,8 +56,8 @@ export default create({
        const style = {
           color: props.color,
           fontSize: pxCheck(props.size),
-          width: pxCheck(props.size),
-          height: pxCheck(props.size)
+          width: pxCheck(props.width||props.size),
+          height: pxCheck(props.height||props.size)
         }
       return style;
     });

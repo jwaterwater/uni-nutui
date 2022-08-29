@@ -13,15 +13,21 @@
         <slot name="btn"> </slot>
       </view>
       <view class="calendar-curr-month" v-if="showSubTitle">{{ yearMonthTitle }}</view>
-      <view class="calendar-weeks" ref="weeksPanel">
+      <view class="calendar-weeks">
         <view class="calendar-week-item" v-for="(item, index) of weeks" :key="index">{{ item }}</view>
       </view>
     </view>
     <!-- content-->
-    <view class="nut-calendar-content" ref="months" @scroll="mothsViewScroll">
-      <view class="calendar-months-panel" ref="monthsPanel">
-        <view class="viewArea" ref="viewArea" :style="{ transform: `translateY(${translateY}px)` }">
-          <view class="calendar-month" v-for="(month, index) of compConthsData" :key="index">
+    <scroll-view
+      :scroll-top="scrollTop"
+      :scroll-y="true"
+      class="nut-calendar-content"
+      @scroll="mothsViewScroll"
+      ref="months"
+    >
+      <view class="calendar-months-panel" :style="{heihgt:containerHeight}">
+        <view class="viewArea" :style="{ transform: `translateY(${translateY}px)` }">
+          <view class="calendar-month" v-for="(month, index) of compConthsDatas" :key="index">
             <view class="calendar-month-title">{{ month.title }}</view>
             <view class="calendar-month-con">
               <view class="calendar-month-item" :class="type === 'range' ? 'month-item-range' : ''">
@@ -40,14 +46,10 @@
                       <slot name="bottomInfo" :date="day.type == 'curr' ? day : ''"> </slot>
                     </view>
                     <view class="calendar-curr-tip-curr" v-if="!bottomInfo && showToday && isCurrDay(day)">
-                      {{ translate('today') }}</view
-                    >
-                    <view
-                      class="calendar-day-tip"
-                      :class="{ 'calendar-curr-tips-top': rangeTip(day, month) }"
-                      v-if="isStartTip(day, month)"
-                    >
-                      {{ startText || translate('start') }}
+                      {{ translate('today') }}
+                    </view>
+                    <view :class="{ 'calendar-curr-tips-top': rangeTip(day, month), 'calendar-day-tip': true }">
+                      {{ isStartTip(day, month) ? startText || translate('start') : '' }}
                     </view>
                     <view class="calendar-day-tip" v-if="isEndTip(day, month)">{{ endText || translate('end') }}</view>
                   </view>
@@ -57,7 +59,7 @@
           </view>
         </view>
       </view>
-    </view>
+    </scroll-view>
     <!-- footer-->
     <view class="nut-calendar-footer" v-if="poppable && !isAutoBackFill">
       <view class="calendar-confirm-btn" @click="confirm">{{ confirmText || translate('confirm') }}</view>
@@ -65,16 +67,19 @@
   </view>
 </template>
 <script lang="ts">
-import { PropType, reactive, ref, watch, toRefs, computed } from 'vue';
+import { PropType, reactive, ref, watch, toRefs, computed, onMounted, nextTick } from 'vue';
 import { createComponent } from '@/nutui/packages/utils/create';
 const { create, translate } = createComponent('calendar-item');
+
 import Utils from '@/nutui/packages/utils/date';
-import requestAniFrame from '@/nutui/packages/utils/raf';
 import { useExpose } from '@/nutui/packages/utils/useExpose/index';
+import requestAniFrame from '@/nutui/packages/utils/raf';
+let TARO_ENV = process.env.TARO_ENV;
 
 type InputDate = string | string[];
 interface CalendarState {
   yearMonthTitle: string;
+  containerHeight: string;
   currDate: any;
   propStartDate: string;
   propEndDate: string;
@@ -95,6 +100,8 @@ interface CalendarState {
   avgHeight: number;
   monthsNum: number;
   defaultRange: any[];
+  scrollTop: number;
+  compConthsDatas: any[];
 }
 interface Day {
   day: string | number;
@@ -173,14 +180,9 @@ export default create({
   setup(props, { emit, slots }) {
     const weeks = ref(translate('weekdays'));
     // element refs
-    const months = ref<null | HTMLElement>(null);
-    const monthsPanel = ref<null | HTMLElement>(null);
-    const weeksPanel = ref<null | HTMLElement>(null);
-    const viewArea = ref<null | HTMLElement>(null);
+    const scalePx = ref(2);
     const viewHeight = ref(0);
-    const compConthsData = computed(() => {
-      return state.monthsData.slice(state.defaultRange[0], state.defaultRange[1]);
-    });
+    const months = ref<null | HTMLElement>(null);
     const showTopBtn = computed(() => {
       return slots.btn;
     });
@@ -190,10 +192,12 @@ export default create({
     const bottomInfo = computed(() => {
       return slots.bottomInfo;
     });
-
+    // state
     const state: CalendarState = reactive({
       yearMonthTitle: '',
-      defaultRange: [],
+      defaultRange: [0, 1],
+      compConthsDatas: [],
+      containerHeight: '',
       currDate: '',
       propStartDate: '',
       propEndDate: '',
@@ -219,6 +223,7 @@ export default create({
       timer: 0,
       currentIndex: 0,
       avgHeight: 0,
+      scrollTop: 0,
       monthsNum: 0
     });
     // 日期转化成数组
@@ -278,7 +283,7 @@ export default create({
         return `${state.dayPrefix}-disabled`;
       }
     };
-    // 确认选择时触发
+
     const confirm = () => {
       const { type } = props;
       if ((type == 'range' && state.chooseData.length == 2) || type != 'range') {
@@ -291,7 +296,7 @@ export default create({
     };
 
     // 选中数据
-    const chooseDay = (day: Day, month: MonthInfo, isFirst: boolean) => {
+    const chooseDay = (day: Day, month: MonthInfo, isFirst: boolean, isRange?: boolean) => {
       if (getClass(day, month) != `${state.dayPrefix}-disabled`) {
         const { type } = props;
         let days = [...month.curData];
@@ -346,9 +351,9 @@ export default create({
           state.currDate = days[3];
           state.chooseData = [...days];
         }
+
         if (!isFirst) {
           // 点击日期 触发
-          console.log(state.chooseData);
           emit('select', state.chooseData);
           if (props.isAutoBackFill || !props.poppable) {
             confirm();
@@ -435,7 +440,20 @@ export default create({
           ...(getDaysStatus(currMonthDays, 'curr', title) as Day[])
         ]
       };
-      monthInfo.cssHeight = 39 + (monthInfo.monthData.length > 35 ? 384 : 320);
+      let titleHeight, itemHeight;
+      
+          // #ifdef H5
+          titleHeight = 46 * scalePx.value + 16 * scalePx.value * 2;
+          itemHeight = 128 * scalePx.value;
+          // #endif
+        
+          // #ifdef MP-WEIXIN
+          titleHeight = Math.floor(46 * scalePx.value) + Math.floor(16 * scalePx.value) * 2;
+          itemHeight = Math.floor(128 * scalePx.value);
+          // #endif
+        
+      monthInfo.cssHeight = titleHeight + (monthInfo.monthData.length > 35 ? itemHeight * 6 : itemHeight * 5);
+
       let cssScrollHeight = 0;
 
       if (state.monthsData.length > 0) {
@@ -485,7 +503,6 @@ export default create({
       if (props.defaultValue || (Array.isArray(props.defaultValue) && props.defaultValue.length > 0)) {
         state.currDate = props.type != 'one' ? [...props.defaultValue] : props.defaultValue;
       }
-
       // 判断时间范围内存在多少个月
       const startDate = {
         year: Number(state.startData[0]),
@@ -552,6 +569,7 @@ export default create({
           state.defaultData = [...splitDate(state.currDate as string)];
         }
       }
+
       // 设置默认可见区域
       let current = 0;
       let lastCurrent = 0;
@@ -567,13 +585,12 @@ export default create({
           }
         });
       }
-
       setDefaultRange(monthsNum, current);
       state.currentIndex = current;
       state.yearMonthTitle = state.monthsData[state.currentIndex].title;
       if (state.defaultData.length > 0) {
         // 设置当前选中日期
-        if (props.type == 'range') {
+        if (state.isRange) {
           chooseDay({ day: state.defaultData[2], type: 'curr' }, state.monthsData[state.currentIndex], true);
           chooseDay({ day: state.defaultData[5], type: 'curr' }, state.monthsData[lastCurrent], true);
         } else if (props.type == 'multiple') {
@@ -594,15 +611,14 @@ export default create({
 
       let lastItem = state.monthsData[state.monthsData.length - 1];
       let containerHeight = lastItem.cssHeight + lastItem.cssScrollHeight;
-      requestAniFrame(() => {
-        // 初始化 日历位置
-        if (months?.value && monthsPanel?.value && viewArea?.value) {
-          viewHeight.value = months.value.clientHeight;
-          monthsPanel.value.style.height = `${containerHeight}px`;
-          months.value.scrollTop = state.monthsData[state.currentIndex].cssScrollHeight;
-        }
-      });
+
+      state.containerHeight = `${containerHeight}px`;
+      state.scrollTop = state.monthsData[state.currentIndex].cssScrollHeight;
       state.avgHeight = Math.floor(containerHeight / (monthsNum + 1));
+
+      if (months?.value) {
+        viewHeight.value = months.value.clientHeight;
+      }
     };
     const scrollToDate = (date: string) => {
       if (Utils.compareDate(date, state.propStartDate)) {
@@ -613,27 +629,30 @@ export default create({
       let dateArr = splitDate(date);
       state.monthsData.forEach((item, index) => {
         if (item.title == translate('monthTitle', dateArr[0], dateArr[1])) {
-          if (months.value) {
-            let distance = state.monthsData[index].cssScrollHeight - months.value.scrollTop;
-            if (props.toDateAnimation) {
-              let flag = 0;
-              let interval = setInterval(() => {
-                flag++;
-                if (months.value) {
-                  let offset = distance / 10;
-                  months.value.scrollTop = months.value.scrollTop + offset;
-                }
-
-                if (flag >= 10) {
-                  clearInterval(interval);
+          if (props.toDateAnimation) {
+            uni.createSelectorQuery()
+              .select('.nut-calendar-content').in(this)
+              .scrollOffset((res) => {
+                let scrollTop = res.scrollTop;
+                let distance = state.monthsData[index].cssScrollHeight - scrollTop;
+                let flag = 0;
+                let interval = setInterval(() => {
+                  flag++;
                   if (months.value) {
-                    months.value.scrollTop = state.monthsData[index].cssScrollHeight;
+                    let offset = distance / 10;
+                    state.scrollTop = state.scrollTop + offset;
                   }
-                }
-              }, 40);
-            } else {
-              months.value.scrollTop = state.monthsData[index].cssScrollHeight;
-            }
+                  if (flag >= 10) {
+                    clearInterval(interval);
+                    if (months.value) {
+                      state.scrollTop = state.monthsData[index].cssScrollHeight;
+                    }
+                  }
+                }, 40);
+              })
+              .exec();
+          } else {
+            state.scrollTop = state.monthsData[index].cssScrollHeight;
           }
         }
       });
@@ -641,18 +660,23 @@ export default create({
     useExpose({
       scrollToDate
     });
-    // 设置当前可见月份
     const setDefaultRange = (monthsNum: number, current: number) => {
+      let rangeArr: any[] = [];
       if (monthsNum >= 3) {
         if (current > 0 && current < monthsNum) {
-          state.defaultRange = [current - 1, current + 3];
+          rangeArr = [current - 1, current + 3];
         } else if (current == 0) {
-          state.defaultRange = [current, current + 4];
+          rangeArr = [current, current + 4];
         } else if (current == monthsNum) {
-          state.defaultRange = [current - 2, current + 2];
+          rangeArr = [current - 2, current + 2];
         }
       } else {
-        state.defaultRange = [0, monthsNum + 2];
+        rangeArr = [0, monthsNum + 2];
+      }
+      if (JSON.stringify(state.defaultRange) !== JSON.stringify(rangeArr)) {
+        state.defaultRange[0] = rangeArr[0];
+        state.defaultRange[1] = rangeArr[1];
+        state.compConthsDatas = state.monthsData.slice(rangeArr[0], rangeArr[1]);
       }
       let defaultScrollTop = state.monthsData[state.defaultRange[0]].cssScrollHeight;
       state.translateY = defaultScrollTop;
@@ -680,12 +704,12 @@ export default create({
         return Utils.isEqual(state.currDate[0], state.currDate[1]);
       }
     };
-    // 是否有 当前日期
+    // 是否有是当前日期
     const isCurrDay = (dateInfo: any) => {
       const date = `${dateInfo.year}-${dateInfo.month}-${dateInfo.day < 10 ? '0' + dateInfo.day : dateInfo.day}`;
       return Utils.isEqual(date, Utils.date2Str(new Date()));
     };
-    // 滚动处理事件
+
     const mothsViewScroll = (e: any) => {
       if (state.monthsData.length <= 1) {
         return;
@@ -704,10 +728,18 @@ export default create({
           current -= 1;
         }
       } else {
+        if (!viewHeight.value || viewHeight.value < 0) {
+          uni.createSelectorQuery()
+            .select('.nut-calendar-content').in(this)
+            .boundingClientRect((res) => {
+              viewHeight.value = res.height;
+            })
+            .exec();
+        }
         const viewPosition = Math.round(currentScrollTop + viewHeight.value);
         if (
           viewPosition < state.monthsData[current].cssScrollHeight + state.monthsData[current].cssHeight &&
-          currentScrollTop > state.monthsData[current - 1].cssScrollHeight
+          currentScrollTop < state.monthsData[current].cssScrollHeight
         ) {
           current -= 1;
         }
@@ -726,20 +758,33 @@ export default create({
         state.currentIndex = current;
         setDefaultRange(state.monthsNum, current);
       }
+
       state.yearMonthTitle = state.monthsData[current].title;
     };
-
     // 重新渲染
     const resetRender = () => {
       state.chooseData.splice(0);
       state.monthsData.splice(0);
       initData();
     };
+    onMounted(() => {
+      // 初始化数据
+      uni.getSystemInfo({
+        success(res) {
+          let scale = 2;
+          let screenWidth = res.screenWidth;
+          let toFixed = 3;
+              // #ifdef H5
+              toFixed = 5;
+              // #endif
+          scale = Number((screenWidth / 750).toFixed(toFixed));
+          scalePx.value = scale;
+          initData();
+        }
+      });
+    });
 
-    // 初始化数据
-    initData();
-
-    // //监听 默认值更改
+    //监听 默认值更改
     watch(
       () => props.defaultValue,
       (val) => {
@@ -753,7 +798,6 @@ export default create({
 
     return {
       weeks,
-      compConthsData,
       showTopBtn,
       topInfo,
       bottomInfo,
@@ -765,10 +809,7 @@ export default create({
       chooseDay,
       isCurrDay,
       confirm,
-      monthsPanel,
       months,
-      weeksPanel,
-      viewArea,
       ...toRefs(state),
       ...toRefs(props),
       translate
@@ -777,5 +818,5 @@ export default create({
 });
 </script>
 <style lang="scss">
-@import './index.scss'
+@import './index-old.scss'
 </style>

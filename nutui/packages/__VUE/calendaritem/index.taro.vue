@@ -813,3 +813,6 @@ export default create({
   }
 });
 </script>
+<style lang="scss">
+@import './index-old.scss'
+</style>

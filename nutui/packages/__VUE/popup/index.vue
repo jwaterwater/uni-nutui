@@ -12,7 +12,7 @@
       @click="onClickOverlay"
     />
     
-    <Transition :name="transitionName" @after-enter="onOpened" @after-leave="onClosed">
+    <Transition  :name="transitionName" @after-enter="onOpened" @after-leave="onClosed">
       <view v-show="visible" :class="classes" :style="popStyle" @click="onClick" ref="popupRef">
         <slot v-if="showSlot"></slot>
         <view
@@ -39,9 +39,9 @@
       @click="onClickOverlay"
     />
     
-    <Transition :name="transitionName" @after-enter="onOpened" @after-leave="onClosed">
+    <Transition  :name="transitionName" @after-enter="onOpened" @after-leave="onClosed">
         
-      <view v-show="visible" :class="classes" :style="popStyle" @click="onClick">
+      <view v-show="visible" class="nutLeftSlideIn" :class="classes" :style="popStyle" @click="onClick">
         <slot v-if="showSlot"></slot>
         <view
           v-if="closed"
@@ -165,10 +165,14 @@ export default create({
       zIndex: props.zIndex,
       showSlot: true,
       transitionName: `popup-fade-${props.position}`,
+      slideTransitionName: `nut-slide-${props.position}`,
       overLayCount: 1,
       keepAlive: false,
       closed: props.closeable
     });
+    
+    const visibleLocal = ref(false)
+   
 
     const [lockScroll, unlockScroll] = useLockScroll(() => props.lockScroll);
 
@@ -179,7 +183,9 @@ export default create({
         ['round']: props.round,
         [`popup-${props.position}`]: true,
         [`popup-${props.position}--safebottom`]: props.position === 'bottom' && props.safeAreaInsetBottom,
-        [props.popClass]: true
+        [props.popClass]: true,
+        [`${state.slideTransitionName}In`]: visibleLocal.value,
+        [`${state.slideTransitionName}Out`]: !visibleLocal.value,
       };
     });
 
@@ -195,6 +201,7 @@ export default create({
       if (props.zIndex != 2000) {
         _zIndex = Number(props.zIndex);
       }
+      visibleLocal.value = true
       emit('update:visible', true);
       lockPage(true)
       state.zIndex = ++_zIndex;
@@ -207,7 +214,10 @@ export default create({
     const close = () => {
         console.log('close','pupup')
       lockPage(false)
-      emit('update:visible', false);
+      visibleLocal.value = false
+      setTimeout(()=>{
+          emit('update:visible', false);
+      },+props.duration * 1000)
       if (props.destroyOnClose) {
         setTimeout(() => {
           state.showSlot = false

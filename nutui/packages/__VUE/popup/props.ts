@@ -11,7 +11,7 @@ export const popupProps = {
 
   transition: String,
 
-  style: {
+  popStyle: {
     type: Object as PropType<CSSProperties>
   },
 

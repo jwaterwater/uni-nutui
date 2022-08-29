@@ -9,6 +9,10 @@ export class Title {
 }
 export type TabsSize = 'large' | 'normal' | 'small';
 export const component = {
+    options: {
+        virtualHost: true,
+        addGlobalClass: true,
+    },
   props: {
     modelValue: {
       type: [String, Number],
@@ -53,6 +57,10 @@ export const component = {
     titleGutter: {
       type: [Number, String],
       default: 0
+    },
+    popClass: {
+        type: String,
+        default: ''
     }
   },
 
@@ -62,30 +70,40 @@ export const component = {
   setup(props: any, { emit, slots }: any) {
     provide('activeKey', { activeKey: computed(() => props.modelValue) });
     provide('autoHeight', { autoHeight: computed(() => props.autoHeight) });
-    const titles: Ref<Title[]> = ref([]);
 
+    const childVnodes = ref([])
+    provide('addNode',(nodeItem)=>{
+        childVnodes.value.push(nodeItem)
+        renderTitles(childVnodes.value)
+    })
+
+    //const titles = props.titles
+    const titles: Ref<Title[]> = ref([]);
     const renderTitles = (vnodes: VNode[]) => {
-      vnodes.forEach((vnode: VNode, index: number) => {
-        let type = vnode.type;
-        type = (type as any).name || type;
-        if (type == 'nut-tabpane') {
-          let title = new Title();
-          if (vnode.props?.title || vnode.props?.['pane-key'] || vnode.props?.['paneKey']) {
-            title.title = vnode.props?.title;
-            title.paneKey = vnode.props?.['pane-key'] || vnode.props?.['paneKey'] || index;
-            title.disabled = vnode.props?.disabled;
-          } else {
-            // title.titleSlot = vnode.children?.title() as VNode[];
-          }
-          titles.value.push(title);
-        } else {
-          renderTitles(vnode.children as VNode[]);
-        }
-      });
+        titles.value = []
+          vnodes.forEach((vnode: VNode, index: number) => {
+            let type = vnode.type;
+            type = (type as any).name || type;
+            if (type == 'nut-tabpane') {
+              let title = new Title();
+              if (vnode.props?.title || vnode.props?.['pane-key'] || vnode.props?.['paneKey']) {
+                title.title = vnode.props?.title;
+                title.paneKey = vnode.props?.['pane-key'] || vnode.props?.['paneKey'] || index;
+                title.disabled = vnode.props?.disabled;
+              } else {
+                // title.titleSlot = vnode.children?.title() as VNode[];
+              }
+              titles.value.push(title);
+            } else {
+              renderTitles(vnode.children as VNode[]);
+            }
+          });
     };
 
     const currentIndex = ref((props.modelValue as number) || 0);
     const findTabsIndex = (value: string | number) => {
+        //console.log('find',value)
+       // console.log('find titles',titles.value)
       let index = titles.value.findIndex((item) => item.paneKey == value);
       if (titles.value.length == 0) {
         console.error('[NutUI] <Tabs> 当前未找到 TabPane 组件元素 , 请检查 .');
@@ -95,29 +113,37 @@ export const component = {
         currentIndex.value = index;
       }
     };
-
-    const init = (vnodes: VNode[] = slots.default?.()) => {
+    const init = (vnodes) => {
       titles.value = [];
       if (vnodes && vnodes.length) {
         renderTitles(vnodes);
       }
       findTabsIndex(props.modelValue);
     };
+    
+    /**
     watch(
-      () => slots.default?.(),
-      (vnodes: VNode[]) => {
-        init(vnodes);
+      () => slots.default,
+      () => {
+        init(childVnodes);
       }
     );
-
+    **/
+   
+    
     watch(
       () => props.modelValue,
       (value: string | number) => {
         findTabsIndex(value);
       }
     );
-    onMounted(init);
-    onActivated(init);
+    
+    onMounted(()=>{
+       // init(childVnodes);
+    });
+    onActivated(()=>{
+        //init(childVnodes);
+    });
     const contentStyle = computed(() => {
       return {
         transform:

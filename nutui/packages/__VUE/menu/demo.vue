@@ -1,9 +1,8 @@
 <template>
   <div style="height: 100%;"
-   
     :class="state.lock?'lock':'unlock'"
    class="demo full">
-      {{state.lock?'lock':'unlock'}}
+     
     <h2 class="h2">{{ translate('basic') }}</h2>
     <nut-menu>
       <nut-menu-item v-model="state.value1" :options="options1" />
