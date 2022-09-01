@@ -7,103 +7,103 @@
 			}
 		},
         {
-        	"path": "nutui/packages/__VUE/button/demo",
+        	"path": "uni_modules/nutui/packages/__VUE/button/demo",
         	"style": {
         		"navigationBarTitleText": "Button"
         	}
         },
         {
-        	"path": "nutui/packages/__VUE/cell/demo",
+        	"path": "uni_modules/nutui/packages/__VUE/cell/demo",
         	"style": {
         		"navigationBarTitleText": "Cell"
         	}
         },
         {
-        	"path": "nutui/packages/__VUE/icon/demo",
+        	"path": "uni_modules/nutui/packages/__VUE/icon/demo",
         	"style": {
         		"navigationBarTitleText": "Icon"
         	}
         },
         {
-        	"path": "nutui/packages/__VUE/image/demo",
+        	"path": "uni_modules/nutui/packages/__VUE/image/demo",
         	"style": {
         		"navigationBarTitleText": "Image"
         	}
         },
         {
-        	"path": "nutui/packages/__VUE/overlay/demo",
+        	"path": "uni_modules/nutui/packages/__VUE/overlay/demo",
         	"style": {
         		"navigationBarTitleText": "OverLay"
         	}
         },
         {
-        	"path": "nutui/packages/__VUE/popup/demo",
+        	"path": "uni_modules/nutui/packages/__VUE/popup/demo",
         	"style": {
         		"navigationBarTitleText": "Popup"
         	}
         },
         
         {
-        	"path": "nutui/packages/__VUE/divider/demo",
+        	"path": "uni_modules/nutui/packages/__VUE/divider/demo",
         	"style": {
         		"navigationBarTitleText": "Divider"
         	}
         },
         {
-        	"path": "nutui/packages/__VUE/grid/demo",
+        	"path": "uni_modules/nutui/packages/__VUE/grid/demo",
         	"style": {
         		"navigationBarTitleText": "Grid"
         	}
         },
         {
-        	"path": "nutui/packages/__VUE/layout/demo",
+        	"path": "uni_modules/nutui/packages/__VUE/layout/demo",
         	"style": {
         		"navigationBarTitleText": "Layout"
         	}
         },
         
         {
-        	"path": "nutui/packages/__VUE/sticky/demo",
+        	"path": "uni_modules/nutui/packages/__VUE/sticky/demo",
         	"style": {
         		"navigationBarTitleText": "Sticky"
         	}
         },
         
         {
-        	"path": "nutui/packages/__VUE/elevator/demo",
+        	"path": "uni_modules/nutui/packages/__VUE/elevator/demo",
         	"style": {
         		"navigationBarTitleText": "Elevator"
         	}
         },
         
         {
-        	"path": "nutui/packages/__VUE/fixednav/demo",
+        	"path": "uni_modules/nutui/packages/__VUE/fixednav/demo",
         	"style": {
         		"navigationBarTitleText": "FixedNav"
         	}
         },
         {
-        	"path": "nutui/packages/__VUE/menu/demo",
+        	"path": "uni_modules/nutui/packages/__VUE/menu/demo",
         	"style": {
         		"navigationBarTitleText": "Menu"
         	}
         },
         
         {
-        	"path": "nutui/packages/__VUE/navbar/demo",
+        	"path": "uni_modules/nutui/packages/__VUE/navbar/demo",
         	"style": {
         		"navigationBarTitleText": "Navbar"
         	}
         },
         
         {
-        	"path": "nutui/packages/__VUE/pagination/demo",
+        	"path": "uni_modules/nutui/packages/__VUE/pagination/demo",
         	"style": {
         		"navigationBarTitleText": "Pagination"
         	}
         },
         {
-        	"path": "nutui/packages/__VUE/sidenavbar/demo",
+        	"path": "uni_modules/nutui/packages/__VUE/sidenavbar/demo",
         	"style": {
         		"navigationBarTitleText": "SideNavBar"
         	}
@@ -111,14 +111,14 @@
         
         
         {
-        	"path": "nutui/packages/__VUE/tabbar/demo",
+        	"path": "uni_modules/nutui/packages/__VUE/tabbar/demo",
         	"style": {
         		"navigationBarTitleText": "Tabbar"
         	}
         },
         
         {
-        	"path": "nutui/packages/__VUE/tabs/demo",
+        	"path": "uni_modules/nutui/packages/__VUE/tabs/demo",
         	"style": {
         		"navigationBarTitleText": "Tabs"
         	}
@@ -126,23 +126,52 @@
         
         
         {
-        	"path": "nutui/packages/__VUE/calendar/demo",
+        	"path": "uni_modules/nutui/packages/__VUE/calendar/demo",
         	"style": {
         		"navigationBarTitleText": "Calendar"
         	}
         },
         
         {
-        	"path": "nutui/packages/__VUE/cascader/demo",
+        	"path": "uni_modules/nutui/packages/__VUE/cascader/demo",
         	"style": {
         		"navigationBarTitleText": "Cascader"
         	}
         },
         
         {
-        	"path": "nutui/packages/__VUE/checkbox/demo",
+        	"path": "uni_modules/nutui/packages/__VUE/checkbox/demo",
         	"style": {
         		"navigationBarTitleText": "Checkbox"
+        	}
+        },
+        
+        {
+        	"path": "uni_modules/nutui/packages/__VUE/datepicker/demo",
+        	"style": {
+        		"navigationBarTitleText": "DatePicker"
+        	}
+        },
+        
+        {
+        	"path": "uni_modules/nutui/packages/__VUE/form/demo",
+        	"style": {
+        		"navigationBarTitleText": "Form"
+        	}
+        },
+        
+        {
+        	"path": "uni_modules/nutui/packages/__VUE/input/demo",
+        	"style": {
+        		"navigationBarTitleText": "Input"
+        	}
+        },
+        
+        
+        {
+        	"path": "uni_modules/nutui/packages/__VUE/picker/demo",
+        	"style": {
+        		"navigationBarTitleText": "Picker"
         	}
         }
         
@@ -158,8 +187,8 @@
     "easycom": {
       "autoscan": true,
       "custom": {
-        "nut-(.*)?-(.*)": "@/nutui/packages/__VUE/$1$2/index.vue", // 匹配components目录内的vue文件
-        "nut-(.*)": "@/nutui/packages/__VUE/$1/index.vue"
+        "nut-(.*)?-(.*)": "@/uni_modules/nutui/packages/__VUE/$1$2/index.vue", // 匹配components目录内的vue文件
+        "nut-(.*)": "@/uni_modules/nutui/packages/__VUE/$1/index.vue"
       }
     },
 	"uniIdRouter": {}
