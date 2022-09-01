@@ -1,5 +1,5 @@
 <template>
-  <view class="nut-picker__list" @touchstart="onTouchStart" @touchmove="onTouchMove" @touchend="onTouchEnd">
+  <view class="nut-picker__list" @touchstart="onTouchStart" @touchmove.top.prevent="onTouchMove" @touchend="onTouchEnd">
     <view class="nut-picker-roller" ref="roller" :style="touchTileStyle" @transitionend="stopMomentum">
       <!-- 3D 效果 -->
       <view

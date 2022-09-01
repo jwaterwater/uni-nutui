@@ -2,11 +2,14 @@
   <div class="demo">
     <h2 class="h2">{{ translate('basic') }}</h2>
     <nut-cell>
-      <nut-inputnumber v-model="state.val1" />
+      <nut-inputnumber
+       v-model="state.val1" />
     </nut-cell>
     <h2 class="h2">{{ translate('step') }}</h2>
     <nut-cell>
-      <nut-inputnumber v-model="state.val2" step="5" />
+      <nut-inputnumber       
+      @change="onValueChange" 
+      v-model="state.val2" step="5" />
     </nut-cell>
     <h2 class="h2">{{ translate('limit') }}</h2>
     <nut-cell>
@@ -40,6 +43,7 @@ import { reactive, getCurrentInstance } from 'vue';
 import { createComponent } from '@/uni_modules/nutui/packages/utils/create';
 const { createDemo, translate } = createComponent('inputnumber');
 import { useTranslate } from '@/uni_modules/nutui/sites/assets/util/useTranslate';
+import {Toast} from '@/uni_modules/nutui/packages/nutui.js'
 const initTranslate = () =>
   useTranslate({
     'zh-CN': {
@@ -86,22 +90,27 @@ export default createDemo({
     });
 
     const onChange = (value: number) => {
-      proxy.$toast.loading(translate('content1'));
+      Toast.loading(translate('content1'));
       setTimeout(() => {
         state.val8 = value;
-        proxy.$toast.hide();
+        Toast.hide();
       }, 2000);
     };
+    
+    const onValueChange  = (value) => {
+        console.log(value)
+    }
 
     const overlimit = () => {
-      proxy.$toast.warn(translate('content2'));
+      Toast.warn(translate('content2'));
     };
 
     return {
       state,
       onChange,
-      blur,
-      focus,
+      //blur,
+      //focus,
+      onValueChange,
       overlimit,
       translate
     };

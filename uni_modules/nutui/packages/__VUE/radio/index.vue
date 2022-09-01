@@ -1,3 +1,45 @@
+<template>
+    <view
+    :class="getClass"
+    @click="handleClick"
+    >
+        <view 
+        :class="getButtonClass"
+        v-if="shape=='button'">
+            <slot></slot>
+        </view>
+        <template v-else>
+            <template v-if="reverseState">
+                <view
+                :class="getLabelClass"
+                >
+                    <slot></slot>
+                </view>
+                <nut-icon
+                :name="iconAttr.name"
+                :size="iconAttr.size"
+                :popClass="iconAttr.class"
+                :classPrefix="iconAttr.classPrefix"
+                :fontClassName="iconAttr.fontClassName"
+                ></nut-icon>
+            </template>
+            <template v-else="reverseState">
+                <nut-icon
+                :name="iconAttr.name"
+                :size="iconAttr.size"
+                :popClass="iconAttr.class"
+                :classPrefix="iconAttr.classPrefix"
+                :fontClassName="iconAttr.fontClassName"
+                ></nut-icon>
+                <view
+                :class="getLabelClass"
+                >
+                    <slot></slot>
+                </view>
+            </template>
+        </template>
+    </view>
+</template>
 <script lang="ts">
 import { computed, h, inject } from 'vue';
 import { createComponent } from '@/uni_modules/nutui/packages/utils/create';
@@ -58,37 +100,30 @@ export default create({
       return parent.position;
     });
 
-    const renderIcon = () => {
-      const { iconName, iconSize, iconActiveName, iconClassPrefix, iconFontClassName } = props;
-      return h(nutIcon, {
-        name: isCurValue.value ? iconActiveName : iconName,
-        size: iconSize,
-        class: color.value,
-        classPrefix: iconClassPrefix,
-        fontClassName: iconFontClassName
-      });
-    };
+    const iconAttr = computed(()=>{
+        const { iconName, iconSize, iconActiveName, iconClassPrefix, iconFontClassName } = props;
+        return {
+            name: isCurValue.value ? iconActiveName : iconName,
+            size: iconSize,
+            class: color.value,
+            classPrefix: iconClassPrefix,
+            fontClassName: iconFontClassName
+        }
+    })
 
-    const renderLabel = () => {
-      return h(
-        'view',
-        {
-          class: `${componentName}__label ${props.disabled ? `${componentName}__label--disabled` : ''}`
-        },
-        slots.default?.()
-      );
-    };
-    const renderButton = () => {
-      return h(
-        'view',
-        {
-          class: `${componentName}__button ${isCurValue.value && `${componentName}__button--active`} ${
+
+
+    const getLabelClass = computed(()=>{
+        return `${componentName}__label ${props.disabled ? `${componentName}__label--disabled` : ''}`
+    })
+ 
+    
+    const getButtonClass = computed(()=>{
+        return `${componentName}__button ${isCurValue.value && `${componentName}__button--active`} ${
             props.disabled ? `${componentName}__button--disabled` : ''
           }`
-        },
-        slots.default?.()
-      );
-    };
+    })
+ 
 
     const handleClick = () => {
       if (isCurValue.value || props.disabled) return;
@@ -97,22 +132,21 @@ export default create({
 
     let reverseState = position.value === 'left';
 
-    return () => {
-      return h(
-        'view',
-        {
-          class: `${componentName} ${componentName}--${props.shape} ${reverseState ? `${componentName}--reverse` : ''}`,
-          onClick: handleClick
-        },
-        [
-          props.shape == 'button'
-            ? renderButton()
-            : reverseState
-            ? [renderLabel(), renderIcon()]
-            : [renderIcon(), renderLabel()]
-        ]
-      );
-    };
+    const getClass = computed(()=>{
+        return `${componentName} ${componentName}--${props.shape} ${reverseState ? `${componentName}--reverse` : ''}`
+    })
+
+
+    return {
+        getClass,
+        handleClick,
+        shape: props.shape,
+        reverseState,
+        getButtonClass,
+        getLabelClass,
+        iconAttr
+    }
+   
   }
 });
 </script>

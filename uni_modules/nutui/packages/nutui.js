@@ -12,5 +12,23 @@ export const Toast = {
     },
     hide: () => {
         uni.hideLoading()
+    },
+    warn: (text) => {
+        uni.showToast({
+            title:text,
+            icon:"error"
+        })
+    },
+    error: (text) => {
+        uni.showToast({
+            title:text,
+            icon:"error"
+        })
+    },
+    success: (text) => {
+        uni.showToast({
+            title:text,
+            icon:"success"
+        })
     }
 }

@@ -43,7 +43,10 @@
             <nut-cell to="/uni_modules/nutui/packages/__VUE/datepicker/demo" title="DatePicker 日期选择器" is-link></nut-cell>
             <nut-cell to="/uni_modules/nutui/packages/__VUE/form/demo" title="Form 表单" is-link></nut-cell>
             <nut-cell to="/uni_modules/nutui/packages/__VUE/input/demo" title="Input 输入框" is-link></nut-cell>
+            <nut-cell to="/uni_modules/nutui/packages/__VUE/inputnumber/demo" title="InputNumber 数字输入框" is-link></nut-cell>
+            <nut-cell to="/uni_modules/nutui/packages/__VUE/numberkeyboard/demo" title="NumberKeyboard 数字键盘" is-link></nut-cell>
             <nut-cell to="/uni_modules/nutui/packages/__VUE/picker/demo" title="Picker 选择器" is-link></nut-cell>
+            <nut-cell to="/uni_modules/nutui/packages/__VUE/radio/demo" title="Radio 单选按钮" is-link></nut-cell>
         </nut-cell-group>
         
         
@@ -51,7 +54,7 @@
 </template>
 
 <script setup>
-    
+   
 </script>
 
 <style>

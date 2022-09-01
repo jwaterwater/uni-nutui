@@ -1,3 +1,10 @@
+<template>
+    <view
+    :class="getClass"
+    >
+        <slot></slot>
+    </view>
+</template>
 <script lang="ts">
 import { h, provide, computed, readonly, watch } from 'vue';
 import { createComponent } from '@/uni_modules/nutui/packages/utils/create';
@@ -33,15 +40,14 @@ export default create({
       (value) => emit('change', value)
     );
 
-    return () => {
-      return h(
-        'view',
-        {
-          class: `${componentName} ${componentName}--${props.direction}`
-        },
-        slots.default?.()
-      );
-    };
+    const getClass = computed(()=>{
+        return `${componentName} ${componentName}--${props.direction}`
+    })
+    
+    return {
+        getClass
+    }
+    
   }
 });
 </script>

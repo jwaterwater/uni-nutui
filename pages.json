@@ -169,9 +169,31 @@
         
         
         {
+        	"path": "uni_modules/nutui/packages/__VUE/inputnumber/demo",
+        	"style": {
+        		"navigationBarTitleText": "InputNumber"
+        	}
+        },
+        
+        {
+        	"path": "uni_modules/nutui/packages/__VUE/numberkeyboard/demo",
+        	"style": {
+        		"navigationBarTitleText": "NumberKeyboard"
+        	}
+        },
+        
+        
+        {
         	"path": "uni_modules/nutui/packages/__VUE/picker/demo",
         	"style": {
         		"navigationBarTitleText": "Picker"
+        	}
+        },
+        
+        {
+        	"path": "uni_modules/nutui/packages/__VUE/radio/demo",
+        	"style": {
+        		"navigationBarTitleText": "Radio"
         	}
         }
         
