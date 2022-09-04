@@ -7,7 +7,7 @@
     :overlay="overlay"
     @click-overlay="closeBoard()"
     :isWrapTeleport="false"
-    overlay-class="nut-numberkeyboard-overlay"
+    overlayClass="nut-numberkeyboard-overlay"
   >
     <div class="nut-numberkeyboard" ref="root">
       <div class="number-board-header" v-if="title">
@@ -34,9 +34,9 @@
                 { lock: item.type == 'lock' },
                 { delete: item.type == 'delete' }
               ]"
-              @touchstart="(event) => onTouchstart(item, event)"
-              @touchmove="(event) => onTouchMove(item, event)"
-              @touchend="(event) => onTouchEnd(event)"
+              @touchstart.stop.prevent="(event) => onTouchstart(item, event)"
+              @touchmove.stop.prevent="(event) => onTouchMove(item, event)"
+              @touchend.stop.prevent="(event) => onTouchEnd(event)"
             >
               <template v-if="item.type == 'number' || item.type == 'custom'">{{ item.id }}</template>
               <image

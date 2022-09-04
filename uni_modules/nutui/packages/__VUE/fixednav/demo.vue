@@ -43,8 +43,9 @@
     </nut-fixednav>
 
     <!-- 配合 Drag 支持拖拽 ，小程序暂不支持 -->
-    <nut-drag direction="y" :style="{ right: '0px', bottom: '240px' }">
+    <nut-drag direction="y" :style="{ right: '0px', bottom: '240px' }" :left="0" :top="50">
       <nut-fixednav
+        type="left"
         :un-active-text="translate('drag')"
         v-model:visible="visible3"
         :nav-list="navList"
@@ -97,9 +98,7 @@ export default createDemo({
     const myActive = ref(false);
 
     onMounted(() => {
-      setTimeout(() => {
-        visible2.value = true;
-      }, 1000);
+  
     });
 
     const navList = computed(() => [

@@ -47,9 +47,24 @@
             <nut-cell to="/uni_modules/nutui/packages/__VUE/numberkeyboard/demo" title="NumberKeyboard 数字键盘" is-link></nut-cell>
             <nut-cell to="/uni_modules/nutui/packages/__VUE/picker/demo" title="Picker 选择器" is-link></nut-cell>
             <nut-cell to="/uni_modules/nutui/packages/__VUE/radio/demo" title="Radio 单选按钮" is-link></nut-cell>
+            <nut-cell to="/uni_modules/nutui/packages/__VUE/range/demo" title="Range 区间选择器" is-link></nut-cell>
+            <nut-cell to="/uni_modules/nutui/packages/__VUE/rate/demo" title="Rate 评分" is-link></nut-cell>
+            <nut-cell to="/uni_modules/nutui/packages/__VUE/searchbar/demo" title="SearchBar 搜索栏" is-link></nut-cell>
+            <nut-cell to="/uni_modules/nutui/packages/__VUE/shortpassword/demo" title="ShortPassword 短密码" is-link></nut-cell>
+            <!--
+            <nut-cell to="/uni_modules/nutui/packages/__VUE/textarea/demo" title="TextArea 文本域" is-link></nut-cell>
+            -->
         </nut-cell-group>
         
         
+        <nut-cell-group title="导航组件">
+            <nut-cell to="/uni_modules/nutui/packages/__VUE/actionsheet/demo" title="ActionSheet 动作面板" is-link></nut-cell>
+            <!--
+            <nut-cell to="/uni_modules/nutui/packages/__VUE/backtop/demo" title="BackTop 返回顶部" is-link></nut-cell>
+            -->
+            <nut-cell to="/uni_modules/nutui/packages/__VUE/dialog/demo" title="Dialog 对话框" is-link></nut-cell>
+            <nut-cell to="/uni_modules/nutui/packages/__VUE/drag/demo" title="Drag 拖拽" is-link></nut-cell>
+        </nut-cell-group>
 	</page>
 </template>
 

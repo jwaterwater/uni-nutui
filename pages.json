@@ -3,7 +3,7 @@
 		{
 			"path": "pages/index/index",
 			"style": {
-				"navigationBarTitleText": "uni-nutui"
+				"navigationBarTitleText": "UniNutUI"
 			}
 		},
         {
@@ -195,6 +195,72 @@
         	"style": {
         		"navigationBarTitleText": "Radio"
         	}
+        },
+        
+        {
+        	"path": "uni_modules/nutui/packages/__VUE/range/demo",
+        	"style": {
+        		"navigationBarTitleText": "Range"
+        	}
+        },
+        
+        {
+        	"path": "uni_modules/nutui/packages/__VUE/rate/demo",
+        	"style": {
+        		"navigationBarTitleText": "Rate"
+        	}
+        },
+        
+        {
+        	"path": "uni_modules/nutui/packages/__VUE/searchbar/demo",
+        	"style": {
+        		"navigationBarTitleText": "SearchBar"
+        	}
+        },
+        
+        {
+        	"path": "uni_modules/nutui/packages/__VUE/shortpassword/demo",
+        	"style": {
+        		"navigationBarTitleText": "ShortPassword"
+        	}
+        },
+        
+        
+        {
+        	"path": "uni_modules/nutui/packages/__VUE/textarea/demo",
+        	"style": {
+        		"navigationBarTitleText": "TextArea"
+        	}
+        },
+        
+        
+        {
+        	"path": "uni_modules/nutui/packages/__VUE/actionsheet/demo",
+        	"style": {
+        		"navigationBarTitleText": "ActionSheet"
+        	}
+        },
+        
+        {
+        	"path": "uni_modules/nutui/packages/__VUE/backtop/demo",
+        	"style": {
+        		"navigationBarTitleText": "BackTop"
+        	}
+        },
+        
+        {
+        	"path": "uni_modules/nutui/packages/__VUE/dialog/demo",
+        	"style": {
+        		"navigationBarTitleText": "Dialog"
+        	}
+        },
+        
+        {
+        	"path": "uni_modules/nutui/packages/__VUE/drag/demo",
+        	"style": {
+        		"navigationBarTitleText": "Drag",
+                "navigationStyle": "custom"
+        	}
         }
         
         
@@ -202,7 +268,7 @@
 	],
 	"globalStyle": {
 		"navigationBarTextStyle": "black",
-		"navigationBarTitleText": "uni-app",
+		"navigationBarTitleText": "UniNutUI",
 		"navigationBarBackgroundColor": "#F8F8F8",
 		"backgroundColor": "#F8F8F8"
 	},

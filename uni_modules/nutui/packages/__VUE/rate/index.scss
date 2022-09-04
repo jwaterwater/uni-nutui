@@ -23,12 +23,12 @@
         color: $rate-icon-void-color;
       }
       &--half {
-        position: absolute;
-        width: 50% !important;
+        position: absolute !important;
+        width: 9px !important;
         left: 0;
         top: 0;
         overflow: hidden;
-        height: auto !important;
+        height: 18px !important;
       }
     }
   }

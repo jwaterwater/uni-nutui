@@ -202,7 +202,7 @@ export default create({
     },
     clearIcon: {
       type: String,
-      default: 'mask-close'
+      default: 'circle-close'
     },
     clearSize: {
       type: [String, Number],
@@ -314,8 +314,7 @@ export default create({
     // });
 
     const onInput = (event: Event) => {
-      const input = event.target as HTMLInputElement;
-      let value = input.value;
+      let value = event.detail.value
       if (props.maxLength && value.length > Number(props.maxLength)) {
         value = value.slice(0, Number(props.maxLength));
       }
@@ -339,7 +338,7 @@ export default create({
       }
       
       if (inputRef?.value?.value && inputRef?.value?.value !== value) {
-        inputRef.value.value = value;
+        //inputRef.value.value = value;
       }
       
 
@@ -371,8 +370,7 @@ export default create({
         active.value = false;
       }, 200);
 
-      const input = event.target as HTMLInputElement;
-      let value = input.value;
+      let value = event.detail.value;
       if (props.maxLength && value.length > Number(props.maxLength)) {
         value = value.slice(0, Number(props.maxLength));
       }

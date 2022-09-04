@@ -49,10 +49,10 @@
 
     <h2 class="h2">{{ translate('title9') }}</h2>
     <nut-cell class="vertical_div">
-      <view class="div">
+      <view class="div vertical_div">
         <nut-range v-model="value10" @change="onChange" :vertical="true"></nut-range>
       </view>
-      <view class="div">
+      <view style="margin-left:100rpx;" class="div vertical_div">
         <nut-range range v-model="value11" @change="onChange" :vertical="true"></nut-range>
       </view>
     </nut-cell>
@@ -65,10 +65,10 @@
     </nut-cell>
 
     <nut-cell class="vertical_div">
-      <view class="div">
+      <view class="div vertical_div">
         <nut-range v-model="value14" @change="onChange" :vertical="true" :marks="marks" :hiddenRange="true"></nut-range>
       </view>
-      <view class="div">
+      <view style="margin-left:100rpx;" class="div vertical_div">
         <nut-range
           range
           v-model="value15"
@@ -85,7 +85,7 @@
 <script lang="ts">
 import { toRefs, reactive } from 'vue';
 import { createComponent } from '@/uni_modules/nutui/packages/utils/create';
-import { Toast } from '@/uni_modules/nutui/packages/nutui.vue';
+import { Toast } from '@/uni_modules/nutui/packages/nutui.js';
 const { createDemo, translate } = createComponent('range');
 import { useTranslate } from '@/uni_modules/nutui/sites/assets/util/useTranslate';
 

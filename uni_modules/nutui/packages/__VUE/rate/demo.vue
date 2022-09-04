@@ -3,9 +3,10 @@
     <h2 class="h2">{{ translate('basic') }}</h2>
     <nut-rate v-model="state.val" />
 
+<!--
     <h2 class="h2">{{ translate('title1') }}</h2>
     <nut-rate allow-half v-model="state.val1"></nut-rate>
-
+-->
     <h2 class="h2">{{ translate('title2') }}</h2>
     <nut-rate checked-icon="heart-fill1" unchecked-icon="heart" v-model="state.val2"></nut-rate>
 
@@ -34,7 +35,7 @@ import { reactive } from 'vue';
 import { createComponent } from '@/uni_modules/nutui/packages/utils/create';
 import { useTranslate } from '@/uni_modules/nutui/sites/assets/util/useTranslate';
 const { createDemo, translate } = createComponent('rate');
-import { Toast } from '@/uni_modules/nutui/packages/nutui.vue';
+import { Toast } from '@/uni_modules/nutui/packages/nutui.js';
 const initTranslate = () =>
   useTranslate({
     'zh-CN': {

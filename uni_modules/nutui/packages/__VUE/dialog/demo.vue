@@ -1,14 +1,6 @@
 <template>
   <div class="demo">
-    <nut-cell-group :title="translate('funUse')">
-      <nut-cell :title="translate('basic')" @click="baseClick"></nut-cell>
-      <nut-cell :title="translate('transparent')" @click="transparentClick"></nut-cell>
-      <nut-cell :title="translate('html')" @click="htmlClick"></nut-cell>
-      <nut-cell :title="translate('beforeClose')" @click="beforeCloseClick"></nut-cell>
-      <nut-cell :title="translate('noTitle')" @click="noTitleClick"></nut-cell>
-      <nut-cell :title="translate('tipDialog')" @click="tipsClick"></nut-cell>
-      <nut-cell :title="translate('title')" @click="verticalClick"></nut-cell>
-    </nut-cell-group>
+   
     <nut-cell-group :title="translate('title1')">
       <nut-cell :title="translate('title1')" @click="componentClick"></nut-cell>
       <nut-dialog
@@ -28,18 +20,13 @@
       >
       </nut-dialog>
     </nut-cell-group>
-    <nut-cell-group :title="translate('title2')">
-      <nut-cell title="body element node" @click="teleportClick('body')"></nut-cell>
-      <nut-cell title="#app element node" @click="teleportClick('#app')"></nut-cell>
-      <nut-cell title="demo class element node" @click="teleportClick('.demo')"></nut-cell>
-    </nut-cell-group>
+  
   </div>
 </template>
 <script lang="ts">
 import { createVNode, ref } from 'vue';
 import { createComponent } from '@/uni_modules/nutui/packages/utils/create';
 const { createDemo, translate } = createComponent('dialog');
-import { Dialog } from '@/uni_modules/nutui/packages/nutui.vue';
 import { useTranslate } from '@/uni_modules/nutui/sites/assets/util/useTranslate';
 const initTranslate = () =>
   useTranslate({
@@ -92,77 +79,7 @@ export default createDemo({
     const onOk = () => {
       console.log('event ok');
     };
-
-    const baseClick = (): void => {
-      Dialog({
-        title: translate('basic'),
-        content: createVNode('span', { style: { color: 'red' } }, translate('content3')),
-        onCancel,
-        onOk
-      });
-    };
-
-    const transparentClick = (): void => {
-      Dialog({
-        overlayStyle: { background: 'rgba(0,0,0,0)' },
-        title: translate('transparent'),
-        content: 'Content',
-        onCancel,
-        onOk
-      });
-    };
-
-    const htmlClick = (): void => {
-      Dialog({
-        title: translate('html'),
-        content:
-          "<p style='color:red'>html</p><img src='https://m.360buyimg.com/babel/jfs/t1/164410/22/25162/93384/616eac6cE6c711350/0cac53c1b82e1b05.gif' />",
-        onCancel,
-        onOk
-      });
-    };
-
-    const beforeCloseClick = (): void => {
-      Dialog({
-        title: translate('beforeClose'),
-        content: translate('content4'),
-        onCancel,
-        onOk,
-        beforeClose: (action: string) => {
-          return new Promise((r) => {
-            setTimeout(() => {
-              r(action == 'ok');
-            }, 1000);
-          });
-        }
-      });
-    };
-
-    const noTitleClick = () => {
-      Dialog({
-        content: translate('noTitle'),
-        onCancel,
-        onOk
-      });
-    };
-    const tipsClick = () => {
-      Dialog({
-        title: translate('tips'),
-        content: translate('content'),
-        noCancelBtn: true,
-        onCancel,
-        onOk
-      });
-    };
-    const verticalClick = () => {
-      Dialog({
-        title: translate('tips'),
-        content: translate('content1'),
-        footerDirection: 'vertical',
-        onCancel,
-        onOk
-      });
-    };
+  
 
     const componentClick = () => {
       visible.value = true;
@@ -171,29 +88,13 @@ export default createDemo({
       visible1.value = true;
     };
 
-    const teleportClick = (teleport: string) => {
-      Dialog({
-        teleport,
-        title: 'teleport to ' + teleport,
-        content: translate('content2'),
-        noCancelBtn: true,
-        onCancel
-      });
-    };
+   
 
     return {
       visible,
       visible1,
-      baseClick,
-      transparentClick,
-      htmlClick,
-      beforeCloseClick,
-      noTitleClick,
       componentClick,
       componentvVrticalClick,
-      tipsClick,
-      verticalClick,
-      teleportClick,
       translate
     };
   }

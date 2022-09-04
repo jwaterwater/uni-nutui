@@ -1,7 +1,7 @@
 <template>
   <view>
     <nut-popup
-      :style="{
+      :popStyle="{
         padding: '32px 24px 28px 24px',
         borderRadius: '12px',
         textAlign: 'center'
@@ -22,6 +22,8 @@
           class="nut-input-real"
           type="number"
           maxlength="6"
+          :focus="isFocus"
+          @blur="onBlur"
           :style="systemStyle()"
           v-model="realInput"
           @input="changeValue"
@@ -100,12 +102,14 @@ export default create({
     const realpwd = ref();
     const comLen = computed(() => range(Number(props.length)));
     const show = ref(props.visible);
+    const isFocus = ref(false)
     // 方法
     function sureClick() {
       emit('ok', realInput.value);
     }
     function focus() {
-      realpwd.value.focus();
+        isFocus.value = true
+      //realpwd.value.focus();
     }
     watch(
       () => props.visible,
@@ -125,8 +129,9 @@ export default create({
       }
     );
     function changeValue(e: Event) {
-      const input = e.target as HTMLInputElement;
-      let val = input.value;
+      //const input = e.target as HTMLInputElement;
+      console.log(e)
+      let val = e.detail.value
       if (val.length > comLen.value) {
         val = val.slice(0, comLen.value);
         realInput.value = val;
@@ -152,9 +157,14 @@ export default create({
       emit('tips');
     }
     function systemStyle() {
-      let u = navigator.userAgent;
-      let isAndroid = u.indexOf('Android') > -1 || u.indexOf('Linux') > -1; //g
-      let isIOS = !!u.match(/\(i[^;]+;( U;)? CPU.+Mac OS X/); //ios终端
+        let sys = uni.getSystemInfoSync()
+    
+      let isIOS,isAndroid
+      if(sys.osName=='ios') {
+          isIOS = true
+      }else{
+          isAndroid = true
+      }
       if (isIOS) {
         return {
           paddingRight: '1200px'
@@ -167,7 +177,12 @@ export default create({
         };
       }
     }
+    
+    function onBlur () {
+        isFocus.value = false
+    }
     return {
+      onBlur,
       comLen,
       sureClick,
       realInput,
@@ -180,7 +195,8 @@ export default create({
       show,
       systemStyle,
       closeIcon,
-      translate
+      translate,
+      isFocus
     };
   }
 });

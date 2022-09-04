@@ -72,6 +72,7 @@ import { reactive, getCurrentInstance } from 'vue';
 import { createComponent } from '@/uni_modules/nutui/packages/utils/create';
 const { createDemo, translate } = createComponent('shortpassword');
 import { useTranslate } from '@/uni_modules/nutui/sites/assets/util/useTranslate';
+import { Toast } from '@/uni_modules/nutui/packages/nutui.js'
 const initTranslate = () =>
   useTranslate({
     'zh-CN': {
@@ -111,21 +112,21 @@ export default createDemo({
     });
     const methods = {
       onChange(val: string) {
-        val && proxy.$toast.text(val);
+        val && Toast.text(val);
       },
       onOk(val: string) {
-        val && proxy.$toast.text(val);
+        val && Toast.text(val);
         state.visible = false;
       },
       onComplete() {},
       onTips() {
-        proxy.$toast.text(translate('onTips'));
+        Toast.text(translate('onTips'));
       },
       close() {
-        proxy.$toast.text(translate('close'));
+        Toast.text(translate('close'));
       },
       cancel() {
-        proxy.$toast.text(translate('cancelTips'));
+        Toast.text(translate('cancelTips'));
       }
     };
 

@@ -47,7 +47,7 @@
 <script lang="ts">
 import { toRefs, reactive } from 'vue';
 import { createComponent } from '@/uni_modules/nutui/packages/utils/create';
-import { Toast } from '@/uni_modules/nutui/packages/nutui.vue';
+import { Toast } from '@/uni_modules/nutui/packages/nutui.js';
 const { createDemo, translate } = createComponent('searchbar');
 import { useTranslate } from '@/uni_modules/nutui/sites/assets/util/useTranslate';
 const initTranslate = () =>

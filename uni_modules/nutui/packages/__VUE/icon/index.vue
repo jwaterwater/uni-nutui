@@ -26,6 +26,7 @@ export default create({
     height: { type: [String, Number], default: '' },
     classPrefix: { type: String, default: 'nut-icon' },
     popClass: { type: String, default: '' },
+    class: { type: String, default: '' },
     fontClassName: { type: String, default: 'nutui-iconfont' },
     color: { type: String, default: '' },
     tag: { type: String as PropType<keyof HTMLElementTagNameMap>, default: 'i' }
@@ -36,6 +37,8 @@ export default create({
       addGlobalClass: true,
   },
   setup(props, { emit, slots }) {
+      
+      
     const handleClick = (event: Event) => {
       emit('click', event);
     };
@@ -48,7 +51,7 @@ export default create({
     const classes = computed(() => {
       return isImage()
             ? `${componentName}__img`
-            : `${props.fontClassName} ${componentName} ${props.classPrefix}-${props.name} ${props.popClass}`
+            : `${props.fontClassName} ${componentName} ${props.classPrefix}-${props.name} ${props.popClass} ${props.class}`
     });
     
     const getStyle = computed(() => {

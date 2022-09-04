@@ -1,25 +1,25 @@
-<template>
+ <template>
   <div class="demo full">
     <h2 class="h2">{{ translate('basic') }}</h2>
-    <nut-drag :style="{ top: '120px', left: '8px' }">
+    <nut-drag :top="120" :left="8">
       <nut-button type="primary">{{ translate('dragBasic') }}</nut-button>
     </nut-drag>
-    <h2 style="top: 30px; position: relative">{{ translate('direction') }}</h2>
-    <nut-drag direction="x" :style="{ top: '200px', left: '8px' }">
+    <h2 class="h2" style="top: 30px; position: relative">{{ translate('direction') }}</h2>
+    <nut-drag direction="x" :top="200" :left="8">
       <nut-button type="primary">{{ translate('directionX') }}</nut-button>
     </nut-drag>
-    <nut-drag direction="y" :style="{ top: '200px', right: '50px' }">
+    <nut-drag direction="y" :top="200" :left="250">
       <nut-button type="primary">{{ translate('directionY') }}</nut-button>
     </nut-drag>
-    <h2 style="top: 60px; position: relative">{{ translate('attract') }}</h2>
-    <nut-drag direction="x" :attract="true" :style="{ top: '275px', left: '8px' }">
+    <h2 class="h2" style="top: 60px; position: relative">{{ translate('attract') }}</h2>
+    <nut-drag direction="x" :attract="true" :top="275" :left="8" >
       <nut-button type="primary">{{ translate('attractText') }}</nut-button>
     </nut-drag>
-    <h2 style="top: 90px; position: relative">{{ translate('limitBoundaries') }}</h2>
+    <h2 class="h2" style="top: 90px; position: relative">{{ translate('limitBoundaries') }}</h2>
     <div class="drag-boundary"></div>
     <nut-drag
       :boundary="{ top: 361, left: 9, bottom: bottom(), right: right() }"
-      :style="{ top: '400px', left: '50px' }"
+       :top="400" :left="50"
     >
       <nut-button type="primary">{{ translate('limitBoundaries') }}</nut-button>
     </nut-drag>
@@ -57,10 +57,12 @@ export default createDemo({
   setup() {
     initTranslate();
     function right() {
-      return document.documentElement.clientWidth - 300 - 9;
+        let width = uni.getSystemInfoSync().windowWidth
+      return width - 300 - 9;
     }
     function bottom() {
-      return document.documentElement.clientHeight - 559;
+        let height = uni.getSystemInfoSync().windowHeight
+      return height - 559;
     }
     return {
       right,
