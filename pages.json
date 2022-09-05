@@ -7,103 +7,103 @@
 			}
 		},
         {
-        	"path": "uni_modules/sky_nutui/packages/__VUE/button/demo",
+        	"path": "uni_modules/sky-nutui/components/sky-nutui/packages/__VUE/button/demo",
         	"style": {
         		"navigationBarTitleText": "Button"
         	}
         },
         {
-        	"path": "uni_modules/sky_nutui/packages/__VUE/cell/demo",
+        	"path": "uni_modules/sky-nutui/components/sky-nutui/packages/__VUE/cell/demo",
         	"style": {
         		"navigationBarTitleText": "Cell"
         	}
         },
         {
-        	"path": "uni_modules/sky_nutui/packages/__VUE/icon/demo",
+        	"path": "uni_modules/sky-nutui/components/sky-nutui/packages/__VUE/icon/demo",
         	"style": {
         		"navigationBarTitleText": "Icon"
         	}
         },
         {
-        	"path": "uni_modules/sky_nutui/packages/__VUE/image/demo",
+        	"path": "uni_modules/sky-nutui/components/sky-nutui/packages/__VUE/image/demo",
         	"style": {
         		"navigationBarTitleText": "Image"
         	}
         },
         {
-        	"path": "uni_modules/sky_nutui/packages/__VUE/overlay/demo",
+        	"path": "uni_modules/sky-nutui/components/sky-nutui/packages/__VUE/overlay/demo",
         	"style": {
         		"navigationBarTitleText": "OverLay"
         	}
         },
         {
-        	"path": "uni_modules/sky_nutui/packages/__VUE/popup/demo",
+        	"path": "uni_modules/sky-nutui/components/sky-nutui/packages/__VUE/popup/demo",
         	"style": {
         		"navigationBarTitleText": "Popup"
         	}
         },
         
         {
-        	"path": "uni_modules/sky_nutui/packages/__VUE/divider/demo",
+        	"path": "uni_modules/sky-nutui/components/sky-nutui/packages/__VUE/divider/demo",
         	"style": {
         		"navigationBarTitleText": "Divider"
         	}
         },
         {
-        	"path": "uni_modules/sky_nutui/packages/__VUE/grid/demo",
+        	"path": "uni_modules/sky-nutui/components/sky-nutui/packages/__VUE/grid/demo",
         	"style": {
         		"navigationBarTitleText": "Grid"
         	}
         },
         {
-        	"path": "uni_modules/sky_nutui/packages/__VUE/layout/demo",
+        	"path": "uni_modules/sky-nutui/components/sky-nutui/packages/__VUE/layout/demo",
         	"style": {
         		"navigationBarTitleText": "Layout"
         	}
         },
         
         {
-        	"path": "uni_modules/sky_nutui/packages/__VUE/sticky/demo",
+        	"path": "uni_modules/sky-nutui/components/sky-nutui/packages/__VUE/sticky/demo",
         	"style": {
         		"navigationBarTitleText": "Sticky"
         	}
         },
         
         {
-        	"path": "uni_modules/sky_nutui/packages/__VUE/elevator/demo",
+        	"path": "uni_modules/sky-nutui/components/sky-nutui/packages/__VUE/elevator/demo",
         	"style": {
         		"navigationBarTitleText": "Elevator"
         	}
         },
         
         {
-        	"path": "uni_modules/sky_nutui/packages/__VUE/fixednav/demo",
+        	"path": "uni_modules/sky-nutui/components/sky-nutui/packages/__VUE/fixednav/demo",
         	"style": {
         		"navigationBarTitleText": "FixedNav"
         	}
         },
         {
-        	"path": "uni_modules/sky_nutui/packages/__VUE/menu/demo",
+        	"path": "uni_modules/sky-nutui/components/sky-nutui/packages/__VUE/menu/demo",
         	"style": {
         		"navigationBarTitleText": "Menu"
         	}
         },
         
         {
-        	"path": "uni_modules/sky_nutui/packages/__VUE/navbar/demo",
+        	"path": "uni_modules/sky-nutui/components/sky-nutui/packages/__VUE/navbar/demo",
         	"style": {
         		"navigationBarTitleText": "Navbar"
         	}
         },
         
         {
-        	"path": "uni_modules/sky_nutui/packages/__VUE/pagination/demo",
+        	"path": "uni_modules/sky-nutui/components/sky-nutui/packages/__VUE/pagination/demo",
         	"style": {
         		"navigationBarTitleText": "Pagination"
         	}
         },
         {
-        	"path": "uni_modules/sky_nutui/packages/__VUE/sidenavbar/demo",
+        	"path": "uni_modules/sky-nutui/components/sky-nutui/packages/__VUE/sidenavbar/demo",
         	"style": {
         		"navigationBarTitleText": "SideNavBar"
         	}
@@ -111,14 +111,14 @@
         
         
         {
-        	"path": "uni_modules/sky_nutui/packages/__VUE/tabbar/demo",
+        	"path": "uni_modules/sky-nutui/components/sky-nutui/packages/__VUE/tabbar/demo",
         	"style": {
         		"navigationBarTitleText": "Tabbar"
         	}
         },
         
         {
-        	"path": "uni_modules/sky_nutui/packages/__VUE/tabs/demo",
+        	"path": "uni_modules/sky-nutui/components/sky-nutui/packages/__VUE/tabs/demo",
         	"style": {
         		"navigationBarTitleText": "Tabs"
         	}
@@ -126,42 +126,42 @@
         
         
         {
-        	"path": "uni_modules/sky_nutui/packages/__VUE/calendar/demo",
+        	"path": "uni_modules/sky-nutui/components/sky-nutui/packages/__VUE/calendar/demo",
         	"style": {
         		"navigationBarTitleText": "Calendar"
         	}
         },
         
         {
-        	"path": "uni_modules/sky_nutui/packages/__VUE/cascader/demo",
+        	"path": "uni_modules/sky-nutui/components/sky-nutui/packages/__VUE/cascader/demo",
         	"style": {
         		"navigationBarTitleText": "Cascader"
         	}
         },
         
         {
-        	"path": "uni_modules/sky_nutui/packages/__VUE/checkbox/demo",
+        	"path": "uni_modules/sky-nutui/components/sky-nutui/packages/__VUE/checkbox/demo",
         	"style": {
         		"navigationBarTitleText": "Checkbox"
         	}
         },
         
         {
-        	"path": "uni_modules/sky_nutui/packages/__VUE/datepicker/demo",
+        	"path": "uni_modules/sky-nutui/components/sky-nutui/packages/__VUE/datepicker/demo",
         	"style": {
         		"navigationBarTitleText": "DatePicker"
         	}
         },
         
         {
-        	"path": "uni_modules/sky_nutui/packages/__VUE/form/demo",
+        	"path": "uni_modules/sky-nutui/components/sky-nutui/packages/__VUE/form/demo",
         	"style": {
         		"navigationBarTitleText": "Form"
         	}
         },
         
         {
-        	"path": "uni_modules/sky_nutui/packages/__VUE/input/demo",
+        	"path": "uni_modules/sky-nutui/components/sky-nutui/packages/__VUE/input/demo",
         	"style": {
         		"navigationBarTitleText": "Input"
         	}
@@ -169,14 +169,14 @@
         
         
         {
-        	"path": "uni_modules/sky_nutui/packages/__VUE/inputnumber/demo",
+        	"path": "uni_modules/sky-nutui/components/sky-nutui/packages/__VUE/inputnumber/demo",
         	"style": {
         		"navigationBarTitleText": "InputNumber"
         	}
         },
         
         {
-        	"path": "uni_modules/sky_nutui/packages/__VUE/numberkeyboard/demo",
+        	"path": "uni_modules/sky-nutui/components/sky-nutui/packages/__VUE/numberkeyboard/demo",
         	"style": {
         		"navigationBarTitleText": "NumberKeyboard"
         	}
@@ -184,42 +184,42 @@
         
         
         {
-        	"path": "uni_modules/sky_nutui/packages/__VUE/picker/demo",
+        	"path": "uni_modules/sky-nutui/components/sky-nutui/packages/__VUE/picker/demo",
         	"style": {
         		"navigationBarTitleText": "Picker"
         	}
         },
         
         {
-        	"path": "uni_modules/sky_nutui/packages/__VUE/radio/demo",
+        	"path": "uni_modules/sky-nutui/components/sky-nutui/packages/__VUE/radio/demo",
         	"style": {
         		"navigationBarTitleText": "Radio"
         	}
         },
         
         {
-        	"path": "uni_modules/sky_nutui/packages/__VUE/range/demo",
+        	"path": "uni_modules/sky-nutui/components/sky-nutui/packages/__VUE/range/demo",
         	"style": {
         		"navigationBarTitleText": "Range"
         	}
         },
         
         {
-        	"path": "uni_modules/sky_nutui/packages/__VUE/rate/demo",
+        	"path": "uni_modules/sky-nutui/components/sky-nutui/packages/__VUE/rate/demo",
         	"style": {
         		"navigationBarTitleText": "Rate"
         	}
         },
         
         {
-        	"path": "uni_modules/sky_nutui/packages/__VUE/searchbar/demo",
+        	"path": "uni_modules/sky-nutui/components/sky-nutui/packages/__VUE/searchbar/demo",
         	"style": {
         		"navigationBarTitleText": "SearchBar"
         	}
         },
         
         {
-        	"path": "uni_modules/sky_nutui/packages/__VUE/shortpassword/demo",
+        	"path": "uni_modules/sky-nutui/components/sky-nutui/packages/__VUE/shortpassword/demo",
         	"style": {
         		"navigationBarTitleText": "ShortPassword"
         	}
@@ -227,7 +227,7 @@
         
         
         {
-        	"path": "uni_modules/sky_nutui/packages/__VUE/textarea/demo",
+        	"path": "uni_modules/sky-nutui/components/sky-nutui/packages/__VUE/textarea/demo",
         	"style": {
         		"navigationBarTitleText": "TextArea"
         	}
@@ -235,28 +235,28 @@
         
         
         {
-        	"path": "uni_modules/sky_nutui/packages/__VUE/actionsheet/demo",
+        	"path": "uni_modules/sky-nutui/components/sky-nutui/packages/__VUE/actionsheet/demo",
         	"style": {
         		"navigationBarTitleText": "ActionSheet"
         	}
         },
         
         {
-        	"path": "uni_modules/sky_nutui/packages/__VUE/backtop/demo",
+        	"path": "uni_modules/sky-nutui/components/sky-nutui/packages/__VUE/backtop/demo",
         	"style": {
         		"navigationBarTitleText": "BackTop"
         	}
         },
         
         {
-        	"path": "uni_modules/sky_nutui/packages/__VUE/dialog/demo",
+        	"path": "uni_modules/sky-nutui/components/sky-nutui/packages/__VUE/dialog/demo",
         	"style": {
         		"navigationBarTitleText": "Dialog"
         	}
         },
         
         {
-        	"path": "uni_modules/sky_nutui/packages/__VUE/drag/demo",
+        	"path": "uni_modules/sky-nutui/components/sky-nutui/packages/__VUE/drag/demo",
         	"style": {
         		"navigationBarTitleText": "Drag",
                 "navigationStyle": "custom"
@@ -264,14 +264,14 @@
         },
         
         {
-        	"path": "uni_modules/sky_nutui/packages/__VUE/notify/demo",
+        	"path": "uni_modules/sky-nutui/components/sky-nutui/packages/__VUE/notify/demo",
         	"style": {
         		"navigationBarTitleText": "Notify"
         	}
         },
         
         {
-        	"path": "uni_modules/sky_nutui/packages/__VUE/swipe/demo",
+        	"path": "uni_modules/sky-nutui/components/sky-nutui/packages/__VUE/swipe/demo",
         	"style": {
         		"navigationBarTitleText": "Swipe"
         	}
@@ -289,8 +289,8 @@
     "easycom": {
       "autoscan": true,
       "custom": {
-        "nut-(.*)?-(.*)": "@/uni_modules/sky_nutui/packages/__VUE/$1$2/index.vue", // 匹配components目录内的vue文件
-        "nut-(.*)": "@/uni_modules/sky_nutui/packages/__VUE/$1/index.vue"
+        "nut-(.*)?-(.*)": "@/uni_modules/sky-nutui/components/sky-nutui/packages/__VUE/$1$2/index.vue", // 匹配components目录内的vue文件
+        "nut-(.*)": "@/uni_modules/sky-nutui/components/sky-nutui/packages/__VUE/$1/index.vue"
       }
     },
 	"uniIdRouter": {}
