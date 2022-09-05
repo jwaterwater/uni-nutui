@@ -4,25 +4,25 @@
     <nut-swipe>
       <nut-cell round-radius="0" :desc="translate('leftDel')" />
       <template #right>
-        <nut-button shape="square" style="height: 100%" type="danger">{{ translate('delete') }}</nut-button>
+        <nut-button shape="square" height="100%" type="danger">{{ translate('delete') }}</nut-button>
       </template>
     </nut-swipe>
     <h2 class="h2">{{ translate('disable') }}</h2>
     <nut-swipe disabled>
       <nut-cell round-radius="0" :desc="translate('disable')" />
       <template #right>
-        <nut-button shape="square" style="height: 100%" type="danger">{{ translate('delete') }}</nut-button>
+        <nut-button shape="square" height="100%" type="danger">{{ translate('delete') }}</nut-button>
       </template>
     </nut-swipe>
     <h2 class="h2">{{ translate('swipeLR') }}</h2>
     <nut-swipe>
       <template #left>
-        <nut-button shape="square" style="height: 100%" type="success">{{ translate('select') }}</nut-button>
+        <nut-button shape="square" height="100%" type="success">{{ translate('select') }}</nut-button>
       </template>
       <nut-cell round-radius="0" :desc="translate('swipeLRDesc')" />
-      <template #right>
-        <nut-button shape="square" style="height: 100%" type="danger">{{ translate('delete') }}</nut-button>
-        <nut-button shape="square" style="height: 100%" type="info">{{ translate('collect') }}</nut-button>
+      <template style="height: 100%;" #right>
+        <nut-button shape="square" height="100%" type="danger">{{ translate('delete') }}</nut-button>
+        <nut-button shape="square" height="100%" type="info">{{ translate('collect') }}</nut-button>
       </template>
     </nut-swipe>
     <h2 class="h2">{{ translate('async') }}</h2>
@@ -38,22 +38,22 @@
         </template>
       </nut-cell>
       <template #right>
-        <nut-button shape="square" style="height: 100%" type="danger">{{ translate('delete') }}</nut-button>
+        <nut-button shape="square" height="100%" type="danger">{{ translate('delete') }}</nut-button>
       </template>
     </nut-swipe>
     <h2 class="h2">{{ translate('custom') }}</h2>
     <nut-swipe>
       <template #left>
-        <nut-button shape="square" style="height: 100%" type="success">{{ translate('select') }}</nut-button>
+        <nut-button shape="square" height="100%" type="success">{{ translate('select') }}</nut-button>
       </template>
       <nut-cell :title="translate('desc')">
         <template v-slot:link>
           <nut-inputnumber v-model="number" />
         </template>
       </nut-cell>
-      <template #right>
-        <nut-button shape="square" style="height: 100%" type="danger">{{ translate('delete') }}</nut-button>
-        <nut-button shape="square" style="height: 100%" type="info">{{ translate('collect') }}</nut-button>
+      <template style="height: 100%;" #right>
+        <nut-button shape="square" height="100%" type="danger">{{ translate('delete') }}</nut-button>
+        <nut-button shape="square" height="100%" type="info">{{ translate('collect') }}</nut-button>
       </template>
     </nut-swipe>
   </div>

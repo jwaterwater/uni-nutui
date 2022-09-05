@@ -20,11 +20,11 @@ const useComponent = (touchable: Boolean = true) => {
       },
       activeColor: {
         type: String,
-        default: ''
+        default: '#fa2c19'
       },
       voidColor: {
         type: String,
-        default: ''
+        default: '#cccccc'
       },
       uncheckedIcon: {
         type: String,

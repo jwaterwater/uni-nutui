@@ -54,6 +54,10 @@ export default create({
       type: Boolean,
       default: false
     },
+    height: {
+      type: String,
+      default: false
+    },
     icon: {
       type: String,
       default: ''
@@ -67,9 +71,12 @@ export default create({
       default: 'nutui-iconfont'
     }
   },
+  options: {
+      virtualHost: true
+  },
   emits: ['click'],
   setup(props, { emit, slots }) {
-    const { type, size, shape, disabled, loading, color, plain, block } = toRefs(props);
+    const { type, size, shape, disabled, loading, color, plain, block,height } = toRefs(props);
 
     const handleClick = (event: MouseEvent) => {
       if (!loading.value && !disabled.value) {
@@ -104,6 +111,9 @@ export default create({
           style.color = '#fff';
           style.background = color.value;
         }
+      }
+      if(height) {
+          style.height = height.value
       }
 
       return style;

@@ -261,6 +261,20 @@
         		"navigationBarTitleText": "Drag",
                 "navigationStyle": "custom"
         	}
+        },
+        
+        {
+        	"path": "uni_modules/nutui/packages/__VUE/notify/demo",
+        	"style": {
+        		"navigationBarTitleText": "Notify"
+        	}
+        },
+        
+        {
+        	"path": "uni_modules/nutui/packages/__VUE/swipe/demo",
+        	"style": {
+        		"navigationBarTitleText": "Swipe"
+        	}
         }
         
         

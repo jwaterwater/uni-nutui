@@ -1,21 +1,22 @@
 <template>
-  <nut-popup v-model:visible="showPopup" :position="position" :overlay="false" :isWrapTeleport="isWrapTeleport">
-    <div
-      :class="['nut-notify', `nut-notify--${type}`, className]"
+  <Transition name="nut-fade" @after-leave="onAfterLeave">
+    <view
+      :class="[`popup-${position}`, 'nut-notify', `nut-notify--${type}`, className]"
       :style="{ color: color, background: background }"
-      @click="clickCover"
+      v-show="visible"
+      @click="onClick"
     >
       <template v-if="$slots.default">
         <slot></slot>
       </template>
       <template v-else>{{ msg }}</template>
-    </div>
-  </nut-popup>
+    </view>
+  </Transition>
 </template>
 <script lang="ts">
-import { toRefs, reactive, onMounted, watch, ref } from 'vue';
-import { createComponent } from '../../utils/create';
-import Popup from '../popup/index.vue';
+import { watch } from 'vue';
+import { createComponent } from '@/uni_modules/nutui/packages/utils/create';
+import Popup from '../popup/index.taro.vue';
 const { componentName, create } = createComponent('notify');
 
 export default create({
@@ -36,40 +37,21 @@ export default create({
       type: String,
       default: 'danger'
     },
-    // showPopup: {
-    //   type: Boolean,
-    //   default: false
-    // },
-    modelVisible: {
+    visible: {
       type: Boolean,
       default: false
     },
     position: {
       type: String,
       default: 'top'
-    },
-    isWrapTeleport: {
-      type: Boolean,
-      default: true
-    },
-    onClose: Function,
-    onClick: Function,
-    unmount: Function
+    }
   },
-
-  setup(props, { slots }) {
+  emits: ['update:visible', 'closed', 'click'],
+  setup(props, { emit }) {
     let timer: null | number = null;
-    const state = reactive({
-      mounted: false
-    });
-    onMounted(() => {
-      // state.mounted = true;
-    });
 
-    const showPopup = ref(props.modelVisible);
-
-    const clickCover = () => {
-      props.onClick && props.onClick();
+    const onClick = () => {
+      emit('click');
     };
     const clearTimer = () => {
       if (timer) {
@@ -78,8 +60,19 @@ export default create({
       }
     };
     const hide = () => {
-      state.mounted = false;
+      emit('update:visible', false);
+      emit('closed');
     };
+
+    watch(
+      () => props.visible,
+      (value: boolean) => {
+        if (value) {
+          show();
+        }
+      }
+    );
+
     const show = () => {
       clearTimer();
       if (props.duration) {
@@ -89,34 +82,17 @@ export default create({
       }
     };
 
-    if (props.duration) {
-      show();
-    }
-
-    watch(
-      () => props.duration,
-      (val) => {
-        if (val) {
-          show();
-        }
-      }
-    );
-
-    // watch(
-    //   () => props.visible,
-    //   (val, oldv) => {
-    //     state.mounted = val;
-    //   }
-    // );
     const onAfterLeave = () => {
-      clearTimer();
-      props.unmount && props.unmount(props.id);
-      props.onClose && props.onClose();
+      if (props.visible) {
+        clearTimer();
+        hide();
+      }
     };
-    return { state, hide, onAfterLeave, clickCover, showPopup };
+    return { hide, onAfterLeave, onClick };
   }
 });
 </script>
+
 <style lang="scss">
 @import './index.scss'
 </style>

@@ -1,33 +1,31 @@
 <template>
   <div class="demo">
-    <nut-cell-group :title="translate('basic')">
-      <nut-cell is-Link @click="baseNotify(translate('basic'))">{{ translate('basic') }}</nut-cell>
-    </nut-cell-group>
-    <nut-cell-group :title="translate('t1')">
-      <nut-cell is-Link @click="primaryNotify(translate('primaryNotify'))">{{ translate('primaryNotify') }}</nut-cell>
-      <nut-cell is-Link @click="successNotify(translate('successNotify'))">{{ translate('successNotify') }}</nut-cell>
-      <nut-cell is-Link @click="errorNotify(translate('errorNotify'))">{{ translate('errorNotify') }}</nut-cell>
-      <nut-cell is-Link @click="warningNotify(translate('warningNotify'))">{{ translate('warningNotify') }}</nut-cell>
-    </nut-cell-group>
-    <nut-cell-group :title="translate('t2')">
-      <nut-cell is-Link @click="cusBgNotify(translate('cusBgNotify'))"> {{ translate('cusBgNotify') }} </nut-cell>
-    </nut-cell-group>
-    <nut-cell-group :title="translate('t3')">
-      <nut-cell is-Link @click="timeNotify(translate('t3'))"> {{ translate('t3') }} </nut-cell>
-      <nut-cell is-Link @click="positionNotify(translate('cusPostion'))"> {{ translate('cusPostion') }} </nut-cell>
-    </nut-cell-group>
     <nut-cell-group :title="translate('useTemplate')">
-      <nut-cell is-Link @click="showNotify">{{ translate('useTemplate') }}</nut-cell>
+      <nut-cell is-Link @click="showNotify">{{ translate('errorNotify') }}</nut-cell>
       <nut-notify v-model:visible="show">
         <span>Content</span>
       </nut-notify>
+      
+      <nut-cell is-Link @click="showWarningNotify">{{ translate('warningNotify') }}</nut-cell>
+      <nut-notify type="warning" v-model:visible="showWarning">
+        <span>Content</span>
+      </nut-notify>
+      <nut-cell is-Link @click="showSuccessNotify">{{ translate('successNotify') }}</nut-cell>
+      <nut-notify type="success" v-model:visible="showSuccess">
+        <span>Content</span>
+      </nut-notify>
+      
+      <nut-cell is-Link @click="showPrimaryNotify">{{ translate('primaryNotify') }}</nut-cell>
+      <nut-notify type="primary" v-model:visible="showPrimary">
+        <span>Content</span>
+      </nut-notify>
     </nut-cell-group>
+
   </div>
 </template>
 
 <script lang="ts">
 import { createComponent } from '@/uni_modules/nutui/packages/utils/create';
-import { Notify } from '../../nutui.vue';
 import { ref } from 'vue';
 const { createDemo, translate } = createComponent('notify');
 import { useTranslate } from '@/uni_modules/nutui/sites/assets/util/useTranslate';
@@ -63,56 +61,50 @@ const initTranslate = () =>
 export default createDemo({
   setup() {
     initTranslate();
-    const baseNotify = (msg: string) => {
-      Notify.text(msg, {
-        onClose: () => {
-          console.log('close');
-        },
-        onClick: () => {
-          console.log('click');
-        }
-      });
-    };
-    const primaryNotify = (msg: string) => {
-      Notify.primary(msg, { duration: 1000 });
-    };
-    const successNotify = (msg: string) => {
-      Notify.success(msg);
-    };
-    const errorNotify = (msg: string) => {
-      Notify.danger(msg);
-    };
-    const warningNotify = (msg: string) => {
-      Notify.warn(msg);
-    };
-    const cusBgNotify = (msg: string) => {
-      Notify.text(msg, { color: '#ad0000', background: '#ffe1e1' });
-    };
-    const timeNotify = (msg: string) => {
-      Notify.text(msg, { duration: 1000 });
-    };
-    const positionNotify = (msg: string) => {
-      Notify.text(msg, { position: 'bottom' });
-    };
     const show = ref(false);
+    const showWarning = ref(false);
+    const showSuccess = ref(false);
+    const showPrimary = ref(false);
+    
+    
+    const showPrimaryNotify = () => {
+      showPrimary.value = true;
+      setTimeout(() => {
+        showPrimary.value = false;
+      }, 2000);
+    };
+    
     const showNotify = () => {
       show.value = true;
       setTimeout(() => {
         show.value = false;
       }, 2000);
     };
+    
+    const showWarningNotify = () => {
+      showWarning.value = true;
+      setTimeout(() => {
+        showWarning.value = false;
+      }, 2000);
+    };
+    
+    const showSuccessNotify = () => {
+        console.log('zz')
+      showSuccess.value = true;
+      setTimeout(() => {
+        showSuccess.value = false;
+      }, 2000);
+    };
     return {
-      baseNotify,
-      primaryNotify,
-      successNotify,
-      errorNotify,
-      warningNotify,
-      cusBgNotify,
-      timeNotify,
-      positionNotify,
       show,
       showNotify,
-      translate
+      showPrimary,
+      translate,
+      showWarning,
+      showSuccess,
+      showSuccessNotify,
+      showWarningNotify,
+      showPrimaryNotify
     };
   }
 });

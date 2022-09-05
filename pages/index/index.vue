@@ -57,13 +57,15 @@
         </nut-cell-group>
         
         
-        <nut-cell-group title="导航组件">
+        <nut-cell-group title="操作反馈">
             <nut-cell to="/uni_modules/nutui/packages/__VUE/actionsheet/demo" title="ActionSheet 动作面板" is-link></nut-cell>
             <!--
             <nut-cell to="/uni_modules/nutui/packages/__VUE/backtop/demo" title="BackTop 返回顶部" is-link></nut-cell>
             -->
             <nut-cell to="/uni_modules/nutui/packages/__VUE/dialog/demo" title="Dialog 对话框" is-link></nut-cell>
             <nut-cell to="/uni_modules/nutui/packages/__VUE/drag/demo" title="Drag 拖拽" is-link></nut-cell>
+            <nut-cell to="/uni_modules/nutui/packages/__VUE/notify/demo" title="Notify 消息通知" is-link></nut-cell>
+            <nut-cell to="/uni_modules/nutui/packages/__VUE/swipe/demo" title="Swipe 滑动手势" is-link></nut-cell>
         </nut-cell-group>
 	</page>
 </template>
