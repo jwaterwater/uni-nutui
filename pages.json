@@ -275,6 +275,33 @@
         	"style": {
         		"navigationBarTitleText": "Swipe"
         	}
+        },
+        
+        {
+        	"path": "uni_modules/sky-nutui/components/sky-nutui/packages/__VUE/avatar/demo",
+        	"style": {
+        		"navigationBarTitleText": "Avatar"
+        	}
+        },
+        {
+        	"path": "uni_modules/sky-nutui/components/sky-nutui/packages/__VUE/badge/demo",
+        	"style": {
+        		"navigationBarTitleText": "Badge"
+        	}
+        },
+        
+        {
+        	"path": "uni_modules/sky-nutui/components/sky-nutui/packages/__VUE/circleprogress/demo",
+        	"style": {
+        		"navigationBarTitleText": "CircleProgress"
+        	}
+        },
+        
+        {
+        	"path": "uni_modules/sky-nutui/components/sky-nutui/packages/__VUE/collapse/demo",
+        	"style": {
+        		"navigationBarTitleText": "Collapse"
+        	}
         }
         
         

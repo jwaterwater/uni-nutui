@@ -6,11 +6,11 @@
     <slot></slot>
     <view
       v-show="!hidden && (content || dot)"
-      v-text="content"
       class="nut-badge__content sup"
       :class="{ 'is-dot': dot }"
       :style="stl"
     >
+    {{content}}
     </view>
   </view>
 </template>

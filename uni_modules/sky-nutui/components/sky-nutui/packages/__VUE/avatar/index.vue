@@ -65,6 +65,9 @@ export default create({
     }
   },
   emits: ['active-avatar', 'onError'],
+  options: {
+      virtualHost: true
+  },
   setup(props, { emit, slots }) {
     const { size, shape, bgColor, color, icon } = toRefs(props);
     const sizeValue = ['large', 'normal', 'small'];

@@ -121,7 +121,7 @@ export default createDemo({
 });
 </script>
 
-<style lang="scss" scoped>
+<style lang="scss">
 .nut-badge {
   margin-right: 40px;
 }

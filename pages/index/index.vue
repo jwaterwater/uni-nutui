@@ -67,6 +67,17 @@
             <nut-cell to="/uni_modules/sky-nutui/components/sky-nutui/packages/__VUE/notify/demo" title="Notify 消息通知" is-link></nut-cell>
             <nut-cell to="/uni_modules/sky-nutui/components/sky-nutui/packages/__VUE/swipe/demo" title="Swipe 滑动手势" is-link></nut-cell>
         </nut-cell-group>
+        
+        
+        <nut-cell-group title="展示组件">
+            <nut-cell to="/uni_modules/sky-nutui/components/sky-nutui/packages/__VUE/animate/demo" title="Animate 动画/动效" is-link></nut-cell>
+            <nut-cell to="/uni_modules/sky-nutui/components/sky-nutui/packages/__VUE/badge/demo" title="Badge 徽标" is-link></nut-cell>
+            <nut-cell to="/uni_modules/sky-nutui/components/sky-nutui/packages/__VUE/avatar/demo" title="Avatar 头像" is-link></nut-cell>
+            <nut-cell to="/uni_modules/sky-nutui/components/sky-nutui/packages/__VUE/circleprogress/demo" title="CircleProgress 环形进度条" is-link></nut-cell>
+            <!--
+            <nut-cell to="/uni_modules/sky-nutui/components/sky-nutui/packages/__VUE/collapse/demo" title="Collapse 折叠面板" is-link></nut-cell>
+            -->
+        </nut-cell-group>
 	</page>
 </template>
 

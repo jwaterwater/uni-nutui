@@ -42,6 +42,9 @@ export default create({
       default: 'left'
     }
   },
+  options: {
+      virtualHost: true
+  },
   setup(props, { emit, slots }) {
     const { size } = toRefs(props);
 
