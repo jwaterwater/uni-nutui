@@ -12,7 +12,7 @@
 
 # 演示
 ![](https://cdn.haokui.top/chick/1/20220905/f50d2cbc858f072d479d79742917c226.jpg)
-
+![](https://cdn.haokui.top/chick/1/20220909/223445daa1bff63c05a320c23c2e44d4.png)
 
 ## 使用流程
 #### 1) 在uni.scss文件引入variables.scss,全局样式变量,可以自定义主题颜色

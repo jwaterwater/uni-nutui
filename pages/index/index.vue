@@ -35,7 +35,7 @@
             <nut-cell to="/uni_modules/sky-nutui/components/sky-nutui/packages/__VUE/tabs/demo" title="Tabs 选项卡切换" is-link></nut-cell>
         </nut-cell-group>
         
-        <nut-cell-group title="导航组件">
+        <nut-cell-group title="数据录入">
             <!--
             <nut-cell to="/uni_modules/sky-nutui/components/sky-nutui/packages/__VUE/calendar/demo" title="Calendar 日历" is-link></nut-cell>
             -->

@@ -4,7 +4,7 @@
     ref="myDrag"
     class="myDrag"
     @touchstart="touchStart"
-    @touchmove.stop.prevent="touchMove"
+    @touchmove="touchMove"
     catchtouchmove="true"
     :style="{
       transform: ` translate(${state.left + 'px'}, ${state.top + 'px'})`,
