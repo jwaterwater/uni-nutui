@@ -1,9 +1,11 @@
 <template>
 	<view  style="width: 100%;padding: 0 25rpx;box-sizing: border-box;">
+    
         
 		<nut-cell-group title="基础组件">
             <nut-cell to="/uni_modules/sky-nutui/components/sky-nutui/packages/__VUE/button/demo" title="Button 按钮" is-link></nut-cell>
             <nut-cell to="/uni_modules/sky-nutui/components/sky-nutui/packages/__VUE/cell/demo" title="Cell 单元格" is-link></nut-cell>
+            <nut-cell to="/uni_modules/sky-nutui/components/sky-nutui/packages/__VUE/configprovider/demo" title="ConfigProvider 全局配置" is-link></nut-cell>
             <nut-cell to="/uni_modules/sky-nutui/components/sky-nutui/packages/__VUE/icon/demo" title="Icon 图标" is-link></nut-cell>
             <nut-cell to="/uni_modules/sky-nutui/components/sky-nutui/packages/__VUE/image/demo" title="Image 图片" is-link></nut-cell>
             <nut-cell to="/uni_modules/sky-nutui/components/sky-nutui/packages/__VUE/overlay/demo" title="OverLay 遮罩层" is-link></nut-cell>
@@ -36,9 +38,7 @@
         </nut-cell-group>
         
         <nut-cell-group title="数据录入">
-            <!--
             <nut-cell to="/uni_modules/sky-nutui/components/sky-nutui/packages/__VUE/calendar/demo" title="Calendar 日历" is-link></nut-cell>
-            -->
             <nut-cell to="/uni_modules/sky-nutui/components/sky-nutui/packages/__VUE/cascader/demo" title="Cascader 级联选择器" is-link></nut-cell>
             <nut-cell to="/uni_modules/sky-nutui/components/sky-nutui/packages/__VUE/checkbox/demo" title="Checkbox 复选按钮" is-link></nut-cell>
             <nut-cell to="/uni_modules/sky-nutui/components/sky-nutui/packages/__VUE/datepicker/demo" title="DatePicker 日期选择器" is-link></nut-cell>
@@ -93,11 +93,14 @@
 	</view>
 </template>
 
+
 <script setup>
    const onClick = (e) => {
        console.log(e)
    }
 </script>
+
+
 
 <style>
 	.content {

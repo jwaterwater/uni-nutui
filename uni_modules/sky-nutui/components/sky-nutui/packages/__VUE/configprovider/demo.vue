@@ -32,30 +32,6 @@
         <nut-form-item :label="translate('range')">
           <nut-range hidden-tag v-model="formData2.range"></nut-range>
         </nut-form-item>
-        <nut-form-item :label="translate('uploader')">
-          <nut-uploader url="http://apiurl" v-model:file-list="formData2.defaultFileList" maximum="3" multiple>
-          </nut-uploader>
-        </nut-form-item>
-        <nut-form-item :label="translate('address')">
-          <input
-            class="nut-input-text"
-            v-model="formData2.address"
-            @click="addressModule.methods.show"
-            readonly
-            :placeholder="translate('addressTip1')"
-            type="text"
-          />
-          <!-- nut-address -->
-          <nut-address
-            v-model:visible="addressModule.state.show"
-            :province="addressModule.state.province"
-            :city="addressModule.state.city"
-            :country="addressModule.state.country"
-            :town="addressModule.state.town"
-            @change="addressModule.methods.onChange"
-            :custom-address-title="translate('addressTip2')"
-          ></nut-address>
-        </nut-form-item>
       </nut-form>
     </nut-config-provider>
   </div>
@@ -124,6 +100,7 @@ export default createDemo({
     const switchChecked = ref(false);
     const theme = ref('');
     const switchChange = (v: boolean) => {
+        console.log('zzz')
       theme.value = v ? 'dark' : '';
     };
     const formData2 = reactive({

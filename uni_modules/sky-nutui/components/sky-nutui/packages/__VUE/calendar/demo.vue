@@ -106,6 +106,8 @@
       >
       </nut-calendar>
     </div>
+    
+    <!--
     <h2 class="h2">{{ translate('title2') }}</h2>
     <div>
       <nut-cell
@@ -139,7 +141,7 @@
           </div>
         </template>
         <template v-slot:day="date">
-          <span>{{ date.date.day }}</span>
+          <span>{{ date.date.day }}2323</span>
         </template>
       </nut-calendar>
     </div>
@@ -174,6 +176,7 @@
         </template>
       </nut-calendar>
     </div>
+    -->
     <h2 class="h2">{{ translate('title3') }}</h2>
     <div class="test-calendar-wrapper">
       <nut-calendar :poppable="false" :default-value="date2" :is-auto-back-fill="true" @choose="setChooseValue2">

@@ -8,8 +8,9 @@
     @click-overlay="closePopup"
     @click-close-icon="closePopup"
     :destroy-on-close="true"
-    :style="{ height: '85vh' }"
+    :popStyle="{ height: '85vh' }"
   >
+  
     <nut-calendar-item
       v-if="visible"
       props
@@ -33,10 +34,11 @@
       :show-sub-title="showSubTitle"
     >
       <template v-slot:btn v-if="showTopBtn">
-        <slot name="btn"> </slot>
+        <slot  name="btn"></slot>
       </template>
-      <template v-slot:day="date" v-if="dayInfo">
-        <slot name="day" :date="date.date"> </slot>
+      <template v-slot:day="date" >
+        <slot v-if="dayInfo" name="day" :date="date.date"></slot>
+        <slot v-else name="day">{{date.date.day}}</slot>
       </template>
       <template v-slot:topInfo="date" v-if="topInfo">
         <slot name="topInfo" :date="date.date"> </slot>
@@ -70,8 +72,9 @@
     <template v-slot:btn v-if="showTopBtn">
       <slot name="btn"> </slot>
     </template>
-    <template v-slot:day="date" v-if="dayInfo">
-      <slot name="day" :date="date.date"> </slot>
+    <template v-slot:day="date">
+      <slot v-if="dayInfo" name="day" :date="date.date"> </slot>
+      <slot v-else name="day" >{{date.date.day}}</slot>
     </template>
     <template v-slot:topInfo="date" v-if="topInfo">
       <slot name="topInfo" :date="date.date"> </slot>

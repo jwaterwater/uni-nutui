@@ -35,9 +35,7 @@
                   <view class="calendar-month-day" :class="getClass(day, month)" @click="chooseDay(day, month)">
                     <!-- 日期显示slot -->
                     <view class="calendar-day">
-                      <slot name="day" :date="day.type == 'curr' ? day : ''">
-                        {{ day.type == 'curr' ? day.day : '' }}
-                      </slot>
+                      <slot name="day" :date="day.type == 'curr' ? day : ''"></slot>
                     </view>
                     <view class="calendar-curr-tips calendar-curr-tips-top" v-if="topInfo">
                       <slot name="topInfo" :date="day.type == 'curr' ? day : ''"> </slot>
@@ -67,7 +65,7 @@
   </view>
 </template>
 <script lang="ts">
-import { PropType, reactive, ref, watch, toRefs, computed, onMounted, nextTick } from 'vue';
+import { PropType, reactive, ref, watch, toRefs, computed, onMounted, nextTick, getCurrentInstance } from 'vue';
 import { createComponent } from '@/uni_modules/sky-nutui/components/sky-nutui/packages/utils/create';
 const { create, translate } = createComponent('calendar-item');
 
@@ -178,6 +176,9 @@ export default create({
   emits: ['choose', 'update', 'close', 'select'],
 
   setup(props, { emit, slots }) {
+      
+      const { proxy } = getCurrentInstance()
+      
     const weeks = ref(translate('weekdays'));
     // element refs
     const scalePx = ref(2);
@@ -630,8 +631,8 @@ export default create({
       state.monthsData.forEach((item, index) => {
         if (item.title == translate('monthTitle', dateArr[0], dateArr[1])) {
           if (props.toDateAnimation) {
-            uni.createSelectorQuery()
-              .select('.nut-calendar-content').in(this)
+            uni.createSelectorQuery().in(proxy)
+              .select('.nut-calendar-content')
               .scrollOffset((res) => {
                 let scrollTop = res.scrollTop;
                 let distance = state.monthsData[index].cssScrollHeight - scrollTop;
@@ -729,8 +730,8 @@ export default create({
         }
       } else {
         if (!viewHeight.value || viewHeight.value < 0) {
-          uni.createSelectorQuery()
-            .select('.nut-calendar-content').in(this)
+          uni.createSelectorQuery().in(proxy)
+            .select('.nut-calendar-content')
             .boundingClientRect((res) => {
               viewHeight.value = res.height;
             })

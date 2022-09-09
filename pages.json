@@ -7,6 +7,12 @@
 			}
 		},
         {
+        	"path": "uni_modules/sky-nutui/components/sky-nutui/packages/__VUE/configprovider/demo",
+        	"style": {
+        		"navigationBarTitleText": "ConfigProvider"
+        	}
+        },
+        {
         	"path": "uni_modules/sky-nutui/components/sky-nutui/packages/__VUE/button/demo",
         	"style": {
         		"navigationBarTitleText": "Button"
