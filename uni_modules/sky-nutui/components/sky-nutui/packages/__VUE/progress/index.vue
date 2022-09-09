@@ -101,6 +101,9 @@ export default create({
       default: true
     }
   },
+  options: {
+      virtualHost: true
+  },
   setup(props, { emit }) {
     const slotDefault = !!useSlots().default;
     const height = ref(props.strokeWidth + 'px');

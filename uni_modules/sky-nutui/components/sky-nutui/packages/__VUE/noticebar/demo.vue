@@ -75,6 +75,7 @@
         :color="`#D9500B`"
       ></nut-noticebar>
     </div>
+    <!--
     <h2 class="h2">{{ translate('customAm') }}</h2>
     <div class="interstroll-list">
       <nut-noticebar
@@ -97,7 +98,7 @@
         >
       </nut-noticebar>
     </div>
-
+    -->
     <h2 class="h2">{{ translate('customRightIcon') }}</h2>
     <div class="interstroll-list">
       <nut-noticebar

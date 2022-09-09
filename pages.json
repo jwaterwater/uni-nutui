@@ -302,8 +302,84 @@
         	"style": {
         		"navigationBarTitleText": "Collapse"
         	}
-        }
+        },
         
+        {
+        	"path": "uni_modules/sky-nutui/components/sky-nutui/packages/__VUE/countdown/demo",
+        	"style": {
+        		"navigationBarTitleText": "CountDown"
+        	}
+        },
+        
+        {
+        	"path": "uni_modules/sky-nutui/components/sky-nutui/packages/__VUE/countup/demo",
+        	"style": {
+        		"navigationBarTitleText": "CountUp"
+        	}
+        },
+        
+        {
+        	"path": "uni_modules/sky-nutui/components/sky-nutui/packages/__VUE/empty/demo",
+        	"style": {
+        		"navigationBarTitleText": "Empty"
+        	}
+        },
+        
+        {
+        	"path": "uni_modules/sky-nutui/components/sky-nutui/packages/__VUE/noticebar/demo",
+        	"style": {
+        		"navigationBarTitleText": "NoticeBar"
+        	}
+        },
+        
+        {
+        	"path": "uni_modules/sky-nutui/components/sky-nutui/packages/__VUE/popover/demo",
+        	"style": {
+        		"navigationBarTitleText": "Popover"
+        	}
+        },
+        
+        {
+        	"path": "uni_modules/sky-nutui/components/sky-nutui/packages/__VUE/price/demo",
+        	"style": {
+        		"navigationBarTitleText": "Price"
+        	}
+        },
+        
+        {
+        	"path": "uni_modules/sky-nutui/components/sky-nutui/packages/__VUE/progress/demo",
+        	"style": {
+        		"navigationBarTitleText": "Progress"
+        	}
+        },
+        
+        {
+        	"path": "uni_modules/sky-nutui/components/sky-nutui/packages/__VUE/skeleton/demo",
+        	"style": {
+        		"navigationBarTitleText": "Skeleton"
+        	}
+        },
+        
+        {
+        	"path": "uni_modules/sky-nutui/components/sky-nutui/packages/__VUE/steps/demo",
+        	"style": {
+        		"navigationBarTitleText": "Steps"
+        	}
+        },
+        
+        {
+        	"path": "uni_modules/sky-nutui/components/sky-nutui/packages/__VUE/table/demo",
+        	"style": {
+        		"navigationBarTitleText": "Table"
+        	}
+        },
+        
+        {
+        	"path": "uni_modules/sky-nutui/components/sky-nutui/packages/__VUE/tag/demo",
+        	"style": {
+        		"navigationBarTitleText": "Tag"
+        	}
+        }
         
         
 	],

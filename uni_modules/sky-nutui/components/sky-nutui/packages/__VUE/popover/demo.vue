@@ -61,8 +61,7 @@
 
     <h2 class="h2">{{ translate('title4') }}</h2>
 
-    <nut-row type="flex" justify="center">
-      <nut-col :span="24" style="text-align: center">
+    <view  style="text-align: center;margin:200rpx 0;">
         <nut-popover
           v-model:visible="visible.customPositon"
           :location="curPostion"
@@ -74,9 +73,9 @@
             <div class="brick"></div>
           </template>
         </nut-popover>
-      </nut-col>
-    </nut-row>
-
+    </view>
+    
+    
     <nut-radiogroup v-model="curPostion" direction="horizontal" class="radiogroup">
       <nut-radio shape="button" :label="pos" v-for="(pos, i) in position" :key="i">{{ pos }}</nut-radio>
     </nut-radiogroup>
@@ -246,7 +245,6 @@ export default createDemo({
   padding: 0;
 }
 .brickBox {
-  margin: 80px 0;
   .brick {
     width: 60px;
     height: 60px;

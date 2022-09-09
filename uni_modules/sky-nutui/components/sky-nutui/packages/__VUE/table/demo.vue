@@ -29,7 +29,7 @@
 import { reactive, toRefs, onMounted, onUnmounted, h } from 'vue';
 import { createComponent } from '@/uni_modules/sky-nutui/components/sky-nutui/packages/utils/create';
 import { TableColumnProps } from './types';
-import { Toast } from '@/uni_modules/sky-nutui/components/sky-nutui/packages/nutui.vue';
+import { Toast } from '@/uni_modules/sky-nutui/components/sky-nutui/packages/nutui.js';
 import Button from '@/uni_modules/sky-nutui/components/sky-nutui/packages/__VUE/button/index.vue';
 import Icon from '@/uni_modules/sky-nutui/components/sky-nutui/packages/__VUE/icon/index.vue';
 const { createDemo, translate } = createComponent('table');

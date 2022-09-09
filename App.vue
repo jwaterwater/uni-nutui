@@ -14,6 +14,7 @@
 
 <style lang="scss">
     @import '@/uni_modules/sky-nutui/components/sky-nutui/app.scss';
+    
     .demo {
       height: 100%;
       background: #f7f8fa;

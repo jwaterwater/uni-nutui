@@ -1,3 +1,7 @@
+## 1.1.0（2022-09-09）
+新增Popover/Price/Pregress/Skeleton/Step/Table/Tag组件
+## 1.0.9（2022-09-09）
+新增badge/avatar/circle[regress/countdown/empty/noticebar组件
 ## 1.0.8（2022-09-08）
 优化文档说明
 ## 1.0.7（2022-09-08）

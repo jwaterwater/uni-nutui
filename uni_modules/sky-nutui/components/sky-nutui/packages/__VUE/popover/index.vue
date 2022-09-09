@@ -1,42 +1,35 @@
 <template>
-  <!-- 气泡弹出层  按钮 -->
-  <view style="display: inline-block" :class="customClass" @click.stop="openPopover" ref="reference">
-    <slot name="reference"></slot
-  ></view>
+  <view @click.stop="openPopover" :class="classes">
+    <div ref="reference" :id="'reference-' + refRandomId" :class="customClass"> <slot name="reference"></slot></div>
+    <template v-if="showPopup">
+      <view class="more-background" @click.stop="closePopover"> </view>
+      <view :class="popoverContent" :style="getStyle">
+        <view :class="popoverArrow" v-if="showArrow"> </view>
 
-  <nut-popup
-    ref="popoverRef"
-    :pop-class="classes"
-    v-model:visible="showPopup"
-    :overlay="false"
-    @clickOverlay="clickOverlay"
-  >
-    <!-- 气泡弹出层  箭头 -->
-    <view :class="popoverArrow" v-if="showArrow"> </view>
-    <!-- 气泡弹出层  内容 -->
-    <slot name="content"></slot>
-    <view class="popover-menu" :class="popoverContent" ref="popoverMenu">
-      <view
-        v-for="(item, index) in list"
-        :key="index"
-        :class="[item.className, { 'popover-menu-item': true, disabled: item.disabled }]"
-        @click.stop="chooseItem(item, index)"
-      >
-        <slot v-if="item.icon"> <nut-icon class="item-img" :name="item.icon"></nut-icon></slot>
-        <view class="popover-menu-name">{{ item.name }}</view>
+        <view class="popover-menu">
+          <slot name="content"></slot>
+          <view
+            v-for="(item, index) in list"
+            :key="index"
+            :class="{ 'popover-menu-item': true, disabled: item.disabled }"
+            @click.stop="chooseItem(item, index)"
+          >
+            <slot v-if="item.icon"> <nut-icon class="item-img" :name="item.icon"></nut-icon></slot>
+            <view class="popover-menu-name">{{ item.name }}</view>
+          </view>
+        </view>
       </view>
-    </view>
-  </nut-popup>
+    </template>
+  </view>
 </template>
 <script lang="ts">
-import { onMounted, computed, watch, ref, PropType, toRefs, nextTick, onUnmounted } from 'vue';
+import { onMounted, computed, watch, ref, PropType, toRefs, reactive, CSSProperties,getCurrentInstance } from 'vue';
 import { createComponent } from '@/uni_modules/sky-nutui/components/sky-nutui/packages/utils/create';
 const { componentName, create } = createComponent('popover');
-import Popup, { popupProps } from '../popup/index.vue';
+import Popup from '../popup/index.vue';
+import {popupProps} from '../popup/props'
 import Button from '../button/index.vue';
-import { createPopper } from '@popperjs/core/lib/popper-lite';
-import offsetModifier from '@popperjs/core/lib/modifiers/offset';
-import type { Instance, Placement } from '@popperjs/core';
+import { useTaroRect } from '@/uni_modules/sky-nutui/components/sky-nutui/packages/utils/useTaroRect';
 
 export default create({
   inheritAttrs: false,
@@ -76,24 +69,29 @@ export default create({
   },
   emits: ['update', 'update:visible', 'close', 'choose', 'open'],
   setup(props, { emit }) {
-    let popper: Instance | null;
-    const reference = ref();
-    const popoverRef = ref();
-
+    const reference = ref<HTMLElement>();
+    const state = reactive({
+      elWidth: 0,
+      elHeight: 0
+    });
     const showPopup = ref(props.visible);
+    
+    const { proxy } = getCurrentInstance()
 
-    const { theme, location } = toRefs(props);
-
+    const { theme, location, offset } = toRefs(props);
+    const refRandomId = Math.random().toString(36).slice(-8);
     const classes = computed(() => {
       const prefixCls = componentName;
-
-      return `${prefixCls} ${prefixCls}--${theme.value}`;
+      return {
+        [`${prefixCls}-taro`]: true,
+        [`${prefixCls}-taro--${theme.value}`]: theme.value
+      };
     });
 
     const popoverContent = computed(() => {
       const prefixCls = 'popover-content';
       return {
-        [prefixCls]: true,
+        [`${prefixCls}`]: true,
         [`${prefixCls}--${location.value}`]: location.value
       };
     });
@@ -106,74 +104,39 @@ export default create({
       };
     });
 
-    const createPopperInstance = () => {
-      console.log(reference.value, popoverRef.value);
-      if (reference.value && popoverRef.value) {
-        return createPopper(reference.value, popoverRef.value.popupRef, {
-          placement: props.location,
-          modifiers: [
-            {
-              name: 'computeStyles',
-              options: {
-                adaptive: false,
-                gpuAcceleration: false
-              }
-            },
-            Object.assign({}, offsetModifier, {
-              options: {
-                offset: props.offset
-              }
-            })
-          ]
-        });
+    const getReference = async () => {
+      const refe = await useTaroRect('#reference-'+refRandomId, proxy);
+      console.log(refe);
+      state.elWidth = refe.width;
+      state.elHeight = refe.height;
+    };
+
+    const getStyle = computed(() => {
+      console.log(offset);
+      const style: CSSProperties = {};
+      if (location.value.indexOf('top') !== -1) {
+        style.bottom = state.elHeight + (offset.value as any)[1] + 'px';
+      } else if (location.value.indexOf('right') !== -1) {
+        style.left = state.elWidth + (offset.value as any)[1] + 'px';
+      } else if (location.value.indexOf('left') !== -1) {
+        style.right = state.elWidth + (offset.value as any)[1] + 'px';
+      } else {
+        style.top = state.elHeight + (offset.value as any)[1] + 'px';
       }
-      return null;
-    };
 
-    const clickOverlay = () => {
-      console.log('关闭');
-    };
-
-    const uploadLocation = () => {
-      nextTick(() => {
-        if (!showPopup.value) return;
-        if (!popper) {
-          popper = createPopperInstance();
-          console.log(popper);
-        } else {
-          popper.setOptions({
-            placement: props.location
-          });
-        }
-      });
-    };
-
-    const clickAway = (event: any) => {
-      const element = reference.value;
-      if (element && !element.contains(event.target as Node)) {
-        closePopover();
-      }
-    };
-    onMounted(() => {
-      window.addEventListener('click', clickAway, true);
+      return style;
     });
 
-    onUnmounted(() => {
-      window.removeEventListener('click', clickAway, true);
+    onMounted(() => {
+      setTimeout(() => {
+        getReference();
+      }, 200);
     });
 
     watch(
       () => props.visible,
       (value) => {
         showPopup.value = value;
-        uploadLocation();
-      }
-    );
-
-    watch(
-      () => props.location,
-      (value) => {
-        uploadLocation();
       }
     );
 
@@ -192,12 +155,10 @@ export default create({
       emit('update:visible', false);
     };
 
-    const chooseItem = (item: any, index: number) => {
-      if (item.disabled) {
-        return;
-      }
+    const chooseItem = (item: unknown, index: number) => {
       emit('choose', item, index);
     };
+
 
     return {
       classes,
@@ -207,13 +168,36 @@ export default create({
       popoverArrow,
       closePopover,
       chooseItem,
+      getReference,
       reference,
-      popoverRef,
-      clickOverlay
+      getStyle,
+      refRandomId
     };
   }
 });
 </script>
+<style lang="scss">
+.self-content {
+  width: 195px;
+  display: flex;
+  flex-wrap: wrap;
+  &-item {
+    margin-top: 10px;
+    margin-bottom: 10px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+  }
+  &-desc {
+    margin-top: 5px;
+    width: 60px;
+    font-size: 10px;
+    text-align: center;
+  }
+}
+</style>
+
 <style lang="scss">
 @import './index.scss'
 </style>

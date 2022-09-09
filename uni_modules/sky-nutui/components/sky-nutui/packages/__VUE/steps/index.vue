@@ -1,3 +1,8 @@
+<template>
+    <view :class="classes">
+        <slot></slot>
+    </view>
+</template>
 <script lang="ts">
 import { provide, computed, reactive, h, ComponentInternalInstance } from 'vue';
 import { createComponent } from '@/uni_modules/sky-nutui/components/sky-nutui/packages/utils/create';
@@ -17,6 +22,9 @@ export default create({
       type: Boolean,
       default: false
     }
+  },
+  options: {
+      virtualHost: true
   },
   emits: ['click-step'],
   setup(props, { emit, slots }) {
@@ -48,15 +56,11 @@ export default create({
       onEmit
     });
 
-    return () => {
-      return h(
-        'view',
-        {
-          class: classes.value
-        },
-        slots.default?.()
-      );
-    };
+
+    return {
+        classes
+    }
+   
   }
 });
 </script>

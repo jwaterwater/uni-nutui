@@ -9,7 +9,7 @@
   </view>
 </template>
 <script lang="ts">
-import { toRefs, computed, watch, reactive, onBeforeMount, onMounted } from 'vue';
+import { toRefs, computed, watch, reactive,onUnmounted, onBeforeMount, onMounted } from 'vue';
 import { createComponent } from '@/uni_modules/sky-nutui/components/sky-nutui/packages/utils/create';
 import { padZero, getTimeStamp } from './util';
 const { componentName, create, translate } = createComponent('countdown');
@@ -93,26 +93,24 @@ export default create({
     };
 
     const tick = () => {
-      if (window !== undefined) {
-        (state.timer as any) = requestAnimationFrame(() => {
-          if (state.counting) {
-            const currentTime = Date.now() - state.diffTime;
-            const remainTime = Math.max(state.handleEndTime - currentTime, 0);
-
-            state.restTime = remainTime;
-
-            if (!remainTime) {
-              state.counting = false;
-              pause();
-              emit('on-end');
+        state.timer = setInterval(()=>{
+            if (state.counting) {
+              const currentTime = Date.now() - state.diffTime;
+              const remainTime = Math.max(state.handleEndTime - currentTime, 0);
+            
+              state.restTime = remainTime;
+            
+              if (!remainTime) {
+                state.counting = false;
+                pause();
+                emit('on-end');
+              }
+            
+              if (remainTime > 0) {
+                //tick();
+              }
             }
-
-            if (remainTime > 0) {
-              tick();
-            }
-          }
-        });
-      }
+        },1)
     };
 
     // 将倒计时剩余时间格式化   参数： t  时间戳  type custom 自定义类型
@@ -195,7 +193,8 @@ export default create({
     };
     // 暂定
     const pause = () => {
-      cancelAnimationFrame(state.timer as any);
+      //cancelAnimationFrame(state.timer as any);
+      clearInterval(state.timer)
       state.counting = false;
       emit('on-paused', state.restTime);
     };
@@ -208,13 +207,19 @@ export default create({
       }
     };
 
-    onBeforeMount(() => {
+    onMounted(() => {
       if (props.autoStart) {
         initTime();
       } else {
         state.restTime = props.time;
       }
     });
+    
+    onUnmounted(()=>{
+        if(state.timer) {
+            clearInterval(state.timer)
+        }
+    })
 
     watch(
       () => state.restTime,
@@ -256,6 +261,7 @@ export default create({
         initTime();
       }
     );
+    
 
     return {
       ...toRefs(props),

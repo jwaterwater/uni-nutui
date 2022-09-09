@@ -53,11 +53,15 @@ export default create({
       default: '12px'
     }
   },
+  options: {
+      virtualHost: true
+  },
   emits: ['click-step'],
 
   setup(props, { emit, slots }) {
     const { proxy } = getCurrentInstance() as ComponentInternalInstance;
     const parent: any = inject('parent');
+    
     parent['relation'](proxy);
 
     const state = reactive({

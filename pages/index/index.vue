@@ -1,7 +1,8 @@
 <template>
-	<page class="content">
+	<view  style="width: 100%;padding: 0 25rpx;box-sizing: border-box;">
+        
 		<nut-cell-group title="基础组件">
-		    <nut-cell to="/uni_modules/sky-nutui/components/sky-nutui/packages/__VUE/button/demo" title="Button 按钮" is-link></nut-cell>
+            <nut-cell to="/uni_modules/sky-nutui/components/sky-nutui/packages/__VUE/button/demo" title="Button 按钮" is-link></nut-cell>
             <nut-cell to="/uni_modules/sky-nutui/components/sky-nutui/packages/__VUE/cell/demo" title="Cell 单元格" is-link></nut-cell>
             <nut-cell to="/uni_modules/sky-nutui/components/sky-nutui/packages/__VUE/icon/demo" title="Icon 图标" is-link></nut-cell>
             <nut-cell to="/uni_modules/sky-nutui/components/sky-nutui/packages/__VUE/image/demo" title="Image 图片" is-link></nut-cell>
@@ -76,17 +77,39 @@
             <nut-cell to="/uni_modules/sky-nutui/components/sky-nutui/packages/__VUE/circleprogress/demo" title="CircleProgress 环形进度条" is-link></nut-cell>
             <!--
             <nut-cell to="/uni_modules/sky-nutui/components/sky-nutui/packages/__VUE/collapse/demo" title="Collapse 折叠面板" is-link></nut-cell>
+            <nut-cell to="/uni_modules/sky-nutui/components/sky-nutui/packages/__VUE/countup/demo" title="CountUp 数字滚动" is-link></nut-cell>
             -->
+            <nut-cell to="/uni_modules/sky-nutui/components/sky-nutui/packages/__VUE/countdown/demo" title="CountDown 倒计时" is-link></nut-cell>
+            <nut-cell to="/uni_modules/sky-nutui/components/sky-nutui/packages/__VUE/empty/demo" title="Empty 空状态" is-link></nut-cell>
+            <nut-cell to="/uni_modules/sky-nutui/components/sky-nutui/packages/__VUE/noticebar/demo" title="NoticeBar 公告栏" is-link></nut-cell>
+            <nut-cell to="/uni_modules/sky-nutui/components/sky-nutui/packages/__VUE/popover/demo" title="Popover 气泡弹出框" is-link></nut-cell>
+            <nut-cell to="/uni_modules/sky-nutui/components/sky-nutui/packages/__VUE/price/demo" title="Price 价格" is-link></nut-cell>
+            <nut-cell to="/uni_modules/sky-nutui/components/sky-nutui/packages/__VUE/progress/demo" title="Progress 进度条" is-link></nut-cell>
+            <nut-cell to="/uni_modules/sky-nutui/components/sky-nutui/packages/__VUE/skeleton/demo" title="Skeleton 骨架屏" is-link></nut-cell>
+            <nut-cell to="/uni_modules/sky-nutui/components/sky-nutui/packages/__VUE/steps/demo" title="Steps 步骤条" is-link></nut-cell>
+            <nut-cell to="/uni_modules/sky-nutui/components/sky-nutui/packages/__VUE/table/demo" title="Table 表格" is-link></nut-cell>
+            <nut-cell to="/uni_modules/sky-nutui/components/sky-nutui/packages/__VUE/tag/demo" title="Tag 标签" is-link></nut-cell>
         </nut-cell-group>
-	</page>
+	</view>
 </template>
 
 <script setup>
-   
+   const onClick = (e) => {
+       console.log(e)
+   }
 </script>
 
 <style>
 	.content {
         overflow: hidden !important;
     }
+    page {
+        background-color: #ededed;
+        height: 100%;
+        padding-bottom: 25rpx;
+    }
+    
+  
+    
+    
 </style>

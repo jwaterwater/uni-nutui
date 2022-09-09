@@ -49,8 +49,7 @@
 <script lang="ts">
 import { ref } from 'vue';
 import { createComponent } from '@/uni_modules/sky-nutui/components/sky-nutui/packages/utils/create';
-import { reactive, toRefs } from '@vue/reactivity';
-import { onMounted } from '@vue/runtime-core';
+import { reactive, toRefs,onMounted } from 'vue';
 const { createDemo, translate } = createComponent('countup');
 import { useTranslate } from '@/uni_modules/sky-nutui/components/sky-nutui/sites/assets/util/useTranslate';
 const initTranslate = () =>
