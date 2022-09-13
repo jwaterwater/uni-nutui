@@ -79,7 +79,7 @@ export const popupProps = {
     default: true
   },
   teleport: {
-    type: [String, Element],
+    type: [String],
     default: 'body'
   },
   overlay: {

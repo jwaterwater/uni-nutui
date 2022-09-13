@@ -8,6 +8,7 @@ export const useTranslate = (object: Record<string, any>) => {
 };
 
 export const translateChange = () => {
+    /** 
   let href = '';
   let location = window.parent.location;
   let currentLang = Locale.currentLang;
@@ -19,9 +20,14 @@ export const translateChange = () => {
     Locale.use('zh-CN');
   }
   location.href = href;
+  */
 };
 
 export const initSiteLang = () => {
+    /** 
+
   let lang = Locale.currentLang.value;
   location.href = location.href.replace('zh-CN', lang).replace('en-US', lang);
+  */
+
 };
