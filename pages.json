@@ -289,6 +289,14 @@
         		"navigationBarTitleText": "Avatar"
         	}
         },
+        
+        {
+        	"path": "uni_modules/sky-nutui/components/sky-nutui/packages/__VUE/animate/demo",
+        	"style": {
+        		"navigationBarTitleText": "Animate"
+        	}
+        },
+        
         {
         	"path": "uni_modules/sky-nutui/components/sky-nutui/packages/__VUE/badge/demo",
         	"style": {
@@ -385,8 +393,36 @@
         	"style": {
         		"navigationBarTitleText": "Tag"
         	}
-        }
+        },
         
+        
+        {
+        	"path": "uni_modules/sky-nutui/components/sky-nutui/packages/__VUE/address/demo",
+        	"style": {
+        		"navigationBarTitleText": "Address"
+        	}
+        },
+        
+        {
+        	"path": "uni_modules/sky-nutui/components/sky-nutui/packages/__VUE/addresslist/demo",
+        	"style": {
+        		"navigationBarTitleText": "AddressList"
+        	}
+        }, 
+        {
+            "path": "uni_modules/sky-nutui/components/sky-nutui/packages/__VUE/card/demo",
+            "style": {
+                "navigationBarTitleText": "Card"
+            }
+        },
+        
+        {
+            "path": "uni_modules/sky-nutui/components/sky-nutui/packages/__VUE/category/demo",
+            "style": {
+                "navigationBarTitleText": "Category"
+            }
+        }
+            
         
 	],
 	"globalStyle": {

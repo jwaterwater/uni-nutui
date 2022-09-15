@@ -1,5 +1,6 @@
 <template>
   <div class="demo">
+      <!--
     <h2 class="h2">{{ translate('customAddress') }}</h2>
     <nut-cell :title="translate('title')" :desc="one" is-link @click="showAddress"></nut-cell>
 
@@ -28,6 +29,8 @@
       :columns-placeholder="placeholder"
     ></nut-address>
 
+
+
     <h2 class="h2">{{ translate('customAddress2') }}</h2>
     <nut-cell :title="translate('title')" :desc="five" is-link @click="showAddress2"></nut-cell>
 
@@ -44,7 +47,7 @@
       @close="close5"
       :columns-placeholder="placeholder"
     ></nut-address>
-
+-->
     <h2 class="h2">{{ translate('existAddress') }}</h2>
     <nut-cell :title="translate('title')" :desc="two" is-link @click="showAddressExist"></nut-cell>
 

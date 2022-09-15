@@ -1,7 +1,7 @@
 <template>
   <div class="nut-card">
     <div class="nut-card__left">
-      <img :src="imgUrl" alt="" />
+      <image style="height: 100%;width: 100%;" :src="imgUrl" alt="" />
     </div>
     <div class="nut-card__right">
       <div class="nut-card__right__title">{{ title }}</div>

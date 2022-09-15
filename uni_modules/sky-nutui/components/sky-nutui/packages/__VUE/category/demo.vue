@@ -22,6 +22,7 @@ import { createComponent } from '@/uni_modules/sky-nutui/components/sky-nutui/pa
 import { reactive, toRefs, onMounted } from 'vue';
 const { createDemo, translate } = createComponent('cmt');
 import { useTranslate } from '@/uni_modules/sky-nutui/components/sky-nutui/sites/assets/util/useTranslate';
+import { categoryInfo, categoryChild, customCategory } from './data.js'
 const initTranslate = () =>
   useTranslate({
     'zh-CN': {
@@ -53,16 +54,10 @@ export default createDemo({
     });
 
     const getData = () => {
-      fetch('//storage.360buyimg.com/nutui/3x/categoryData.js')
-        .then((response) => response.json())
-        .then((res) => {
-          const { categoryInfo, categoryChild, customCategory } = res;
-          data.categoryInfo = categoryInfo;
-          data.category = categoryInfo.category;
-          data.categoryChild = categoryChild;
-          data.customCategory = customCategory;
-        })
-        .catch((err) => console.log('Oh, error', err));
+      data.categoryInfo = categoryInfo;
+      data.category = categoryInfo.category;
+      data.categoryChild = categoryChild;
+      data.customCategory = customCategory;
     };
 
     const change = (index: any) => {

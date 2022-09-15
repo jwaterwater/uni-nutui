@@ -90,6 +90,15 @@
             <nut-cell to="/uni_modules/sky-nutui/components/sky-nutui/packages/__VUE/table/demo" title="Table 表格" is-link></nut-cell>
             <nut-cell to="/uni_modules/sky-nutui/components/sky-nutui/packages/__VUE/tag/demo" title="Tag 标签" is-link></nut-cell>
         </nut-cell-group>
+        
+        <nut-cell-group title="特色组件">
+            <nut-cell to="/uni_modules/sky-nutui/components/sky-nutui/packages/__VUE/address/demo" title="Address 地址" is-link></nut-cell>
+            <!--
+            <nut-cell to="/uni_modules/sky-nutui/components/sky-nutui/packages/__VUE/addresslist/demo" title="AddressList 地址列表" is-link></nut-cell>
+            -->
+            <nut-cell to="/uni_modules/sky-nutui/components/sky-nutui/packages/__VUE/card/demo" title="Card 商品卡片" is-link></nut-cell>
+            <nut-cell to="/uni_modules/sky-nutui/components/sky-nutui/packages/__VUE/category/demo" title="Category 商品分类" is-link></nut-cell>
+        </nut-cell-group>
 	</view>
 </template>
 

@@ -35,7 +35,9 @@ export default create({
   components: {
     ItemContents
   },
-
+options: {
+    virtualHost: true
+},
   setup(props: any, { emit, slots }) {
     const delShellClick = (event, item) => {
       emit('handleDelIcon', event, props.item);

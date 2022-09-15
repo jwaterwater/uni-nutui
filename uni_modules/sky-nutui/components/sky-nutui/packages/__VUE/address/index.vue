@@ -6,8 +6,6 @@
     @click-overlay="clickOverlay"
     @open="closeWay = 'self'"
     v-model:visible="showPopup"
-    :isWrapTeleport="isWrapTeleport"
-    :teleport="teleport"
   >
     <view class="nut-address">
       <view class="nut-address__header">
@@ -36,8 +34,7 @@
       <view class="custom-address" v-if="privateType == 'custom'">
         <view class="region-tab" ref="tabRegion">
           <view
-            class="tab-item"
-            :class="[index == tabIndex ? 'active' : '']"
+            :class="{ 'tab-item': true, active: index == tabIndex, [tabName[index]]: true }"
             v-for="(item, key, index) in selectedRegion"
             :key="index"
             @click="changeRegionTab(item, key, index)"
@@ -53,8 +50,7 @@
             <li
               v-for="(item, index) in regionList[tabName[tabIndex]]"
               :key="index"
-              class="region-item"
-              :class="[selectedRegion[tabName[tabIndex]].id == item.id ? 'active' : '']"
+              :class="['region-item', selectedRegion[tabName[tabIndex]].id == item.id ? 'active' : '']"
               @click="nextAreaList(item)"
             >
               <nut-icon
@@ -71,11 +67,11 @@
       </view>
 
       <!-- 请选择 -->
+      
       <view class="custom-address" v-else-if="privateType == 'custom2'">
         <view class="region-tab" ref="tabRegion">
           <view
-            class="tab-item"
-            :class="[index == tabIndex ? 'active' : '']"
+            :class="{ 'tab-item': true, active: index == tabIndex, [tabName[index]]: true }"
             v-for="(item, key, index) in selectedRegion"
             :key="index"
             @click="changeRegionTab(item, key, index)"
@@ -124,22 +120,26 @@
             </li>
           </ul>
         </div>
-
         <div class="choose-other" @click="switchModule" v-if="isShowCustomAddress">
           <div class="btn">{{ customAndExistTitle || translate('chooseAnotherAddress') }}</div>
         </div>
+        <template v-if="!isShowCustomAddress">
+          <slot name="bottom"></slot>
+        </template>
       </view>
-
-      <slot name="bottom"></slot>
     </view>
   </nut-popup>
 </template>
 <script lang="ts">
-import { reactive, ref, toRefs, watch, nextTick, computed, Ref, onMounted } from 'vue';
+import { reactive, ref, toRefs, watch, computed, onMounted,getCurrentInstance } from 'vue';
+import { popupProps } from '../popup/props';
 import { createComponent } from '@/uni_modules/sky-nutui/components/sky-nutui/packages/utils/create';
-import { popupProps } from '../popup/index.vue';
-const { componentName, create, translate } = createComponent('address');
+
+
+const { create, componentName, translate } = createComponent('address');
+
 interface RegionData {
+  id: string;
   name: string;
   [key: string]: any;
 }
@@ -164,6 +164,10 @@ export default create({
     modelValue: {
       type: Array,
       default: () => []
+    },
+    visible: {
+      type: Boolean,
+      default: false
     },
     type: {
       type: String,
@@ -236,11 +240,24 @@ export default create({
   },
   emits: ['update:visible', 'update:modelValue', 'type', 'change', 'selected', 'close', 'close-mask', 'switch-module'],
 
-  setup(props: any, { emit }) {
+  setup(props, { emit }) {
+      
+      const {  proxy  } = getCurrentInstance()
+    const classes = computed(() => {
+      const prefixCls = componentName;
+      return {
+        [prefixCls]: true
+      };
+    });
+
     const regionLine = ref<null | HTMLElement>(null);
 
-    const tabRegion: Ref<any> = ref(null);
-
+    const tabItemRef = reactive({
+      province: ref<null | HTMLElement>(null),
+      city: ref<null | HTMLElement>(null),
+      country: ref<null | HTMLElement>(null),
+      town: ref<null | HTMLElement>(null)
+    });
     const showPopup = ref(props.visible);
     const privateType = ref(props.type);
     const tabIndex = ref(0);
@@ -311,6 +328,7 @@ export default create({
 
     // 设置选中省市县
     const initCustomSelected = () => {
+      console.log(props.modelValue);
       if (props.modelValue.length > 0) {
         tabIndex.value = props.modelValue.length - 1;
         for (let index = 0; index < props.modelValue.length; index++) {
@@ -334,6 +352,7 @@ export default create({
         lineAnimation();
       }
     };
+
     // 自定义‘请选择’文案
     const customPlaceholder = () => {
       let selectStr = translate('select');
@@ -376,15 +395,17 @@ export default create({
     };
     // 移动下面的红线
     const lineAnimation = () => {
-      nextTick(() => {
-        const name = tabRegion.value && tabRegion.value.getElementsByClassName('active')[0];
-
-        if (name) {
-          const distance = name.offsetLeft;
-
-          lineDistance.value = distance ? distance : 20;
-        }
-      });
+      setTimeout(() => {
+        uni.createSelectorQuery().in(proxy)
+          .selectAll(`.${tabName.value[tabIndex.value]}`)
+          .boundingClientRect((rects) => {
+            console.log(rects,'rect');
+            (rects as any).forEach((rect) => {
+              if (rect.width > 0) lineDistance.value = rect.left;
+            });
+          })
+          .exec();
+      }, 100);
     };
     // 切换下一级列表
     const nextAreaList = (item: RegionData | string) => {
@@ -396,10 +417,10 @@ export default create({
       };
 
       (selectedRegion as any)[tabName.value[tabIndex.value]] = item;
+
       // for (let i = tabIndex.value; i < tabIndex.value - 1; i++) {
       //   (selectedRegion as any)[tabName.value[i + 1]] = {};
       // }
-
       for (let i = tabIndex.value; i < 4; i++) {
         (selectedRegion as any)[tabName.value[i + 1]] = {};
       }
@@ -573,6 +594,7 @@ export default create({
     );
 
     return {
+      classes,
       showPopup,
       privateType,
       tabIndex,
@@ -586,20 +608,20 @@ export default create({
       getTabName,
       nextAreaList,
       regionLine,
-      tabRegion,
       lineDistance,
       changeRegionTab,
       selectedExist,
       clickOverlay,
       handClose,
       handleElevatorItem,
-      initCustomSelected,
       ...toRefs(props),
+      ...toRefs(tabItemRef),
       translate
     };
   }
 });
 </script>
+
 <style lang="scss">
 @import './index.scss'
 </style>

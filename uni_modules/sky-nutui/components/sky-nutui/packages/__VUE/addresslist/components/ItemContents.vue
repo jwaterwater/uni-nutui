@@ -43,7 +43,9 @@ export default create({
   },
   components: {},
   emits: ['delIconClick', 'editIconClick', 'itemClick'],
-
+options: {
+    virtualHost: true
+},
   setup(props, { emit }) {
     const delClick = (event: Event) => {
       emit('delIconClick', event, props.item);
