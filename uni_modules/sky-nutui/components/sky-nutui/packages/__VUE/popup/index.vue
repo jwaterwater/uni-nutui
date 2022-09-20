@@ -170,7 +170,6 @@ export default create({
       keepAlive: false,
       closed: props.closeable
     });
-    
     const visibleLocal = ref(false)
    
 

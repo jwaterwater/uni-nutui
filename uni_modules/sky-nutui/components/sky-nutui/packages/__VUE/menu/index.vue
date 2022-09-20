@@ -66,8 +66,6 @@ export default create({
             uni.createSelectorQuery().in(this)
               .select('.nut-menu__bar.opened')
               .boundingClientRect((rect) => {
-                  console.log(rect,'rect')
-                  console.log(this.offset,'rect')
                 if (this.direction === 'down') {
                   this.offset = rect.bottom;
                 } else {

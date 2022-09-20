@@ -50,6 +50,16 @@
   }
 }
 
+@keyframes nut-slide-topMenuIn {
+  from {
+    transform: translate(0%, 0%);
+  }
+
+  to {
+    transform: translate(0, 0);
+  }
+}
+
 @keyframes nut-slide-topOut {
   from {
     transform: translate(0, 0);

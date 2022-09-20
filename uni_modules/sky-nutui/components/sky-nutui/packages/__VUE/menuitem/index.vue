@@ -1,5 +1,5 @@
 <template>
-  <view :class="classes" v-show="state.showWrapper">
+  <view :class="classes" v-show="state.showWrapper&&parentOffset>0">
     <div
       v-show="state.isShowPlaceholderElement"
       @click="handleClickOutside"
@@ -10,14 +10,14 @@
     </div>
     <nut-popup
       :popStyle="
-        parent.props.direction === 'down' ? { top: parent.offset.value + 'px' } : { bottom: parent.offset.value + 'px' }
+        parent.props.direction === 'down' ? { top: 'calc(var(--window-top) + '+parent.offset.value+'px)' } : { bottom: 'calc(var(--window-bottom) + '+parent.offset.value+'px)',top: 'auto' }
       "
       :overlayStyle="
-        parent.props.direction === 'down' ? { top: parent.offset.value + 'px' } : { bottom: parent.offset.value + 'px' }
+        parent.props.direction === 'down' ? { top: 'calc(var(--window-top) + '+parent.offset.value+'px)' } : { bottom: 'calc(var(--window-bottom) + '+parent.offset.value+'px)',top: 'auto' }
       "
       v-bind="$attrs"
       v-model:visible="state.showPopup"
-      :position="parent.props.direction === 'down' ? 'top' : 'bottom'"
+      :position="parent.props.direction === 'down' ? 'topMenu' : 'bottomMenu'"
       :duration="parent.props.duration"
       pop-class="nut-menu__pop"
       overlayClass="nut-menu__overlay"
@@ -116,6 +116,10 @@ export default create({
     };
 
     const { parent } = useParent();
+    
+    const parentOffset = computed(()=>{
+        return parent.offset.value
+    })
 
     const classes = computed(() => {
       const prefixCls = componentName;
@@ -125,7 +129,7 @@ export default create({
     });
 
     const placeholderElementStyle = computed(() => {
-      const heightStyle = { height: parent.offset.value + 'px' };
+      const heightStyle = { height: 'calc(var(--window-top) + '+parent.offset.value+'px)'  };
 
       if (parent.props.direction === 'down') {
         return heightStyle;
@@ -140,7 +144,11 @@ export default create({
       }
 
       state.showPopup = show;
-      state.isShowPlaceholderElement = show;
+      if(!show) {
+          state.isShowPlaceholderElement = show;
+      }else{
+          state.isShowPlaceholderElement = show;
+      }
       // state.transition = !options.immediate;
 
       if (show) {
@@ -187,7 +195,8 @@ export default create({
       toggle,
       onClick,
       handleClose,
-      handleClickOutside
+      handleClickOutside,
+      parentOffset
     };
   }
 });

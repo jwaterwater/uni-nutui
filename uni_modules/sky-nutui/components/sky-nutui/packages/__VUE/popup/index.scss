@@ -90,6 +90,28 @@
   }
 }
 
+.popup-topMenu {
+  top: 0;
+  left: 0;
+  width: 100%;
+
+  &.round {
+    border-radius: 0 0 $popup-border-radius $popup-border-radius;
+  }
+}
+
+
+.popup-bottomMenu {
+  bottom: 0;
+  left: 0;
+  width: 100%;
+
+  &.round {
+    border-radius: 0 0 $popup-border-radius $popup-border-radius;
+  }
+}
+
+
 .nut-popup {
   position: fixed;
   max-height: 100%;
