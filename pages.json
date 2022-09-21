@@ -421,6 +421,12 @@
             "style": {
                 "navigationBarTitleText": "Category"
             }
+        },
+        {
+            "path": "uni_modules/sky-nutui/components/sky-nutui/packages/__VUE/barrage/demo",
+            "style": {
+                "navigationBarTitleText": "Barrage"
+            }
         }
             
         

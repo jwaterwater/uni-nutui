@@ -2,10 +2,10 @@
   <div class="demo">
     <h2 class="h2">{{ translate('basic') }}</h2>
     <nut-cell>
-      <nut-barrage ref="danmu" :danmu="list"></nut-barrage>
+      <nut-barrage :speeds="5000" :frequency="1000" ref="danmu" :danmu="list"></nut-barrage>
     </nut-cell>
     <div class="test">
-      <button @click="addDanmu" class="add nut-button--primary">{{ translate('btn1') }}</button>
+      <nut-button @click="addDanmu" type="primary" block class="add">{{ translate('btn1') }}</nut-button>
     </div>
   </div>
 </template>
@@ -48,13 +48,15 @@ export default createDemo({
 });
 </script>
 
-<style lang="scss" scoped>
-.nut-cell,
-.nut-barrage {
-  padding: 20px 0;
-  height: 150px;
-}
+<style>
+    .nut-cell,
+    .nut-barrage {
+      padding: 20px 0;
+      height: 150px !important;
+    }
+</style>
 
+<style lang="scss" scoped>
 .test {
   .add {
     display: block;

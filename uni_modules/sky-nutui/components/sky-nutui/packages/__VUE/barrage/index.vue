@@ -1,14 +1,32 @@
 <template>
-  <view ref="dmBody" :class="classes">
-    <view ref="dmContainer" class="dmContainer"></view>
-    <!-- <view v-for="(item, index) of danmuList" :key="'danmu'+index" class="dmitem">
-      {{item}}
-    </view> -->
+  <view class="dmBody" :class="classes">
+    <view class="dmContainer" id="dmContainer">
+      <view
+        v-for="(item, index) of danmuList"
+        :key="'danmu' + index"
+        :class="['dmitem', 'dmitem' + index, 'move']"
+        :style="styleList[index]"
+      >
+        {{ item.length > 8 ? item.substr(0, 8) + '...' : item }}
+      </view>
+    </view>
   </view>
 </template>
 <script lang="ts">
-import { computed, onMounted, onUnmounted, onDeactivated, ref, reactive, toRefs, watch, nextTick } from 'vue';
+import {
+  computed,
+  onMounted,
+  ref,
+  reactive,
+  toRefs,
+  watch,
+  nextTick,
+  onUnmounted,
+  onDeactivated,
+  getCurrentInstance
+} from 'vue';
 import { createComponent } from '@/uni_modules/sky-nutui/components/sky-nutui/packages/utils/create';
+
 const { componentName, create } = createComponent('barrage');
 
 export default create({
@@ -19,7 +37,7 @@ export default create({
     },
     frequency: {
       type: Number,
-      default: 500
+      default: 200
     },
     speeds: {
       type: Number,
@@ -41,37 +59,32 @@ export default create({
   emits: ['click'],
 
   setup(props, { emit }) {
-    const classes = computed(() => {
-      const prefixCls = componentName;
-      return {
-        [prefixCls]: true
-      };
-    });
-
-    let dmBody = ref<HTMLDivElement>(document.createElement('div'));
-    let dmContainer = ref<HTMLDivElement>(document.createElement('div'));
-
-    let timer: number = 0;
+    const timeId = ref(new Date().getTime());
     const danmuList = ref<any[]>(props.danmu);
     const rows = ref<number>(props.rows);
     const top = ref<number>(props.top);
-    const index = ref<number>(0);
     const speeds = props.speeds;
-    const danmuCWidth = ref(0);
+    
+    const { proxy } = getCurrentInstance()
+
+    const classes = computed(() => {
+      const prefixCls = componentName;
+      return {
+        [prefixCls]: true,
+        ['dmBody' + timeId.value]: true
+      };
+    });
 
     onMounted(() => {
-      danmuCWidth.value = dmBody.value.offsetWidth;
-      run();
+      runStep();
     });
 
     onUnmounted(() => {
-      clearInterval(timer);
-      timer = 0;
+      danmuList.value = [];
     });
 
     onDeactivated(() => {
-      clearInterval(timer);
-      timer = 0;
+      danmuList.value = [];
     });
 
     watch(
@@ -82,53 +95,66 @@ export default create({
     );
 
     const add = (word: string) => {
-      const _index = index.value % danmuList.value.length;
-      if (!props.loop && index.value === danmuList.value.length) {
-        danmuList.value.splice(danmuList.value.length, 0, word);
-      } else {
-        danmuList.value.splice(_index, 0, word);
-      }
+      danmuList.value = [...danmuList.value, word];
+      runStep();
     };
 
-    const run = () => {
-      clearInterval(timer);
-      timer = 0;
-      timer = setInterval(() => {
-        play();
-        run();
-      }, props.frequency);
-    };
-
-    const play = () => {
-      if (!props.loop && index.value >= danmuList.value.length) {
-        return;
-      }
-      const _index = props.loop ? index.value % danmuList.value.length : index.value;
-      let el = document.createElement(`view`);
-      el.innerHTML = danmuList.value[_index] as string;
-      el.classList.add('dmitem');
-      dmContainer.value.appendChild(el);
-
-      nextTick(() => {
-        const width = el.offsetWidth;
-        const height = el.offsetHeight;
-        el.classList.add('move');
-        el.style.animationDuration = `${speeds}ms`;
-        el.style.top = (_index % rows.value) * (height + top.value) + 20 + 'px';
-        el.style.width = width + 20 + 'px';
-        // el.style.left = "-"+(_index % rows.value) + 'px';
-        el.style.setProperty('--move-distance', `-${danmuCWidth.value}px`);
-        el.dataset.index = `${_index}`;
-        el.addEventListener('animationend', () => {
-          dmContainer.value.removeChild(el);
+    const getNode = (index) => {
+      const query = uni.createSelectorQuery().in(proxy)
+      setTimeout(() => {
+        let width = 100;
+        query.select('.dmBody' + timeId.value).boundingClientRect((rec) => {
+          width = rec.width || 300;
         });
-        index.value++;
+        query
+          .select('.dmitem' + index)
+          .boundingClientRect((recs: any) => {
+            let height = recs.height;
+            let nodeTop = (index % rows.value) * (height + top.value) + 20 + 'px';
+            styleInfo(index, nodeTop, width);
+          })
+          .exec();
+        // let ele = document.getElementsByClassName('dmitem'+index)[0];
+        // let transitionFlag = false;
+        // ele.addEventListener('animationend', (e:any) => {
+        //   if(e.target.id === e.currentTarget.id && transitionFlag) {
+        //     transitionFlag = false;
+        //     // deleteNode(index)
+        //   }else {
+        //     transitionFlag = true;
+        //   }
+        // }, false);
+      }, 500);
+    };
+
+    const runStep = () => {
+      danmuList.value.forEach((item, index) => {
+        getNode(index);
       });
     };
-    return { classes, danmuList, dmBody, dmContainer, add };
+    let styleList = reactive([]);
+    const styleInfo = (index, nodeTop, width) => {
+      let n = Math.floor(Math.random() * (10 - 5)) + 5;
+      let timeIndex = index - rows.value > 0 ? index - rows.value : 0;
+      let list = styleList;
+      let time = list[timeIndex] ? Number(list[timeIndex]['--time']) : 0;
+
+      let obj = {
+        top: nodeTop,
+        '--time': `${props.frequency * index + time}`,
+        animationDuration: `${speeds}ms`,
+        animationIterationCount: `${props.loop ? 'infinite' : 1}`,
+        animationDelay: `${props.frequency * index + time}ms`,
+        '--move-distance': `-${width}px`
+      };
+      styleList.push(obj);
+    };
+
+    return { classes, danmuList, add, styleList };
   }
 });
 </script>
+
 <style lang="scss">
 @import './index.scss'
 </style>

@@ -98,6 +98,7 @@
             -->
             <nut-cell to="/uni_modules/sky-nutui/components/sky-nutui/packages/__VUE/card/demo" title="Card 商品卡片" is-link></nut-cell>
             <nut-cell to="/uni_modules/sky-nutui/components/sky-nutui/packages/__VUE/category/demo" title="Category 商品分类" is-link></nut-cell>
+            <nut-cell to="/uni_modules/sky-nutui/components/sky-nutui/packages/__VUE/barrage/demo" title="Barrage 弹幕" is-link></nut-cell>
         </nut-cell-group>
 	</view>
 </template>
