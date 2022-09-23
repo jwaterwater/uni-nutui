@@ -56,7 +56,7 @@ export default create({
     },
     height: {
       type: String,
-      default: false
+      default: 'auto'
     },
     icon: {
       type: String,
