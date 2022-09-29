@@ -427,6 +427,18 @@
             "style": {
                 "navigationBarTitleText": "Barrage"
             }
+        },
+        {
+            "path": "uni_modules/sky-nutui/components/sky-nutui/packages/__VUE/ecard/demo",
+            "style": {
+                "navigationBarTitleText": "Ecard"
+            }
+        },
+        {
+            "path": "uni_modules/sky-nutui/components/sky-nutui/packages/__VUE/sku/demo",
+            "style": {
+                "navigationBarTitleText": "Sku"
+            }
         }
             
         

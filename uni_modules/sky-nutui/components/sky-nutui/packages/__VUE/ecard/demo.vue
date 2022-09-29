@@ -7,7 +7,7 @@
         @inputChange="inputChange"
         @change="change"
         @changeStep="changeStep"
-        :data-list="dataList"
+        :dataList="dataList"
       ></nut-ecard>
     </nut-cell>
   </div>

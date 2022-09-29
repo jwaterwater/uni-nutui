@@ -33,8 +33,12 @@
     >
       <template #sku-operate>
         <div class="sku-operate-box">
-          <nut-button class="sku-operate-box-dis" type="warning">查看相似商品</nut-button>
-          <nut-button class="sku-operate-box-dis" type="info">到货通知</nut-button>
+            <view style="flex:1;margin-right: 18px;">
+                <nut-button block class="sku-operate-box-dis" type="warning">查看相似商品</nut-button>
+            </view>
+            <view style="flex:1;">
+                <nut-button block class="sku-operate-box-dis" type="info">到货通知</nut-button>
+            </view>
         </div>
       </template>
     </nut-sku>
@@ -110,7 +114,8 @@ import { reactive, ref, toRefs, onMounted } from 'vue';
 
 import { createComponent } from '@/uni_modules/sky-nutui/components/sky-nutui/packages/utils/create';
 import { useTranslate } from '@/uni_modules/sky-nutui/components/sky-nutui/sites/assets/util/useTranslate';
-import { Toast } from '@/uni_modules/sky-nutui/components/sky-nutui/packages/nutui.vue';
+import { Toast } from '@/uni_modules/sky-nutui/components/sky-nutui/packages/nutui.js';
+import {Sku, Goods, imagePathMap} from './data';
 const { createDemo, translate } = createComponent('sku');
 
 const initTranslate = () =>
@@ -225,15 +230,9 @@ export default createDemo({
     });
 
     const getData = () => {
-      fetch('//storage.360buyimg.com/nutui/3x/data.js')
-        .then((response) => response.json())
-        .then((res) => {
-          const { Sku, Goods, imagePathMap } = res;
-          data.skuData = Sku;
-          data.goodsInfo = Goods;
-          data.imagePathMap = imagePathMap;
-        }) //执行结果是 resolve就调用then方法
-        .catch((err) => console.log('Oh, error', err)); //执行结果是 reject就调用catch方法
+      data.skuData = Sku;
+      data.goodsInfo = Goods;
+      data.imagePathMap = imagePathMap;
     };
     const selectSku = (s: any) => {
       const { sku, parentIndex } = s;

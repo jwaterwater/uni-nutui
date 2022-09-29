@@ -7,19 +7,24 @@
     @click-close-icon="closePopup('icon')"
     @click-overlay="closePopup('overlay')"
     @close="closePopup('close')"
-    style="height: 75%"
+    :popStyle="{height:'75%'}"
     :isWrapTeleport="isWrapTeleport"
     :teleport="teleport"
   >
     <view class="nut-sku">
       <slot name="sku-header"></slot>
       <sku-header :goods="goods" v-if="!getSlots('sku-header')">
-        <template #sku-header-price v-if="getSlots('sku-header-price')">
-          <slot name="sku-header-price"></slot>
+        
+        <template #sku-header-price >
+          <slot v-if="getSlots('sku-header-price')" name="sku-header-price"></slot>
+          <nut-price v-else :price="goods.price" :needSymbol="true" :thousands="false"> </nut-price>
         </template>
 
-        <template #sku-header-extra v-if="getSlots('sku-header-extra')">
-          <slot name="sku-header-extra"></slot>
+        <template #sku-header-extra >
+          <slot name="sku-header-extra" v-if="getSlots('sku-header-extra')"></slot>
+         <view class="nut-sku-header-right-extra" v-if="goods.skuId && !getSlots('sku-header-extra')"
+           >编号&nbsp;:&nbsp;{{ goods.skuId }}</view
+         >
         </template>
       </sku-header>
 
@@ -68,9 +73,9 @@ import SkuSelect from './components/SkuSelect.vue';
 import SkuStepper from './components/SkuStepper.vue';
 import SkuOperate from './components/SkuOperate.vue';
 import { createComponent } from '@/uni_modules/sky-nutui/components/sky-nutui/packages/utils/create';
-import { popupProps } from '../popup/index.vue';
+import { popupProps } from '../popup/props';
 const { componentName, create, translate } = createComponent('sku');
-
+const {  translate : translateHeader } = createComponent('sku-header');
 export default create({
   props: {
     ...popupProps,
@@ -160,6 +165,8 @@ export default create({
   },
 
   setup(props: any, { emit, slots }) {
+      
+      
     const showPopup = ref(props.visible);
 
     const goodsCount = ref(props.stepperMin);
@@ -167,6 +174,7 @@ export default create({
     watch(
       () => props.visible,
       (value) => {
+          console.log('myslots',getSlots('sku-header-price'))
         showPopup.value = value;
       }
     );
