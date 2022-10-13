@@ -1,12 +1,13 @@
 <template>
   <view
-    id="nut-swipe-container"
     ref="container"
+    :id="'container-' + refRandomId"
     :class="classes"
     @touchstart="onTouchStart"
     @touchmove="onTouchMove"
     @touchend="onTouchEnd"
     @touchcancel="onTouchEnd"
+    :catch-move="isPreventDefault"
   >
     <view
       :class="{
@@ -46,14 +47,16 @@ import {
   ComponentPublicInstance,
   reactive,
   computed,
-  nextTick,
+  getCurrentInstance,
   ref,
   watch,
   VNode,
-  useSlots
+  nextTick 
 } from 'vue';
+
 import { createComponent } from '@/uni_modules/sky-nutui/components/sky-nutui/packages/utils/create';
 import { useTouch } from './use-touch';
+import { useTaroRect } from '@/uni_modules/sky-nutui/components/sky-nutui/packages/utils/useTaroRect';
 import { useExpose } from '@/uni_modules/sky-nutui/components/sky-nutui/packages/utils/useExpose/index';
 const { create, componentName } = createComponent('swiper');
 export default create({
@@ -114,7 +117,9 @@ export default create({
   emits: ['change'],
 
   setup(props, { emit, slots }) {
-    const container = ref();
+      const { proxy } = getCurrentInstance()
+    const container = ref<HTMLElement>();
+    const refRandomId = Math.random().toString(36).slice(-8);
     const state = reactive({
       active: 0,
       num: 0,
@@ -184,21 +189,19 @@ export default create({
     };
 
     const relation = (child: ComponentInternalInstance) => {
-        console.log('child',child.proxy)
-      let children = [] as VNode[];
-     children = [child.vnode,child.vnode,child.vnode,]
-      //return
-      /**
-      let slot = slots.default?.() as VNode[];
-      slot = slot.filter((item: VNode) => item.children && Array.isArray(item.children));
-      slot.forEach((item: VNode) => {
+        state.children.push(child.proxy)
+        return 
+        /**
+        let children = [] as VNode[];
+        let slot = slots?.default?.() as VNode[];
+        slot = slot.filter((item: VNode) => item.children && Array.isArray(item.children));
+        slot.forEach((item: VNode) => {
         children = children.concat(item.children as VNode[]);
-      });
-      **/
-      if (!state.childrenVNode.length) {
+        });
+        if (!state.childrenVNode.length) {
         state.childrenVNode = children.slice();
         child.proxy && state.children.push(child.proxy);
-      } else {
+        } else {
         if (state.childrenVNode.length > children.length) {
           state.children = state.children.filter((item: ComponentPublicInstance) => child.proxy !== item);
         } else if (state.childrenVNode.length < children.length) {
@@ -217,7 +220,8 @@ export default create({
           state.childrenVNode = children.slice();
           child.proxy && state.children.push(child.proxy);
         }
-      }
+        }
+        **/
     };
 
     const range = (num: number, min: number, max: number) => {
@@ -225,12 +229,7 @@ export default create({
     };
 
     const requestFrame = (fn: FrameRequestCallback) => {
-        // #ifdef H5
-        window.requestAnimationFrame.call(window, fn);
-        // #endif
-        // #ifdef MP-WEIXIN
-        requestAnimationFrame.call(fn);
-        // #endif
+      requestAnimationFrame.call(null, fn);
     };
 
     const getOffset = (active: number, offset = 0) => {
@@ -243,8 +242,6 @@ export default create({
       if (!props.loop) {
         targetOffset = range(targetOffset, minOffset.value, 0);
       }
-
-      // console.log(offset, currentPosition, targetOffset);
 
       return targetOffset;
     };
@@ -366,28 +363,23 @@ export default create({
       }, Number(props.autoPlay));
     };
 
-    const init = (active: number = +props.initPage) => {
+    const init = async (active: number = +props.initPage) => {
       stopAutoPlay();
-     
-      //uni.createSelectorQuery().in(this).select('#nut-swipe-container').boundingClientRect((rect)=>{
-         //state.rect = container.value.getBoundingClientRect();
-          active = Math.min(childCount.value - 1, active);
-          state.width = props.width ? +props.width : (state.rect as DOMRect).width;
-          state.height = props.height ? +props.height : (state.rect as DOMRect).height;
-          state.active = active;
-          state.offset = getOffset(state.active);
-          state.moving = true;
-          console.log(state)
-          getStyle();
-          
-          autoplay();
-      //}).exec()
-      //
-      
+      state.rect = await useTaroRect('#container-'+refRandomId, proxy);
+      if (state.rect) {
+        active = Math.min(childCount.value - 1, active);
+        state.width = props.width ? +props.width : (state.rect as DOMRect).width;
+        state.height = props.height ? +props.height : (state.rect as DOMRect).height;
+        state.active = active;
+        state.offset = getOffset(state.active);
+        state.moving = true;
+        getStyle();
+
+        autoplay();
+      }
     };
 
     const onTouchStart = (e: TouchEvent) => {
-      if (props.isPreventDefault) e.preventDefault();
       if (props.isStopPropagation) e.stopPropagation();
       if (!props.touchable) return;
       touch.start(e);
@@ -411,6 +403,7 @@ export default create({
       if (!props.touchable || !state.moving) return;
       const speed = delTa.value / (Date.now() - state.touchTime);
       const isShouldMove = Math.abs(speed) > 0.3 || Math.abs(delTa.value) > +(size.value / 2).toFixed(2);
+
       if (isShouldMove && isCorrectDirection.value) {
         let pace = 0;
         const offset = isVertical.value ? touch.state.offsetY : touch.state.offsetX;
@@ -454,18 +447,30 @@ export default create({
     watch(
       () => props.initPage,
       (val) => {
-        nextTick(() => {
-          init(Number(val));
+          nextTick(()=>{
+              init(+val);
+          })
+        /**
+        eventCenter.once((getCurrentInstance() as any).router.onReady, () => {
+          init(+val);
         });
+        **/
       }
     );
 
     watch(
       () => state.children.length,
       () => {
-        nextTick(() => {
-          init();
+        nextTick(()=>{
+            init();
+        })
+        /**
+        eventCenter.once((getCurrentInstance() as any).router.onReady, () => {
+          Taro.nextTick(() => {
+            init();
+          });
         });
+        **/
       }
     );
 
@@ -478,6 +483,7 @@ export default create({
 
     return {
       state,
+      refRandomId,
       classes,
       container,
       componentName,
@@ -494,3 +500,4 @@ export default create({
 <style lang="scss">
 @import './index.scss'
 </style>
+

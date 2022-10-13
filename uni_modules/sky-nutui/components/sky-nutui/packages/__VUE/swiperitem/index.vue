@@ -5,7 +5,7 @@
 </template>
 
 <script lang="ts">
-import { computed, reactive, inject, getCurrentInstance, onUnmounted,onMounted } from 'vue';
+import { computed, reactive, inject, getCurrentInstance, onUnmounted } from 'vue';
 import { createComponent } from '@/uni_modules/sky-nutui/components/sky-nutui/packages/utils/create';
 import { useExpose } from '@/uni_modules/sky-nutui/components/sky-nutui/packages/utils/useExpose/index';
 const { create, componentName } = createComponent('swiper-item');

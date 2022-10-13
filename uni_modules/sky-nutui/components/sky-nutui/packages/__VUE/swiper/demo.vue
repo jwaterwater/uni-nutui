@@ -1,6 +1,6 @@
 <template>
   <div class="demo">
-    <h2 class="h2">{{ translate('basic') }}</h2>
+    <h2>{{ translate('basic') }}</h2>
     <view class="demo-box">
       <nut-swiper :init-page="page" :pagination-visible="true" pagination-color="#426543" auto-play="2000">
         <nut-swiper-item v-for="item in list" :key="item">
@@ -8,7 +8,7 @@
         </nut-swiper-item>
       </nut-swiper>
     </view>
-    <h2 class="h2">{{ translate('asyc') }}</h2>
+    <h2>{{ translate('asyc') }}</h2>
     <view class="demo-box">
       <nut-swiper :init-page="page" :pagination-visible="true" pagination-color="#426543" auto-play="2000">
         <nut-swiper-item v-for="item in list1" :key="item">
@@ -16,7 +16,7 @@
         </nut-swiper-item>
       </nut-swiper>
     </view>
-    <h2 class="h2">{{ translate('dynamicDel') }}</h2>
+    <h2>{{ translate('dynamicDel') }}</h2>
     <view class="demo-box">
       <nut-swiper :init-page="page" :pagination-visible="true" pagination-color="#426543" auto-play="2000">
         <nut-swiper-item v-for="item in list2" :key="item">
@@ -24,7 +24,7 @@
         </nut-swiper-item>
       </nut-swiper>
     </view>
-    <h2 class="h2">{{ translate('size') }}</h2>
+    <h2>{{ translate('size') }}</h2>
     <view class="demo-box">
       <nut-swiper :init-page="page2" :loop="false" width="300">
         <nut-swiper-item v-for="item in list" :key="item">
@@ -32,7 +32,7 @@
         </nut-swiper-item>
       </nut-swiper>
     </view>
-    <h2 class="h2">{{ translate('indicator') }}</h2>
+    <h2>{{ translate('indicator') }}</h2>
     <view class="demo-box">
       <nut-swiper :init-page="page3" :loop="true" @change="change">
         <nut-swiper-item v-for="item in list" :key="item">
@@ -43,7 +43,7 @@
         </template>
       </nut-swiper>
     </view>
-    <h2 class="h2">{{ translate('indicator1') }}</h2>
+    <h2>{{ translate('indicator1') }}</h2>
     <view class="demo-box">
       <nut-swiper :init-page="page" :loop="true" @change="change1" auto-play="2000">
         <nut-swiper-item v-for="item in list1" :key="item">
@@ -54,7 +54,7 @@
         </template>
       </nut-swiper>
     </view>
-    <h2 class="h2">{{ translate('btns') }}</h2>
+    <h2>{{ translate('btns') }}</h2>
     <view class="demo-box">
       <nut-swiper :init-page="page" :loop="true" ref="swiper">
         <nut-swiper-item v-for="item in list" :key="item">
@@ -70,7 +70,7 @@
         </span>
       </view>
     </view>
-    <h2 class="h2">{{ translate('vertical') }}</h2>
+    <h2>{{ translate('vertical') }}</h2>
     <view class="demo-box">
       <nut-swiper
         :init-page="page4"
@@ -86,7 +86,7 @@
         </nut-swiper-item>
       </nut-swiper>
     </view>
-    <h2 class="h2">{{ translate('horizontalCenter') }}</h2>
+    <h2>{{ translate('horizontalCenter') }}</h2>
     <view class="demo-box">
       <nut-swiper :init-page="page4" :loop="false" width="280" height="150" :is-center="true" style="height: 150px">
         <nut-swiper-item v-for="item in list" :key="item">
@@ -94,7 +94,7 @@
         </nut-swiper-item>
       </nut-swiper>
     </view>
-    <h2 class="h2">{{ translate('verticalCenter') }}</h2>
+    <h2>{{ translate('verticalCenter') }}</h2>
     <view class="demo-box vertical-center">
       <nut-swiper
         :init-page="page4"
@@ -115,8 +115,8 @@
 <script lang="ts">
 import { reactive, toRefs, onMounted, ref, Ref } from 'vue';
 import { createComponent } from '@/uni_modules/sky-nutui/components/sky-nutui/packages/utils/create';
-const { createDemo, translate } = createComponent('swiper');
 import { useTranslate } from '@/uni_modules/sky-nutui/components/sky-nutui/sites/assets/util/useTranslate';
+const { createDemo, translate } = createComponent('swiper');
 const initTranslate = () =>
   useTranslate({
     'zh-CN': {

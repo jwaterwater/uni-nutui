@@ -439,6 +439,12 @@
             "style": {
                 "navigationBarTitleText": "Sku"
             }
+        },
+        {
+            "path": "uni_modules/sky-nutui/components/sky-nutui/packages/__VUE/swiper/demo",
+            "style": {
+                "navigationBarTitleText": "Swiper"
+            }
         }
             
         

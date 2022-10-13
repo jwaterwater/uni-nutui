@@ -87,6 +87,9 @@
             <nut-cell to="/uni_modules/sky-nutui/components/sky-nutui/packages/__VUE/progress/demo" title="Progress 进度条" is-link></nut-cell>
             <nut-cell to="/uni_modules/sky-nutui/components/sky-nutui/packages/__VUE/skeleton/demo" title="Skeleton 骨架屏" is-link></nut-cell>
             <nut-cell to="/uni_modules/sky-nutui/components/sky-nutui/packages/__VUE/steps/demo" title="Steps 步骤条" is-link></nut-cell>
+            <!--
+            <nut-cell to="/uni_modules/sky-nutui/components/sky-nutui/packages/__VUE/swiper/demo" title="Swiper 轮播" is-link></nut-cell>
+            -->
             <nut-cell to="/uni_modules/sky-nutui/components/sky-nutui/packages/__VUE/table/demo" title="Table 表格" is-link></nut-cell>
             <nut-cell to="/uni_modules/sky-nutui/components/sky-nutui/packages/__VUE/tag/demo" title="Tag 标签" is-link></nut-cell>
         </nut-cell-group>

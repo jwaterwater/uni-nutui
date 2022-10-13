@@ -67,7 +67,8 @@ Android
 
 
 
-## 咨询QQ 1052256521
+## 交流群
+![](https://cdn.1s1s.vip/nutui/contact_me_qr.png)
 
 
 

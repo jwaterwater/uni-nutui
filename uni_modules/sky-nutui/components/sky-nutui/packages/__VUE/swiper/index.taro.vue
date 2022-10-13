@@ -51,6 +51,7 @@ import {
   watch,
   VNode
 } from 'vue';
+
 import { createComponent } from '@/uni_modules/sky-nutui/components/sky-nutui/packages/utils/create';
 import { useTouch } from './use-touch';
 import { useTaroRect } from '@/uni_modules/sky-nutui/components/sky-nutui/packages/utils/useTaroRect';

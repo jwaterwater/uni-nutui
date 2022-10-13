@@ -1,14 +1,14 @@
 <template>
   <div class="demo">
-    <h2 class="h2">基本用法</h2>
+    <h2>基本用法</h2>
     <view class="demo-box">
       <nut-swiper> </nut-swiper>
     </view>
-    <h2 class="h2">直播轮播样式</h2>
+    <h2>直播轮播样式</h2>
     <view class="demo-box">
       <nut-swiper> </nut-swiper>
     </view>
-    <h2 class="h2">商品轮播样式</h2>
+    <h2>商品轮播样式</h2>
     <view class="demo-box">
       <nut-swiper> </nut-swiper>
     </view>
@@ -17,7 +17,7 @@
 
 <script lang="ts">
 import { reactive } from 'vue';
-import { createComponent } from '@/uni_modules/sky-nutui/components/sky-nutui/packages/utils/create';
+import { createComponent } from '@/packages/utils/create';
 const { createDemo } = createComponent('swiper');
 export default createDemo({
   props: {},
