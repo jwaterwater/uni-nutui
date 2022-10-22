@@ -71,8 +71,6 @@ const { create, translate } = createComponent('calendar-item');
 
 import Utils from '@/uni_modules/sky-nutui/components/sky-nutui/packages/utils/date';
 import { useExpose } from '@/uni_modules/sky-nutui/components/sky-nutui/packages/utils/useExpose/index';
-import requestAniFrame from '@/uni_modules/sky-nutui/components/sky-nutui/packages/utils/raf';
-let TARO_ENV = process.env.TARO_ENV;
 
 type InputDate = string | string[];
 interface CalendarState {
