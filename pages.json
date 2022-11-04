@@ -445,8 +445,13 @@
             "style": {
                 "navigationBarTitleText": "Swiper"
             }
+        },
+        {
+            "path": "uni_modules/sky-nutui/components/sky-nutui/packages/__VUE/trendarrow/demo",
+            "style": {
+                "navigationBarTitleText": "TrendArrow"
+            }
         }
-            
         
 	],
 	"globalStyle": {

@@ -1,7 +1,6 @@
 <template>
 	<view  style="width: 100%;padding: 0 25rpx;box-sizing: border-box;">
     
-        
 		<nut-cell-group title="基础组件">
             <nut-cell to="/uni_modules/sky-nutui/components/sky-nutui/packages/__VUE/button/demo" title="Button 按钮" is-link></nut-cell>
             <nut-cell to="/uni_modules/sky-nutui/components/sky-nutui/packages/__VUE/cell/demo" title="Cell 单元格" is-link></nut-cell>
@@ -92,6 +91,7 @@
             -->
             <nut-cell to="/uni_modules/sky-nutui/components/sky-nutui/packages/__VUE/table/demo" title="Table 表格" is-link></nut-cell>
             <nut-cell to="/uni_modules/sky-nutui/components/sky-nutui/packages/__VUE/tag/demo" title="Tag 标签" is-link></nut-cell>
+            <nut-cell to="/uni_modules/sky-nutui/components/sky-nutui/packages/__VUE/trendarrow/demo" title="TrendArrow 趋势箭头" is-link></nut-cell>
         </nut-cell-group>
         
         <nut-cell-group title="特色组件">
@@ -113,6 +113,7 @@
    const onClick = (e) => {
        console.log(e)
    }
+  
 </script>
 
 
