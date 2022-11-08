@@ -1,7 +1,7 @@
 <template>
   <view :class="classes" :style="getStyle" @click="handleClick">
     <view class="nut-button__warp">
-      <nut-icon class="nut-icon-loading" v-if="loading"></nut-icon>
+      <nut-icon popClass="nut-icon-loading" v-if="loading"></nut-icon>
       <nut-icon
         v-if="icon && !loading"
         :name="icon"
