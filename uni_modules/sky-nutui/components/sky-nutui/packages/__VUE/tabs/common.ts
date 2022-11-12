@@ -1,4 +1,4 @@
-import { pxCheck } from '@/uni_modules/sky-nutui/components/sky-nutui/packages/utils/pxCheck';
+import { pxCheck } from '../../utils/pxCheck';
 import { onMounted, provide, VNode, ref, Ref, computed, onActivated, watch } from 'vue';
 export class Title {
   title: string = '';

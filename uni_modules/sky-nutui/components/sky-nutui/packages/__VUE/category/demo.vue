@@ -18,10 +18,10 @@
 </template>
 
 <script lang="ts">
-import { createComponent } from '@/uni_modules/sky-nutui/components/sky-nutui/packages/utils/create';
+import { createComponent } from '../../utils/create';
 import { reactive, toRefs, onMounted } from 'vue';
 const { createDemo, translate } = createComponent('cmt');
-import { useTranslate } from '@/uni_modules/sky-nutui/components/sky-nutui/sites/assets/util/useTranslate';
+import { useTranslate } from '../../../sites/assets/util/useTranslate';
 import { categoryInfo, categoryChild, customCategory } from './data.js'
 const initTranslate = () =>
   useTranslate({

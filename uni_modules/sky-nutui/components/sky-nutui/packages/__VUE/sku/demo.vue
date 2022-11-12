@@ -112,9 +112,9 @@
 <script lang="ts">
 import { reactive, ref, toRefs, onMounted } from 'vue';
 
-import { createComponent } from '@/uni_modules/sky-nutui/components/sky-nutui/packages/utils/create';
-import { useTranslate } from '@/uni_modules/sky-nutui/components/sky-nutui/sites/assets/util/useTranslate';
-import { Toast } from '@/uni_modules/sky-nutui/components/sky-nutui/packages/nutui.js';
+import { createComponent } from '../../utils/create';
+import { useTranslate } from '../../../sites/assets/util/useTranslate';
+import { Toast } from '../../nutui.js';
 import {Sku, Goods, imagePathMap} from './data';
 const { createDemo, translate } = createComponent('sku');
 

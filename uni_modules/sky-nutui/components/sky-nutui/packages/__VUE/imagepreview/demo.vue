@@ -29,10 +29,10 @@
 
 <script lang="ts">
 import { reactive, toRefs } from 'vue';
-import { createComponent } from '@/uni_modules/sky-nutui/components/sky-nutui/packages/utils/create';
+import { createComponent } from '../../utils/create';
 const { createDemo, translate } = createComponent('imagepreview');
-import { useTranslate } from '@/uni_modules/sky-nutui/components/sky-nutui/sites/assets/util/useTranslate';
-import { ImagePreview } from '@/uni_modules/sky-nutui/components/sky-nutui/packages/nutui.vue';
+import { useTranslate } from '../../../sites/assets/util/useTranslate';
+import { ImagePreview } from '../../nutui.vue';
 const initTranslate = () =>
   useTranslate({
     'zh-CN': {

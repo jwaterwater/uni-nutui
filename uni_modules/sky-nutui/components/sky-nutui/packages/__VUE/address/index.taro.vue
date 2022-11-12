@@ -132,7 +132,7 @@
 <script lang="ts">
 import { reactive, ref, toRefs, watch, computed, onMounted } from 'vue';
 import { popupProps } from '../popup/index.taro.vue';
-import { createComponent } from '@/uni_modules/sky-nutui/components/sky-nutui/packages/utils/create';
+import { createComponent } from '../../utils/create';
 import Taro from '@tarojs/taro';
 
 const { create, componentName, translate } = createComponent('address');

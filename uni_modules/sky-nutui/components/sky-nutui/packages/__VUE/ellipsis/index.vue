@@ -14,7 +14,7 @@
 </template>
 <script lang="ts">
 import { ref, reactive, toRefs, computed, onMounted, PropType, watch } from 'vue';
-import { createComponent } from '@/uni_modules/sky-nutui/components/sky-nutui/packages/utils/create';
+import { createComponent } from '../../utils/create';
 const { componentName, create } = createComponent('ellipsis');
 export type Direction = 'start' | 'end' | 'middle';
 

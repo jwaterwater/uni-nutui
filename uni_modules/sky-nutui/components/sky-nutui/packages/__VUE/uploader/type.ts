@@ -1,4 +1,4 @@
-import { createComponent } from '@/uni_modules/sky-nutui/components/sky-nutui/packages/utils/create';
+import { createComponent } from '../../utils/create';
 const { translate } = createComponent('uploader');
 export type SizeType = 'original' | 'compressed';
 export type SourceType = 'album' | 'camera' | 'user' | 'environment';

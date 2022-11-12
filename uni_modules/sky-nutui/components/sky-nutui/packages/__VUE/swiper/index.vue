@@ -54,10 +54,10 @@ import {
   nextTick 
 } from 'vue';
 
-import { createComponent } from '@/uni_modules/sky-nutui/components/sky-nutui/packages/utils/create';
+import { createComponent } from '../../utils/create';
 import { useTouch } from './use-touch';
-import { useTaroRect } from '@/uni_modules/sky-nutui/components/sky-nutui/packages/utils/useTaroRect';
-import { useExpose } from '@/uni_modules/sky-nutui/components/sky-nutui/packages/utils/useExpose/index';
+import { useTaroRect } from '../../utils/useTaroRect';
+import { useExpose } from '../../utils/useExpose/index';
 const { create, componentName } = createComponent('swiper');
 export default create({
   props: {

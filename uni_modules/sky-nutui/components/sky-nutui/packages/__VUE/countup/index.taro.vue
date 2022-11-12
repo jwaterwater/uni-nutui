@@ -111,8 +111,8 @@
 </template>
 <script lang="ts">
 import { reactive, toRefs, ref, onMounted, onUnmounted, nextTick, watch } from 'vue';
-import { createComponent } from '@/uni_modules/sky-nutui/components/sky-nutui/packages/utils/create';
-import { useExtend } from '@/uni_modules/sky-nutui/components/sky-nutui/packages/utils/useRelation/useRelation';
+import { createComponent } from '../../utils/create';
+import { useExtend } from '../../utils/useRelation/useRelation';
 const { componentName, create } = createComponent('countup');
 
 interface IData {

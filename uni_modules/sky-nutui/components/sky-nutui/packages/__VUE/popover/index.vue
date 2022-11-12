@@ -24,12 +24,12 @@
 </template>
 <script lang="ts">
 import { onMounted, computed, watch, ref, PropType, toRefs, reactive, CSSProperties,getCurrentInstance } from 'vue';
-import { createComponent } from '@/uni_modules/sky-nutui/components/sky-nutui/packages/utils/create';
+import { createComponent } from '../../utils/create';
 const { componentName, create } = createComponent('popover');
 import Popup from '../popup/index.vue';
 import {popupProps} from '../popup/props'
 import Button from '../button/index.vue';
-import { useTaroRect } from '@/uni_modules/sky-nutui/components/sky-nutui/packages/utils/useTaroRect';
+import { useTaroRect } from '../../utils/useTaroRect';
 
 export default create({
   inheritAttrs: false,

@@ -68,12 +68,12 @@
 </template>
 <script lang="ts">
 import { PropType, reactive, ref, watch, toRefs, computed, onMounted, nextTick } from 'vue';
-import { createComponent } from '@/uni_modules/sky-nutui/components/sky-nutui/packages/utils/create';
+import { createComponent } from '../../utils/create';
 const { create, translate } = createComponent('calendar-item');
 import Taro from '@tarojs/taro';
-import Utils from '@/uni_modules/sky-nutui/components/sky-nutui/packages/utils/date';
-import { useExpose } from '@/uni_modules/sky-nutui/components/sky-nutui/packages/utils/useExpose/index';
-import requestAniFrame from '@/uni_modules/sky-nutui/components/sky-nutui/packages/utils/raf';
+import Utils from '../../utils/date';
+import { useExpose } from '../../utils/useExpose/index';
+import requestAniFrame from '../../utils/raf';
 let TARO_ENV = process.env.TARO_ENV;
 
 type InputDate = string | string[];

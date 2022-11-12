@@ -40,7 +40,7 @@
 </template>
 <script lang="ts">
 import { toRefs, ref } from 'vue';
-import { createComponent } from '@/uni_modules/sky-nutui/components/sky-nutui/packages/utils/create';
+import { createComponent } from '../../utils/create';
 const { createDemo } = createComponent('oldpicker');
 export default createDemo({
   props: {},

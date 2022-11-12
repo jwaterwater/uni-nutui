@@ -80,10 +80,10 @@
 </template>
 <script lang="ts">
 import { ref, watch, computed } from 'vue';
-import { createComponent } from '@/uni_modules/sky-nutui/components/sky-nutui/packages/utils/create';
+import { createComponent } from '../../utils/create';
 const { create } = createComponent('calendar');
 import CalendarItem from '../calendaritem/index.taro.vue';
-import Utils from '@/uni_modules/sky-nutui/components/sky-nutui/packages/utils/date';
+import Utils from '../../utils/date';
 export default create({
   components: {
     [CalendarItem.name]: CalendarItem

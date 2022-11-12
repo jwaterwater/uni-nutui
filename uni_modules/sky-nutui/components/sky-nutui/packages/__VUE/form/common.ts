@@ -1,4 +1,4 @@
-import { getPropByPath, isFunction, isObject, isPromise } from '@/uni_modules/sky-nutui/components/sky-nutui/packages/utils/util';
+import { getPropByPath, isFunction, isObject, isPromise } from '../../utils/util';
 import { computed, provide, reactive, VNode, watch } from 'vue';
 import { FormItemRule } from '../formitem/types';
 import { ErrorMessage, FormRule } from './types';

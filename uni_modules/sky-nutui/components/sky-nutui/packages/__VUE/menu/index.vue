@@ -24,7 +24,7 @@
 </template>
 <script lang="ts">
 import { reactive, provide, computed, ref,getCurrentInstance } from 'vue';
-import { createComponent } from '@/uni_modules/sky-nutui/components/sky-nutui/packages/utils/create';
+import { createComponent } from '../../utils/create';
 const { componentName, create } = createComponent('menu');
 import { onPageScroll } from '@dcloudio/uni-app'
 export default create({

@@ -46,10 +46,10 @@
 
 <script lang="ts">
 import { toRefs, reactive } from 'vue';
-import { createComponent } from '@/uni_modules/sky-nutui/components/sky-nutui/packages/utils/create';
-import { Toast } from '@/uni_modules/sky-nutui/components/sky-nutui/packages/nutui.js';
+import { createComponent } from '../../utils/create';
+import { Toast } from '../../nutui.js';
 const { createDemo, translate } = createComponent('searchbar');
-import { useTranslate } from '@/uni_modules/sky-nutui/components/sky-nutui/sites/assets/util/useTranslate';
+import { useTranslate } from '../../../sites/assets/util/useTranslate';
 const initTranslate = () =>
   useTranslate({
     'zh-CN': {

@@ -18,8 +18,8 @@
 
 <script lang="ts">
 import { onMounted, onDeactivated, onActivated, reactive, ref, computed } from 'vue';
-import { createComponent } from '@/uni_modules/sky-nutui/components/sky-nutui/packages/utils/create';
-import requestAniFrame from '@/uni_modules/sky-nutui/components/sky-nutui/packages/utils/raf';
+import { createComponent } from '../../utils/create';
+import requestAniFrame from '../../utils/raf';
 const { componentName, create } = createComponent('drag');
 import Taro, { eventCenter, getCurrentInstance } from '@tarojs/taro';
 export default create({

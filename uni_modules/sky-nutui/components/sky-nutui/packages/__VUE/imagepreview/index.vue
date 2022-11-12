@@ -55,13 +55,13 @@
 </template>
 <script lang="ts">
 import { toRefs, reactive, watch, onMounted, ref, computed } from 'vue';
-import { createComponent } from '@/uni_modules/sky-nutui/components/sky-nutui/packages/utils/create';
+import { createComponent } from '../../utils/create';
 import Popup from '../popup/index.vue';
 import Video from '../video/index.vue';
 import Swiper from '../swiper/index.vue';
 import SwiperItem from '../swiperitem/index.vue';
 import Icon from '../icon/index.vue';
-import { isPromise } from '@/uni_modules/sky-nutui/components/sky-nutui/packages/utils/util.ts';
+import { isPromise } from '../../utils/util.ts';
 import ImagePreviewItem from './imagePreviewItem.vue';
 const { componentName, create } = createComponent('imagepreview');
 

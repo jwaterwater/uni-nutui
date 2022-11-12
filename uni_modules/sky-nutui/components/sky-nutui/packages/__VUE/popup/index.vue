@@ -74,7 +74,7 @@ import { useLockScroll } from './use-lock-scroll';
 import overlayProps from './../overlay/props';
 import overlay from '../overlay/index.vue';
 import icon from '../icon/index.vue';
-import { createComponent } from '@/uni_modules/sky-nutui/components/sky-nutui/packages/utils/create';
+import { createComponent } from '../../utils/create';
 const { componentName, create } = createComponent('popup');
 
 let _zIndex = 2000;

@@ -78,9 +78,9 @@
 <script lang="ts">
 import Taro from '@tarojs/taro';
 import { ref, toRefs, computed, PropType, CSSProperties } from 'vue';
-import { createComponent } from '@/uni_modules/sky-nutui/components/sky-nutui/packages/utils/create';
-import { useTouch } from '@/uni_modules/sky-nutui/components/sky-nutui/packages/utils/useTouch';
-import { useTaroRect } from '@/uni_modules/sky-nutui/components/sky-nutui/packages/utils/useTaroRect';
+import { createComponent } from '../../utils/create';
+import { useTouch } from '../../utils/useTouch';
+import { useTaroRect } from '../../utils/useTaroRect';
 const { componentName, create } = createComponent('range');
 
 export default create({

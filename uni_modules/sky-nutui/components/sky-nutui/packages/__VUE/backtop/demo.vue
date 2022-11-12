@@ -36,9 +36,9 @@
 </template>
 
 <script>
-import { createComponent } from '@/uni_modules/sky-nutui/components/sky-nutui/packages/utils/create';
+import { createComponent } from '../../utils/create';
 const { createDemo, translate } = createComponent('backtop');
-import { useTranslate } from '@/uni_modules/sky-nutui/components/sky-nutui/sites/assets/util/useTranslate';
+import { useTranslate } from '../../../sites/assets/util/useTranslate';
 const initTranslate = () =>
   useTranslate({
     'zh-CN': { title: '基本用法', clg: '触发返回顶部', content: '我是测试数据', backText: '顶部' },

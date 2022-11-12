@@ -71,9 +71,9 @@
 <script lang="ts">
 import { reactive, toRefs, ref } from '@vue/reactivity';
 import { onMounted } from '@vue/runtime-core';
-import { createComponent } from '@/uni_modules/sky-nutui/components/sky-nutui/packages/utils/create';
+import { createComponent } from '../../utils/create';
 const { createDemo, translate } = createComponent('audio');
-import { useTranslate } from '@/uni_modules/sky-nutui/components/sky-nutui/sites/assets/util/useTranslate';
+import { useTranslate } from '../../../sites/assets/util/useTranslate';
 
 const initTranslate = () =>
   useTranslate({

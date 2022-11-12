@@ -16,7 +16,7 @@
 </template>
 <script lang="ts">
 import { defineComponent, reactive, computed, onMounted, toRefs } from 'vue';
-import { RefData } from '@/uni_modules/sky-nutui/components/sky-nutui/sites/assets/util/ref';
+import { RefData } from '../../../sites/assets/util/ref';
 import { nav, docs } from '@/config.json';
 export default defineComponent({
   name: 'doc-nav',

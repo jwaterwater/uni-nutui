@@ -18,8 +18,8 @@
 
 <script lang="ts">
 import { onMounted, onDeactivated, onActivated, reactive, ref, computed,getCurrentInstance } from 'vue';
-import { createComponent } from '@/uni_modules/sky-nutui/components/sky-nutui/packages/utils/create';
-import requestAniFrame from '@/uni_modules/sky-nutui/components/sky-nutui/packages/utils/raf';
+import { createComponent } from '../../utils/create';
+import requestAniFrame from '../../utils/raf';
 const { componentName, create } = createComponent('drag');
 export default create({
   props: {
@@ -233,9 +233,11 @@ export default create({
     });
     onDeactivated(() => {
       state.keepAlive = true;
+      /**
       (myDrag as any).removeEventListener('touchstart', touchStart);
       (myDrag as any).removeEventListener('touchmove', touchMove);
       (myDrag as any).removeEventListener('touchend', touchEnd);
+      **/
     });
     return {
       classes,

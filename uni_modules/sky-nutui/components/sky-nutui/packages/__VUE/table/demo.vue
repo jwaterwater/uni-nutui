@@ -27,13 +27,13 @@
 
 <script lang="ts">
 import { reactive, toRefs, onMounted, onUnmounted, h } from 'vue';
-import { createComponent } from '@/uni_modules/sky-nutui/components/sky-nutui/packages/utils/create';
+import { createComponent } from '../../utils/create';
 import { TableColumnProps } from './types';
-import { Toast } from '@/uni_modules/sky-nutui/components/sky-nutui/packages/nutui.js';
-import Button from '@/uni_modules/sky-nutui/components/sky-nutui/packages/__VUE/button/index.vue';
-import Icon from '@/uni_modules/sky-nutui/components/sky-nutui/packages/__VUE/icon/index.vue';
+import { Toast } from '../../nutui.js';
+import Button from '../../__VUE/button/index.vue';
+import Icon from '../../__VUE/icon/index.vue';
 const { createDemo, translate } = createComponent('table');
-import { useTranslate } from '@/uni_modules/sky-nutui/components/sky-nutui/sites/assets/util/useTranslate';
+import { useTranslate } from '../../../sites/assets/util/useTranslate';
 const initTranslate = () =>
   useTranslate({
     'zh-CN': {

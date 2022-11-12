@@ -66,12 +66,12 @@
 </template>
 <script lang="ts">
 import { toRefs, reactive, onMounted, ref, watch } from 'vue';
-import { createComponent } from '@/uni_modules/sky-nutui/components/sky-nutui/packages/utils/create';
+import { createComponent } from '../../utils/create';
 const { componentName, create, translate } = createComponent('addresslist');
 import LongPressShell from './components/LongPressShell.vue';
 import SwipeShell from './components/SwipeShell.vue';
 import GeneralShell from './components/GeneralShell.vue';
-import { floatData } from '@/uni_modules/sky-nutui/components/sky-nutui/packages/utils/util';
+import { floatData } from '../../utils/util';
 export default create({
   props: {
     data: {

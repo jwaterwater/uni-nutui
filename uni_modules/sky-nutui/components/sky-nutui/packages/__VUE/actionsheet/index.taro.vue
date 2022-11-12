@@ -36,7 +36,7 @@
   </view>
 </template>
 <script lang="ts">
-import { createComponent } from '@/uni_modules/sky-nutui/components/sky-nutui/packages/utils/create';
+import { createComponent } from '../../utils/create';
 import { computed, useSlots } from 'vue';
 const { componentName, create } = createComponent('actionsheet');
 import { popupProps } from '../popup/index.vue';

@@ -27,7 +27,7 @@
 </template>
 <script lang="ts">
 import { reactive, ref, watch, computed, toRefs, onMounted } from 'vue';
-import { createComponent } from '@/uni_modules/sky-nutui/components/sky-nutui/packages/utils/create';
+import { createComponent } from '../../utils/create';
 import { commonProps } from './commonProps';
 import { TouchParams } from './types';
 const { create } = createComponent('oldpicker-column');

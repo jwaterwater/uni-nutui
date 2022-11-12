@@ -22,10 +22,10 @@
 </template>
 <script lang="ts">
 import Taro from '@tarojs/taro';
-import { useTouch } from '@/uni_modules/sky-nutui/components/sky-nutui/packages/utils/useTouch';
+import { useTouch } from '../../utils/useTouch';
 import { computed, onMounted, reactive, Ref, ref } from 'vue';
-import { createComponent } from '@/uni_modules/sky-nutui/components/sky-nutui/packages/utils/create';
-import { useTaroRect } from '@/uni_modules/sky-nutui/components/sky-nutui/packages/utils/useTaroRect';
+import { createComponent } from '../../utils/create';
+import { useTaroRect } from '../../utils/useTaroRect';
 const { componentName, create } = createComponent('swipe');
 export type SwipePosition = 'left' | 'right' | '';
 export default create({

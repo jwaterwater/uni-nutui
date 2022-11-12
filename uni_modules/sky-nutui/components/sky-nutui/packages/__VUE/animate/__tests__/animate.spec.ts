@@ -1,5 +1,5 @@
 import { mount } from '@vue/test-utils';
-import Animate from '@/uni_modules/sky-nutui/components/sky-nutui/packages/__VUE/animate/index.vue';
+import Animate from '../../__VUE/animate/index.vue';
 import { nextTick } from 'vue';
 
 const testType = [

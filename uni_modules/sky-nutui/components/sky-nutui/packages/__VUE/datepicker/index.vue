@@ -26,7 +26,7 @@ import type { PropType } from 'vue';
 import Picker from '../picker/index.vue';
 import { popupProps } from '../popup/index.vue';
 import { PickerOption } from '../picker/types';
-import { createComponent } from '@/uni_modules/sky-nutui/components/sky-nutui/packages/utils/create';
+import { createComponent } from '../../utils/create';
 import { padZero } from './utils';
 const { componentName, create, translate } = createComponent('datepicker');
 

@@ -63,7 +63,7 @@
 
 <script lang="ts">
 import { computed, PropType, reactive } from 'vue';
-import { createComponent } from '@/uni_modules/sky-nutui/components/sky-nutui/packages/utils/create';
+import { createComponent } from '../../utils/create';
 import { Uploader, UploadOptions } from './uploader';
 import { FileItem } from './type';
 const { componentName, create, translate } = createComponent('uploader');

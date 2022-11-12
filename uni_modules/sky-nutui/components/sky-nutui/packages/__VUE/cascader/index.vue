@@ -32,7 +32,7 @@
 import { watch, ref, Ref, computed } from 'vue';
 import { CascaderValue, CascaderOption } from './types';
 import { popupProps } from '../popup/index.vue';
-import { createComponent } from '@/uni_modules/sky-nutui/components/sky-nutui/packages/utils/create';
+import { createComponent } from '../../utils/create';
 const { create } = createComponent('cascader');
 import CascaderItem from '../cascaderitem/index.vue';
 

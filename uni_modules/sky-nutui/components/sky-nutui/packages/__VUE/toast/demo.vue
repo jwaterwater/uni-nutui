@@ -21,10 +21,10 @@
 </template>
 
 <script lang="ts">
-import { createComponent } from '@/uni_modules/sky-nutui/components/sky-nutui/packages/utils/create';
+import { createComponent } from '../../utils/create';
 const { createDemo, translate } = createComponent('toast');
-import { Toast } from '@/uni_modules/sky-nutui/components/sky-nutui/packages/nutui.vue';
-import { useTranslate } from '@/uni_modules/sky-nutui/components/sky-nutui/sites/assets/util/useTranslate';
+import { Toast } from '../../nutui.vue';
+import { useTranslate } from '../../../sites/assets/util/useTranslate';
 import { onUnmounted } from 'vue';
 const initTranslate = () =>
   useTranslate({

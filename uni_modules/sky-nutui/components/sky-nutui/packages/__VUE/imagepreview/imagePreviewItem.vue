@@ -11,14 +11,14 @@
 </template>
 <script lang="ts">
 import { toRefs, reactive, watch, onMounted, ref, computed, CSSProperties } from 'vue';
-import { createComponent } from '@/uni_modules/sky-nutui/components/sky-nutui/packages/utils/create';
+import { createComponent } from '../../utils/create';
 import Popup from '../popup/index.vue';
 import Video from '../video/index.vue';
 import Swiper from '../swiper/index.vue';
 import SwiperItem from '../swiperitem/index.vue';
 import Icon from '../icon/index.vue';
-import { isPromise } from '@/uni_modules/sky-nutui/components/sky-nutui/packages/utils/util.ts';
-import { useTouch } from '@/uni_modules/sky-nutui/components/sky-nutui/packages/utils/useTouch';
+import { isPromise } from '../../utils/util.ts';
+import { useTouch } from '../../utils/useTouch';
 const { componentName, create } = createComponent('imagepreviewitem');
 
 export default create({

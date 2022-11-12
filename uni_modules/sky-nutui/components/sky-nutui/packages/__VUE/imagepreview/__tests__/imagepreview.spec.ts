@@ -1,7 +1,7 @@
 import { mount } from '@vue/test-utils';
 import ImagePreview from '../index.vue';
 import { nextTick, reactive, toRefs } from 'vue';
-// import { trigger } from '@/uni_modules/sky-nutui/components/sky-nutui/packages/utils/unit';
+// import { trigger } from '../../utils/unit';
 
 const images = [
   {

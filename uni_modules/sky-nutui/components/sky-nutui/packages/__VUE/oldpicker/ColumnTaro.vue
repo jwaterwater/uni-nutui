@@ -33,10 +33,10 @@
 </template>
 <script lang="ts">
 import { reactive, ref, watch, computed, toRefs, onMounted } from 'vue';
-import { createComponent } from '@/uni_modules/sky-nutui/components/sky-nutui/packages/utils/create';
+import { createComponent } from '../../utils/create';
 import { commonProps } from './commonProps';
 const { create } = createComponent('oldpicker-column');
-import { useTaroRect } from '@/uni_modules/sky-nutui/components/sky-nutui/packages/utils/useTaroRect';
+import { useTaroRect } from '../../utils/useTaroRect';
 import { TouchParams } from './types';
 import Taro from '@tarojs/taro';
 

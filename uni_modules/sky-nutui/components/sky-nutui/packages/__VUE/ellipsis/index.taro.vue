@@ -26,8 +26,8 @@
 
 <script lang="ts">
 import { ref, reactive, toRefs, computed, onMounted, PropType, watch, unref } from 'vue';
-import { createComponent } from '@/uni_modules/sky-nutui/components/sky-nutui/packages/utils/create';
-import { useTaroRect } from '@/uni_modules/sky-nutui/components/sky-nutui/packages/utils/useTaroRect';
+import { createComponent } from '../../utils/create';
+import { useTaroRect } from '../../utils/useTaroRect';
 import Taro from '@tarojs/taro';
 const { componentName, create } = createComponent('ellipsis');
 export type Direction = 'start' | 'end' | 'middle';

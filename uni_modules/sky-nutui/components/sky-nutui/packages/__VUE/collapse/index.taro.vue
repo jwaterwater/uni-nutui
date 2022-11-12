@@ -5,7 +5,7 @@
 </template>
 <script lang="ts">
 import { onMounted, provide, ref, watch, getCurrentInstance } from 'vue';
-import { createComponent } from '@/uni_modules/sky-nutui/components/sky-nutui/packages/utils/create';
+import { createComponent } from '../../utils/create';
 import { nextTick } from '@tarojs/taro';
 const { create } = createComponent('collapse');
 export default create({

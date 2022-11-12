@@ -17,8 +17,8 @@
 </template>
 <script lang="ts">
 import { ref, onMounted } from 'vue';
-import { TypeOfFun } from '@/uni_modules/sky-nutui/components/sky-nutui/packages/utils/util';
-import { createComponent } from '@/uni_modules/sky-nutui/components/sky-nutui/packages/utils/create';
+import { TypeOfFun } from '../../../utils/util';
+import { createComponent } from '../../../utils/create';
 const { componentName, create } = createComponent('sku-stepper');
 
 export default create({

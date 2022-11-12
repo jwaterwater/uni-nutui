@@ -31,7 +31,9 @@
             <nut-cell to="/uni_modules/sky-nutui/components/sky-nutui/packages/__VUE/navbar/demo" title="Navbar 头部导航" is-link></nut-cell>
             <nut-cell to="/uni_modules/sky-nutui/components/sky-nutui/packages/__VUE/menu/demo" title="Menu 菜单" is-link></nut-cell>
             <nut-cell to="/uni_modules/sky-nutui/components/sky-nutui/packages/__VUE/pagination/demo" title="Pagination 分页" is-link></nut-cell>
+            <!--
             <nut-cell to="/uni_modules/sky-nutui/components/sky-nutui/packages/__VUE/sidenavbar/demo" title="SideNavBar 侧边栏导航" is-link></nut-cell>
+            -->
             <nut-cell to="/uni_modules/sky-nutui/components/sky-nutui/packages/__VUE/tabbar/demo" title="Tabbar 标签栏" is-link></nut-cell>
             <nut-cell to="/uni_modules/sky-nutui/components/sky-nutui/packages/__VUE/tabs/demo" title="Tabs 选项卡切换" is-link></nut-cell>
         </nut-cell-group>

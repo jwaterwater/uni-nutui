@@ -1,8 +1,8 @@
 import { h, computed } from 'vue';
 import type { ExtractPropTypes, SetupContext, RenderFunction } from 'vue';
-import { createComponent } from '@/uni_modules/sky-nutui/components/sky-nutui/packages/utils/create';
-import { pxCheck } from '@/uni_modules/sky-nutui/components/sky-nutui/packages/utils/pxCheck';
-import { useProvide } from '@/uni_modules/sky-nutui/components/sky-nutui/packages/utils/useRelation/useProvide';
+import { createComponent } from '../../utils/create';
+import { pxCheck } from '../../utils/pxCheck';
+import { useProvide } from '../../utils/useRelation/useProvide';
 
 const { componentName } = createComponent('grid');
 

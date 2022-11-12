@@ -17,10 +17,10 @@
 
 <script lang="ts">
 import { computed, CSSProperties,inject } from 'vue';
-import { useRouter } from '@/uni_modules/sky-nutui/components/sky-nutui/packages/utils/useRoute';
-import { createComponent } from '@/uni_modules/sky-nutui/components/sky-nutui/packages/utils/create';
-import { pxCheck } from '@/uni_modules/sky-nutui/components/sky-nutui/packages/utils/pxCheck';
-import { useInject } from '@/uni_modules/sky-nutui/components/sky-nutui/packages/utils/useRelation/useInject';
+import { useRouter } from '../../utils/useRoute';
+import { createComponent } from '../../utils/create';
+import { pxCheck } from '../../utils/pxCheck';
+import { useInject } from '../../utils/useRelation/useInject';
 import { GRID_KEY, GridProps } from '../grid/common';
 const { create, componentName } = createComponent('grid-item');
 

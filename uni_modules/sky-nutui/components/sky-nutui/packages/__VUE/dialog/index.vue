@@ -47,12 +47,12 @@
 </template>
 <script lang="ts">
 import { onMounted, computed, watch, ref, PropType, VNode, CSSProperties } from 'vue';
-import { createComponent } from '@/uni_modules/sky-nutui/components/sky-nutui/packages/utils/create';
+import { createComponent } from '../../utils/create';
 const { componentName, create, translate } = createComponent('dialog');
 import Popup from '../popup/index.vue';
 import { popupProps } from '../popup/props';
 import Button from '../button/index.vue';
-import { isPromise } from '@/uni_modules/sky-nutui/components/sky-nutui/packages/utils/util';
+import { isPromise } from '../../utils/util';
 export default create({
   inheritAttrs: false,
   components: {

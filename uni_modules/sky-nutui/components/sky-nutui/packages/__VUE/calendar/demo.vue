@@ -187,9 +187,9 @@
 
 <script lang="ts">
 import { reactive, toRefs, ref } from 'vue';
-import { createComponent } from '@/uni_modules/sky-nutui/components/sky-nutui/packages/utils/create';
-import Utils from '@/uni_modules/sky-nutui/components/sky-nutui/packages/utils/date';
-import { useTranslate } from '@/uni_modules/sky-nutui/components/sky-nutui/sites/assets/util/useTranslate';
+import { createComponent } from '../../utils/create';
+import Utils from '../../utils/date';
+import { useTranslate } from '../../../sites/assets/util/useTranslate';
 
 const { createDemo, translate } = createComponent('calendar');
 const initTranslate = () =>

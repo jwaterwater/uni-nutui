@@ -32,10 +32,10 @@
 
 <script lang="ts">
 import { reactive } from 'vue';
-import { createComponent } from '@/uni_modules/sky-nutui/components/sky-nutui/packages/utils/create';
-import { useTranslate } from '@/uni_modules/sky-nutui/components/sky-nutui/sites/assets/util/useTranslate';
+import { createComponent } from '../../utils/create';
+import { useTranslate } from '../../../sites/assets/util/useTranslate';
 const { createDemo, translate } = createComponent('rate');
-import { Toast } from '@/uni_modules/sky-nutui/components/sky-nutui/packages/nutui.js';
+import { Toast } from '../../nutui.js';
 const initTranslate = () =>
   useTranslate({
     'zh-CN': {

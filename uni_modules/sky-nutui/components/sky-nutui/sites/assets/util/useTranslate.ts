@@ -1,4 +1,4 @@
-import Locale from '@/uni_modules/sky-nutui/components/sky-nutui/packages/locale';
+import Locale from '../../../packages/locale'
 export const currentLang = Locale.currentLang;
 export const useTranslate = (object: Record<string, any>) => {
   for (const [key, value] of Object.entries(object)) {

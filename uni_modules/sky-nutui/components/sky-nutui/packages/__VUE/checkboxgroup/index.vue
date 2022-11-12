@@ -5,8 +5,8 @@
 </template>
 <script lang="ts">
 import { h, watch, provide, computed, ComponentInternalInstance, reactive, ComponentPublicInstance } from 'vue';
-import { createComponent } from '@/uni_modules/sky-nutui/components/sky-nutui/packages/utils/create';
-import { useExpose } from '@/uni_modules/sky-nutui/components/sky-nutui/packages/utils/useExpose/index';
+import { createComponent } from '../../utils/create';
+import { useExpose } from '../../utils/useExpose/index';
 const { create, componentName } = createComponent('checkboxgroup');
 
 export default create({

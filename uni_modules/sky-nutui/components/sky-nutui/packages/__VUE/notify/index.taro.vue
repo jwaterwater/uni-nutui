@@ -15,7 +15,7 @@
 </template>
 <script lang="ts">
 import { watch } from 'vue';
-import { createComponent } from '@/uni_modules/sky-nutui/components/sky-nutui/packages/utils/create';
+import { createComponent } from '../../utils/create';
 import Popup from '../popup/index.taro.vue';
 const { componentName, create } = createComponent('notify');
 

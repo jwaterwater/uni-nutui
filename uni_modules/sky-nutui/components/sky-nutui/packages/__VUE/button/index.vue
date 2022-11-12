@@ -17,7 +17,7 @@
 
 <script lang="ts">
 import { PropType, CSSProperties, toRefs, computed } from 'vue';
-import { createComponent } from '@/uni_modules/sky-nutui/components/sky-nutui/packages/utils/create';
+import { createComponent } from '../../utils/create';
 import Icon from '../icon/index.vue';
 const { componentName, create } = createComponent('button');
 export default create({
@@ -56,7 +56,7 @@ export default create({
     },
     height: {
       type: String,
-      default: 'auto'
+      default: ''
     },
     icon: {
       type: String,

@@ -86,10 +86,10 @@
 
 <script lang="ts">
 import { reactive, computed } from 'vue';
-import { createComponent } from '@/uni_modules/sky-nutui/components/sky-nutui/packages/utils/create';
+import { createComponent } from '../../utils/create';
 const { createDemo, translate } = createComponent('tabs');
 
-import { useTranslate } from '@/uni_modules/sky-nutui/components/sky-nutui/sites/assets/util/useTranslate';
+import { useTranslate } from '../../../sites/assets/util/useTranslate';
 const initTranslate = () =>
   useTranslate({
     'zh-CN': {
@@ -172,5 +172,5 @@ export default createDemo({
 </script>
 
 <style lang="scss">
-    @import '@/uni_modules/sky-nutui/components/sky-nutui/packages/__VUE/tabs/index.scss'
+    @import '../../__VUE/tabs/index.scss'
 </style>

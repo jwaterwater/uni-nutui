@@ -72,7 +72,7 @@ import SkuHeader from './components/SkuHeader.vue';
 import SkuSelect from './components/SkuSelect.vue';
 import SkuStepper from './components/SkuStepper.vue';
 import SkuOperate from './components/SkuOperate.vue';
-import { createComponent } from '@/uni_modules/sky-nutui/components/sky-nutui/packages/utils/create';
+import { createComponent } from '../../utils/create';
 import { popupProps } from '../popup/props';
 const { componentName, create, translate } = createComponent('sku');
 const {  translate : translateHeader } = createComponent('sku-header');

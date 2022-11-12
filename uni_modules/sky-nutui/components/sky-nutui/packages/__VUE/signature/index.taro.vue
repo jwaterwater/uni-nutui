@@ -21,7 +21,7 @@
 <script lang="ts">
 import Taro, { eventCenter, getCurrentInstance as getCurrentInstanceTaro } from '@tarojs/taro';
 import { ref, reactive, onMounted, computed } from 'vue';
-import { createComponent } from '@/uni_modules/sky-nutui/components/sky-nutui/packages/utils/create';
+import { createComponent } from '../../utils/create';
 const { componentName, create, translate } = createComponent('signature');
 
 export default create({

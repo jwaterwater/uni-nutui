@@ -6,7 +6,7 @@
 
 <script lang="ts">
 import { provide, reactive, watch } from 'vue';
-import { createComponent } from '@/uni_modules/sky-nutui/components/sky-nutui/packages/utils/create';
+import { createComponent } from '../../utils/create';
 const { create } = createComponent('tabbar');
 export default create({
   props: {

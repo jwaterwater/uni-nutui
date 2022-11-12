@@ -30,7 +30,7 @@
 </template>
 <script lang="ts">
 import { watch, ref, Ref, computed } from 'vue';
-import { createComponent } from '@/uni_modules/sky-nutui/components/sky-nutui/packages/utils/create';
+import { createComponent } from '../../utils/create';
 const { create, translate } = createComponent('cascader-item');
 import { convertListToOptions } from './helper';
 import { CascaderPane, CascaderOption, CascaderValue, convertConfig } from './types';

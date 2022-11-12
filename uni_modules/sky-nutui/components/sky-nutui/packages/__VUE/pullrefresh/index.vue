@@ -25,7 +25,7 @@
 
 <script lang="ts">
 import { ref, toRefs, reactive, onMounted, computed, CSSProperties } from 'vue';
-import { createComponent } from '@/uni_modules/sky-nutui/components/sky-nutui/packages/utils/create';
+import { createComponent } from '../../utils/create';
 import { useTouch } from './use-touch';
 import { preventDefault } from './util';
 const { componentName, create } = createComponent('pullrefresh');

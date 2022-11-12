@@ -58,8 +58,8 @@
 </template>
 <script lang="ts">
 import { computed, reactive, ref, toRefs, watch, nextTick, onMounted } from 'vue';
-import { createComponent } from '@/uni_modules/sky-nutui/components/sky-nutui/packages/utils/create';
-import { throttle } from '@/uni_modules/sky-nutui/components/sky-nutui/packages/utils/throttle.js';
+import { createComponent } from '../../utils/create';
+import { throttle } from '../../utils/throttle.js';
 const { create, translate } = createComponent('video');
 
 export default create({

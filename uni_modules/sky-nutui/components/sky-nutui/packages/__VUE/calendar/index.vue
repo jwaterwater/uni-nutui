@@ -86,11 +86,11 @@
 </template>
 <script lang="ts">
 import { PropType, ref, computed } from 'vue';
-import { createComponent } from '@/uni_modules/sky-nutui/components/sky-nutui/packages/utils/create';
+import { createComponent } from '../../utils/create';
 const { create } = createComponent('calendar');
 import CalendarItem from '../calendaritem/index.vue';
-import Utils from '@/uni_modules/sky-nutui/components/sky-nutui/packages/utils/date';
-import { useExpose } from '@/uni_modules/sky-nutui/components/sky-nutui/packages/utils/useExpose/index';
+import Utils from '../../utils/date';
+import { useExpose } from '../../utils/useExpose/index';
 
 type InputDate = string | string[];
 export default create({

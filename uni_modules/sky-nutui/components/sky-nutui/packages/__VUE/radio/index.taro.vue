@@ -1,7 +1,7 @@
 <script lang="ts">
 import { computed, h, inject } from 'vue';
 import nutIcon from '../icon/index.taro.vue';
-import { createComponent } from '@/uni_modules/sky-nutui/components/sky-nutui/packages/utils/create';
+import { createComponent } from '../../utils/create';
 const { componentName, create } = createComponent('radio');
 
 export default create({

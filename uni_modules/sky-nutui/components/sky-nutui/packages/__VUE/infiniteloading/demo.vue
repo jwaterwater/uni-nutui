@@ -47,9 +47,9 @@
 
 <script lang="ts">
 import { onMounted, ref, reactive, toRefs, getCurrentInstance } from 'vue';
-import { createComponent } from '@/uni_modules/sky-nutui/components/sky-nutui/packages/utils/create';
+import { createComponent } from '../../utils/create';
 const { createDemo, translate } = createComponent('infiniteloading');
-import { useTranslate } from '@/uni_modules/sky-nutui/components/sky-nutui/sites/assets/util/useTranslate';
+import { useTranslate } from '../../../sites/assets/util/useTranslate';
 
 const initTranslate = () =>
   useTranslate({

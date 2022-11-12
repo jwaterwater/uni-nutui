@@ -1,7 +1,7 @@
 import { computed, Ref, ref } from 'vue';
-import { createComponent } from '@/uni_modules/sky-nutui/components/sky-nutui/packages/utils/create';
-import { pxCheck } from '@/uni_modules/sky-nutui/components/sky-nutui/packages/utils/pxCheck';
-import { useTouch } from '@/uni_modules/sky-nutui/components/sky-nutui/packages/utils/useTouch';
+import { createComponent } from '../../utils/create';
+import { pxCheck } from '../../utils/pxCheck';
+import { useTouch } from '../../utils/useTouch';
 const { componentName } = createComponent('rate');
 const useComponent = (touchable: Boolean = true) => {
   return {
@@ -133,7 +133,7 @@ const useComponent = (touchable: Boolean = true) => {
   };
 };
 
-// import { useTaroRect } from '@/uni_modules/sky-nutui/components/sky-nutui/packages/utils/useTaroRect';
+// import { useTaroRect } from '../../utils/useTaroRect';
 // const getScoreByPositionTaro = async (x: number, rateRefs: Ref<HTMLElement[]>, allowHalf: boolean) => {
 //     let v = 0;
 //     for (let index = rateRefs.value.length - 1; index >= 0; index--) {

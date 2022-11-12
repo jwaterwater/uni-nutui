@@ -5,7 +5,7 @@
 </template>
 <script lang="ts">
 import { computed, inject } from 'vue';
-import { createComponent } from '@/uni_modules/sky-nutui/components/sky-nutui/packages/utils/create';
+import { createComponent } from '../../utils/create';
 const { componentName, create } = createComponent('col');
 
 export default create({

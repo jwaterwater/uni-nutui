@@ -24,7 +24,7 @@
 </template>
 <script lang="ts">
 import { reactive, provide, computed, ref } from 'vue';
-import { createComponent } from '@/uni_modules/sky-nutui/components/sky-nutui/packages/utils/create';
+import { createComponent } from '../../utils/create';
 import Taro, { usePageScroll } from '@tarojs/taro';
 const { componentName, create } = createComponent('menu');
 export default create({

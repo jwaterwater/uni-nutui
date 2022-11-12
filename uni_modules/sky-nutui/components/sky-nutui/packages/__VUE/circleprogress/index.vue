@@ -10,7 +10,7 @@
 
 <script lang="ts">
 import { computed, ref, watch, useSlots } from 'vue';
-import { createComponent } from '@/uni_modules/sky-nutui/components/sky-nutui/packages/utils/create';
+import { createComponent } from '../../utils/create';
 const { componentName, create } = createComponent('circleprogress');
 interface Item {
   key?: string;

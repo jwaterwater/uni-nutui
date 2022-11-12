@@ -133,7 +133,7 @@
 <script lang="ts">
 import { reactive, ref, toRefs, watch, computed, onMounted,getCurrentInstance } from 'vue';
 import { popupProps } from '../popup/props';
-import { createComponent } from '@/uni_modules/sky-nutui/components/sky-nutui/packages/utils/create';
+import { createComponent } from '../../utils/create';
 
 
 const { create, componentName, translate } = createComponent('address');

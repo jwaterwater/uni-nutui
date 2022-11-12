@@ -7,7 +7,7 @@
 
 <script lang="ts">
 import { PropType, CSSProperties, computed, toRefs } from 'vue';
-import { createComponent } from '@/uni_modules/sky-nutui/components/sky-nutui/packages/utils/create';
+import { createComponent } from '../../utils/create';
 const { componentName, create } = createComponent('tag');
 
 export type TagType = 'primary' | 'success' | 'danger' | 'warning';

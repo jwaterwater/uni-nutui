@@ -6,7 +6,7 @@
   </form>
 </template>
 <script lang="ts">
-import { createComponent } from '@/uni_modules/sky-nutui/components/sky-nutui/packages/utils/create';
+import { createComponent } from '../../utils/create';
 const { create } = createComponent('form');
 import { component } from './common';
 export default create(component);

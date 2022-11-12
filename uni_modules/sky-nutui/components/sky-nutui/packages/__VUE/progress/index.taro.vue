@@ -48,7 +48,7 @@
 
 <script lang="ts">
 import { computed, onMounted, useSlots, ref, watch } from 'vue';
-import { createComponent } from '@/uni_modules/sky-nutui/components/sky-nutui/packages/utils/create';
+import { createComponent } from '../../utils/create';
 import Taro, { eventCenter, getCurrentInstance } from '@tarojs/taro';
 import { log } from 'lzutf8';
 const { create } = createComponent('progress');

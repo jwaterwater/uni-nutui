@@ -31,7 +31,7 @@
 <script lang="ts">
 import { watch, ref, Ref, computed } from 'vue';
 import { CascaderValue, CascaderOption } from './types';
-import { createComponent } from '@/uni_modules/sky-nutui/components/sky-nutui/packages/utils/create';
+import { createComponent } from '../../utils/create';
 import { popupProps } from '../popup/index.vue';
 const { create } = createComponent('cascader');
 import CascaderItem from './cascader-item.vue';

@@ -152,10 +152,10 @@
 </template>
 <script lang="ts">
 import { toRefs, ref, onMounted, reactive, computed } from 'vue';
-import { createComponent } from '@/uni_modules/sky-nutui/components/sky-nutui/packages/utils/create';
+import { createComponent } from '../../utils/create';
 import { PickerOption } from './types';
 const { createDemo, translate } = createComponent('picker');
-import { useTranslate } from '@/uni_modules/sky-nutui/components/sky-nutui/sites/assets/util/useTranslate';
+import { useTranslate } from '../../../sites/assets/util/useTranslate';
 import { Internation } from './doc.en';
 
 useTranslate(Internation);

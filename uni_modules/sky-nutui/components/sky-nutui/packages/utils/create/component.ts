@@ -7,7 +7,7 @@ import {
   RenderFunction,
   Component
 } from 'vue';
-import locale from '@/uni_modules/sky-nutui/components/sky-nutui/packages/locale';
+import locale from '../../locale';
 import { getPropByPath, isFunction } from '../util';
 export function createComponent(name: string) {
   const componentName = 'nut-' + name;

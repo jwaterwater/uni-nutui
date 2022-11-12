@@ -67,8 +67,8 @@ import {
   VNode
 } from 'vue';
 import Taro, { eventCenter, getCurrentInstance as getCurrentInstanceTaro } from '@tarojs/taro';
-import { createComponent } from '@/uni_modules/sky-nutui/components/sky-nutui/packages/utils/create';
-import { useTaroRect } from '@/uni_modules/sky-nutui/components/sky-nutui/packages/utils/useTaroRect';
+import { createComponent } from '../../utils/create';
+import { useTaroRect } from '../../utils/useTaroRect';
 const { create, componentName } = createComponent('collapse-item');
 
 export default create({

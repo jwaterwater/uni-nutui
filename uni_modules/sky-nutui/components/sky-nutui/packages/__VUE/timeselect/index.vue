@@ -30,7 +30,7 @@
 </template>
 <script lang="ts">
 import { computed, provide } from 'vue';
-import { createComponent } from '@/uni_modules/sky-nutui/components/sky-nutui/packages/utils/create';
+import { createComponent } from '../../utils/create';
 const { componentName, create, translate } = createComponent('timeselect');
 export default create({
   props: {

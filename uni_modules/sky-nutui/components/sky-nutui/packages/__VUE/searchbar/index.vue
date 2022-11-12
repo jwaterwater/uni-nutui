@@ -50,7 +50,7 @@
 
 <script lang="ts">
 import { toRefs, reactive, computed, onMounted, ref } from 'vue';
-import { createComponent } from '@/uni_modules/sky-nutui/components/sky-nutui/packages/utils/create';
+import { createComponent } from '../../utils/create';
 import { nextTick } from '@tarojs/taro';
 const { create, translate } = createComponent('searchbar');
 interface Events {

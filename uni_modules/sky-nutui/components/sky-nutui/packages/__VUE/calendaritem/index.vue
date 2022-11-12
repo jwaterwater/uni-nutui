@@ -66,11 +66,11 @@
 </template>
 <script lang="ts">
 import { PropType, reactive, ref, watch, toRefs, computed, onMounted, nextTick, getCurrentInstance } from 'vue';
-import { createComponent } from '@/uni_modules/sky-nutui/components/sky-nutui/packages/utils/create';
+import { createComponent } from '../../utils/create';
 const { create, translate } = createComponent('calendar-item');
 
-import Utils from '@/uni_modules/sky-nutui/components/sky-nutui/packages/utils/date';
-import { useExpose } from '@/uni_modules/sky-nutui/components/sky-nutui/packages/utils/useExpose/index';
+import Utils from '../../utils/date';
+import { useExpose } from '../../utils/useExpose/index';
 
 type InputDate = string | string[];
 interface CalendarState {

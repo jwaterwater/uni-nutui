@@ -20,9 +20,9 @@
   </nut-cell>
 </template>
 <script lang="ts">
-import { pxCheck } from '@/uni_modules/sky-nutui/components/sky-nutui/packages/utils/pxCheck';
+import { pxCheck } from '../../utils/pxCheck';
 import { computed, inject, provide, PropType, ref, CSSProperties,getCurrentInstance } from 'vue';
-import { createComponent } from '@/uni_modules/sky-nutui/components/sky-nutui/packages/utils/create';
+import { createComponent } from '../../utils/create';
 const { componentName, create } = createComponent('form-item');
 export default create({
   inheritAttrs: false,

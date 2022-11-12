@@ -53,7 +53,7 @@ import {
   toRaw,
   toRefs
 } from 'vue';
-import { createComponent } from '@/uni_modules/sky-nutui/components/sky-nutui/packages/utils/create';
+import { createComponent } from '../../utils/create';
 import column from './Column.vue';
 import popup, { popupProps } from '../popup/index.vue';
 import { commonProps } from './commonProps';

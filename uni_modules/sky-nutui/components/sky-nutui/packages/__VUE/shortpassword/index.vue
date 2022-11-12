@@ -51,7 +51,7 @@
 </template>
 <script lang="ts">
 import { ref, computed, watch, onMounted } from 'vue';
-import { createComponent } from '@/uni_modules/sky-nutui/components/sky-nutui/packages/utils/create';
+import { createComponent } from '../../utils/create';
 const { create, translate } = createComponent('shortpassword');
 export default create({
   props: {

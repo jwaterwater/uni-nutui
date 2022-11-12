@@ -22,7 +22,7 @@ import { toRefs, watch, computed, reactive, onBeforeMount } from 'vue';
 import type { PropType } from 'vue';
 import nutPicker from '../picker/index.taro.vue';
 import { popupProps } from '../popup/index.vue';
-import { createComponent } from '@/uni_modules/sky-nutui/components/sky-nutui/packages/utils/create';
+import { createComponent } from '../../utils/create';
 import { padZero } from './utils';
 const { componentName, create } = createComponent('datepicker');
 

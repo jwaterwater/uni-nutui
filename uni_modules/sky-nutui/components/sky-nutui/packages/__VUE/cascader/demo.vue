@@ -129,9 +129,9 @@
 
 <script lang="ts">
 import { onMounted, reactive, watch } from 'vue';
-import { createComponent } from '@/uni_modules/sky-nutui/components/sky-nutui/packages/utils/create';
+import { createComponent } from '../../utils/create';
 const { createDemo, translate } = createComponent('cascader');
-import { useTranslate } from '@/uni_modules/sky-nutui/components/sky-nutui/sites/assets/util/useTranslate';
+import { useTranslate } from '../../../sites/assets/util/useTranslate';
 const initTranslate = () =>
   useTranslate({
     'zh-CN': {
@@ -347,5 +347,5 @@ export default createDemo({
 });
 </script>
 <style lang="scss">
-    @import '@/uni_modules/sky-nutui/components/sky-nutui/packages/__VUE/cascader/index.scss'
+    @import '../../__VUE/cascader/index.scss'
 </style>

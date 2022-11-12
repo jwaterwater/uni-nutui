@@ -79,7 +79,7 @@ import {
   watch,
   h
 } from 'vue';
-import { createComponent } from '@/uni_modules/sky-nutui/components/sky-nutui/packages/utils/create';
+import { createComponent } from '../../utils/create';
 const { componentName, create } = createComponent('noticebar');
 import Taro from '@tarojs/taro';
 

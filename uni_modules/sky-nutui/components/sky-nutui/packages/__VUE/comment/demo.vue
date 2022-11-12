@@ -63,8 +63,8 @@
 </template>
 <script lang="ts">
 import { onMounted, ref } from '@vue/runtime-core';
-import { createComponent } from '@/uni_modules/sky-nutui/components/sky-nutui/packages/utils/create';
-import { useTranslate } from '@/uni_modules/sky-nutui/components/sky-nutui/sites/assets/util/useTranslate';
+import { createComponent } from '../../utils/create';
+import { useTranslate } from '../../../sites/assets/util/useTranslate';
 const { createDemo, translate } = createComponent('comment');
 
 const initTranslate = () =>

@@ -57,7 +57,7 @@
 </template>
 
 <script lang="ts">
-import { useTranslate, currentLang } from '@/uni_modules/sky-nutui/components/sky-nutui/sites/assets/util/useTranslate';
+import { useTranslate, currentLang } from '../../../sites/assets/util/useTranslate';
 const initTranslate = () =>
   useTranslate({
     'zh-CN': {
@@ -73,9 +73,9 @@ const initTranslate = () =>
       iconSize: 'Icon Size'
     }
   });
-// import icons from '@/uni_modules/sky-nutui/components/sky-nutui/packages/styles/font/iconfont.json';
-import icons from '@/uni_modules/sky-nutui/components/sky-nutui/packages/styles/font/config.json';
-import { createComponent } from '@/uni_modules/sky-nutui/components/sky-nutui/packages/utils/create';
+// import icons from '../../styles/font/iconfont.json';
+import icons from '../../styles/font/config.json';
+import { createComponent } from '../../utils/create';
 const { createDemo, translate } = createComponent('icon');
 export default createDemo({
   props: {},

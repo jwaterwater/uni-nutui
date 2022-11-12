@@ -47,7 +47,7 @@
 </template>
 <script lang="ts">
 import { ref, onMounted, onBeforeUnmount, reactive, watch, computed, toRaw, toRefs, PropType } from 'vue';
-import { createComponent } from '@/uni_modules/sky-nutui/components/sky-nutui/packages/utils/create';
+import { createComponent } from '../../utils/create';
 import popup from '../popup/index.vue';
 import { popupProps } from '../popup/props'
 import column from './Column.vue';

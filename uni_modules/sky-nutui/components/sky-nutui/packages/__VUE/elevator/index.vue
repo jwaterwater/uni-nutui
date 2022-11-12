@@ -54,8 +54,8 @@
 </template>
 <script lang="ts">
 import { computed, reactive, toRefs, nextTick, ref, Ref, watch,getCurrentInstance } from 'vue';
-import { createComponent } from '@/uni_modules/sky-nutui/components/sky-nutui/packages/utils/create';
-import { useExpose } from '@/uni_modules/sky-nutui/components/sky-nutui/packages/utils/useExpose/index';
+import { createComponent } from '../../utils/create';
+import { useExpose } from '../../utils/useExpose/index';
 const { componentName, create } = createComponent('elevator');
 interface ElevatorData {
   name: string;

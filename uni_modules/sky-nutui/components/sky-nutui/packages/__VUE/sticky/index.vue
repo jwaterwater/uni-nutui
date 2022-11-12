@@ -1,7 +1,7 @@
 <script lang="ts">
 import { reactive, computed, h, onMounted, onUnmounted, ref, Ref, unref, PropType, watch, CSSProperties } from 'vue';
-import { createComponent } from '@/uni_modules/sky-nutui/components/sky-nutui/packages/utils/create';
-import { useRect } from '@/uni_modules/sky-nutui/components/sky-nutui/packages/utils/useRect';
+import { createComponent } from '../../utils/create';
+import { useRect } from '../../utils/useRect';
 const { componentName, create } = createComponent('sticky');
 import { onPageScroll } from '@dcloudio/uni-app'
 export default create({

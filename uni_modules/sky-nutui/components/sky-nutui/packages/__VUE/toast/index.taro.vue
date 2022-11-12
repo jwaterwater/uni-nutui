@@ -34,7 +34,7 @@
 </template>
 <script lang="ts">
 import { computed, watch } from 'vue';
-import { createComponent } from '@/uni_modules/sky-nutui/components/sky-nutui/packages/utils/create';
+import { createComponent } from '../../utils/create';
 const { create } = createComponent('toast');
 import Icon from '../icon/index.taro.vue';
 export default create({
