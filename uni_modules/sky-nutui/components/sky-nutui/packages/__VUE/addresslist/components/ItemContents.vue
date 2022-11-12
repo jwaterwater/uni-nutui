@@ -26,7 +26,7 @@
 </template>
 <script lang="ts">
 import { toRefs, reactive, onMounted, ref, watch } from 'vue';
-import { createComponent } from '../../utils/create';
+import { createComponent } from '../../../utils/create';
 const { componentName, create } = createComponent('item-contents');
 const { translate } = createComponent('addresslist');
 
