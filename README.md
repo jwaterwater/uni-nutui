@@ -1,4 +1,5 @@
 
+
 # 项目介绍
 ##### [NutUI](https://nutui.jd.com/#/zh-CN/component/button "NutUI")是京东官方开发维护的一套京东风格的Vue组件库,是为[Taro](https://taro-docs.jd.com/taro/docs/ "Taro")工具设计的(Taro是类似于Uni-app的多端工具)
 
@@ -90,7 +91,27 @@ npm i uni-nutui
       }
 }
 ```
-#### 4) 接下来就可以愉快的使用组件了
+
+#### 4) 项目根目录创建文件 vue.config.js
+```js
+module.exports = {
+    transpileDependencies: ['uni-nutui']
+}
+```
+
+
+```json
+"easycom": {
+      "autoscan": true,
+      "custom": {
+        "nut-(.*)?-(.*)": "uni-nutui/components/sky-nutui/packages/__VUE/$1$2/index.vue",
+        "nut-(.*)": "uni-nutui/components/sky-nutui/packages/__VUE/$1/index.vue"
+      }
+}
+```
+
+
+#### 5) 接下来就可以愉快的使用组件了
 ```html
 <template>
   <nut-button type="primary">主要按钮</nut-button>
