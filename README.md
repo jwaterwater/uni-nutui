@@ -39,11 +39,11 @@ Android
 
 ```json
 "easycom": {
-      "autoscan": true,
-      "custom": {
-        "nut-(.*)?-(.*)": "@/uni_modules/sky-nutui/components/sky-nutui/packages/__VUE/$1$2/index.vue",
-        "nut-(.*)": "@/uni_modules/sky-nutui/components/sky-nutui/packages/__VUE/$1/index.vue"
-      }
+    "autoscan": true,
+    "custom": {
+        "nut-(.*)?-(.*)": "uni-nutui/components/sky-nutui/packages/__VUE/$1$2/index.vue",
+        "nut-(.*)": "uni-nutui/components/sky-nutui/packages/__VUE/$1/index.vue"
+    }
 }
 ```
 #### 4) 接下来就可以愉快的使用组件了
