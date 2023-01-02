@@ -211,7 +211,6 @@ export default create({
     };
 
     const close = () => {
-        console.log('close','pupup')
       lockPage(false)
       visibleLocal.value = false
       setTimeout(()=>{

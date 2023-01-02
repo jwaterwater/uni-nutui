@@ -69,30 +69,30 @@ Android
 ```bash
 npm i uni-nutui
 ```
-#### 1) 在uni.scss文件引入variables.scss,全局样式变量,可以自定义主题颜色
+#### 2) 在uni.scss文件引入variables.scss,全局样式变量,可以自定义主题颜色
 ```css
 @import 'uni-nutui/components/sky-nutui/packages/styles/variables.scss';
 ```
-#### 2) App.vue文件引入app.scss,包含一些需要全局覆盖的样式
+#### 3) App.vue文件引入app.scss,包含一些需要全局覆盖的样式
 ```css
 <style lang="scss">
     @import 'uni-nutui/components/sky-nutui/app.scss'
 </style>
 ```
-#### 3) 配置easycom自动引入,在package.json加入
+#### 4) 配置easycom自动引入,在package.json加入
 
 
 ```json
 "easycom": {
-      "autoscan": true,
-      "custom": {
-        "nut-(.*)?-(.*)": "uni-nutui/components/sky-nutui/packages/__VUE/$1$2/index.vue",
-        "nut-(.*)": "uni-nutui/components/sky-nutui/packages/__VUE/$1/index.vue"
-      }
+    "autoscan": true,
+    "custom": {
+        "nut-(.*)?-(.*)": "uni-nutui/components/sky-nutui/packages/__VUE/$1$2/index.vue",
+        "nut-(.*)": "uni-nutui/components/sky-nutui/packages/__VUE/$1/index.vue"
+    }
 }
 ```
 
-#### 4) 项目根目录创建文件 vue.config.js
+#### 5) 项目根目录创建文件 vue.config.js
 ```js
 module.exports = {
     transpileDependencies: ['uni-nutui']
@@ -100,18 +100,8 @@ module.exports = {
 ```
 
 
-```json
-"easycom": {
-      "autoscan": true,
-      "custom": {
-        "nut-(.*)?-(.*)": "uni-nutui/components/sky-nutui/packages/__VUE/$1$2/index.vue",
-        "nut-(.*)": "uni-nutui/components/sky-nutui/packages/__VUE/$1/index.vue"
-      }
-}
-```
 
-
-#### 5) 接下来就可以愉快的使用组件了
+#### 6) 接下来就可以愉快的使用组件了
 ```html
 <template>
   <nut-button type="primary">主要按钮</nut-button>
