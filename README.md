@@ -23,6 +23,23 @@ H5
 ![](https://cdn.haokui.top/chick/1/20220909/223445daa1bff63c05a320c23c2e44d4.png?imageView2/1/w/200/h/200)
 Android
 ![](https://cdn.1s1s.vip/nutui/download.png?imageView2/1/w/200/h/200)
+
+
+## 以下是暂未支持的组件
+Elevator 电梯楼层
+Indicator 指示器
+SideNavBar 侧边栏导航
+TextArea 文本域
+BackTop 返回顶部
+Collapse 折叠面板
+CountUp 数字滚动
+Swiper 轮播  建议使用uniapp自带组件替换
+AddressList 地址列表
+InfiniteLoading 滚动加载  建议使用onReachBottom和onPullDownRefresh替代
+Notify 消息通知 (动态调用模式) uniapp无法操作dom
+Toast 吐司 使用uni.showToast替代
+
+
 ## Hbuilder开发使用流程
 #### 1) 在uni.scss文件引入variables.scss,全局样式变量,可以自定义主题颜色
 ```css
