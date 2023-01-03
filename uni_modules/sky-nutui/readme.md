@@ -26,18 +26,18 @@ Android
 
 
 ## 以下是暂未支持的组件
-Elevator 电梯楼层
-Indicator 指示器
-SideNavBar 侧边栏导航
-TextArea 文本域
-BackTop 返回顶部
-Collapse 折叠面板
-CountUp 数字滚动
-Swiper 轮播  建议使用uniapp自带组件替换
-AddressList 地址列表
-InfiniteLoading 滚动加载  建议使用onReachBottom和onPullDownRefresh替代
-Notify 消息通知 (动态调用模式) uniapp无法操作dom
-Toast 吐司 使用uni.showToast替代
+Elevator 电梯楼层<br>
+Indicator 指示器<br>
+SideNavBar 侧边栏导航<br>
+TextArea 文本域<br>
+BackTop 返回顶部<br>
+Collapse 折叠面板<br>
+CountUp 数字滚动<br>
+Swiper 轮播  建议使用uniapp自带组件替换<br>
+AddressList 地址列表<br>
+InfiniteLoading 滚动加载  建议使用onReachBottom和onPullDownRefresh替代<br>
+Notify 消息通知 (动态调用模式) uniapp无法操作dom<br>
+Toast 吐司 使用uni.showToast替代<br>
 
 
 
