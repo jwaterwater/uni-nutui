@@ -17,13 +17,16 @@
 
 
 # 演示
-微信小程序
-![](https://cdn.haokui.top/chick/1/20220905/f50d2cbc858f072d479d79742917c226.jpg?imageView2/1/w/200/h/200)
-H5
-![](https://cdn.haokui.top/chick/1/20220909/223445daa1bff63c05a320c23c2e44d4.png?imageView2/1/w/200/h/200)
-Android
-![](https://cdn.1s1s.vip/nutui/download.png?imageView2/1/w/200/h/200)
+微信小程序<br>
+![](https://cdn.haokui.top/chick/1/20220905/f50d2cbc858f072d479d79742917c226.jpg?imageView2/1/w/200/h/200)<br>
 
+H5<br>
+![](https://cdn.haokui.top/chick/1/20220909/223445daa1bff63c05a320c23c2e44d4.png?imageView2/1/w/200/h/200)<br>
+
+Android<br>
+![](https://cdn.1s1s.vip/nutui/download.png?imageView2/1/w/200/h/200)<br>
+IOS上架真实项目<br>
+![](https://cdn.haokui.top/chick/1/20230116/e8018e43126eebf1a7dfcde761e67deb.png?imageView2/1/w/200/h/200)<br>
 
 ## 以下是暂未支持的组件
 Elevator 电梯楼层<br>
@@ -40,7 +43,6 @@ Notify 消息通知 (动态调用模式) uniapp无法操作dom<br>
 Toast 吐司 使用uni.showToast替代<br>
 
 
-
 ## Hbuilder开发使用流程
 #### 1) 在uni.scss文件引入variables.scss,全局样式变量,可以自定义主题颜色
 ```css
@@ -52,16 +54,16 @@ Toast 吐司 使用uni.showToast替代<br>
     @import '@/uni_modules/sky-nutui/components/sky-nutui/app.scss';
 </style>
 ```
-#### 3) 配置easycom自动引入,在package.json加入
+#### 3) 配置easycom自动引入,在pages.json加入
 
 
 ```json
 "easycom": {
-      "autoscan": true,
-      "custom": {
-        "nut-(.*)?-(.*)": "@/uni_modules/sky-nutui/components/sky-nutui/packages/__VUE/$1$2/index.vue",
-        "nut-(.*)": "@/uni_modules/sky-nutui/components/sky-nutui/packages/__VUE/$1/index.vue"
-      }
+    "autoscan": true,
+    "custom": {
+        "nut-(.*)?-(.*)": "uni-nutui/components/sky-nutui/packages/__VUE/$1$2/index.vue",
+        "nut-(.*)": "uni-nutui/components/sky-nutui/packages/__VUE/$1/index.vue"
+    }
 }
 ```
 #### 4) 接下来就可以愉快的使用组件了
@@ -97,7 +99,7 @@ npm i uni-nutui
     @import 'uni-nutui/components/sky-nutui/app.scss'
 </style>
 ```
-#### 4) 配置easycom自动引入,在package.json加入
+#### 4) 配置easycom自动引入,在pages.json加入
 
 
 ```json
