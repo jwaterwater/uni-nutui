@@ -51,6 +51,6 @@ export default create({
   }
 });
 </script>
-<style lang="scss">
+<style lang="scss" :scoped="false">
 @import './index.scss'
 </style>

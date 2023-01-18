@@ -81,6 +81,10 @@ export default create({
       default: 'nutui-iconfont'
     }
   },
+  options: {
+      virtualHost : true,
+      addGlobalClass: true
+  },
   setup(props, { emit, slots }) {
     let parent: any = inject('parent', null);
 
