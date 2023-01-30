@@ -1,3 +1,20 @@
+.nut-theme-dark {
+  .nut-cell-group {
+      &__warp {
+        background-color: $dark-background2;
+        .nut-cell {
+          margin: 0;
+          box-shadow: none !important;
+          border-radius: 0;
+        }
+      }
+      .nut-cell {
+        &::after {
+          border-bottom: 1px solid $dark-background3 !important;
+        }
+      }
+  }
+}
 .nut-cell-group {
   display: block;
   &__title {
