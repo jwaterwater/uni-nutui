@@ -1,5 +1,6 @@
 
 
+
 # 项目介绍
 ##### [NutUI](https://nutui.jd.com/#/zh-CN/component/button "NutUI")是京东官方开发维护的一套京东风格的Vue组件库,是为[Taro](https://taro-docs.jd.com/taro/docs/ "Taro")工具设计的(Taro是类似于Uni-app的多端工具)
 
@@ -17,16 +18,31 @@
 
 
 # 演示
-微信小程序<br>
-![](https://cdn.haokui.top/chick/1/20220905/f50d2cbc858f072d479d79742917c226.jpg?imageView2/1/w/200/h/200)<br>
+<div style="display:flex;text-align:center;">
 
-H5<br>
+
+<div>
+![](https://cdn.haokui.top/chick/1/20230201/9a2e13da6111edda5f383becc0973081.jpg?imageView2/1/w/200/h/200)<br>
+<h4>微信小程序</h4>
+</div>
+
+<div>
 ![](https://cdn.haokui.top/chick/1/20220909/223445daa1bff63c05a320c23c2e44d4.png?imageView2/1/w/200/h/200)<br>
+<h4>H5</h4>
+</div>
 
-Android<br>
+<div>
 ![](https://cdn.1s1s.vip/nutui/download.png?imageView2/1/w/200/h/200)<br>
-IOS上架真实项目<br>
-![](https://cdn.haokui.top/chick/1/20230116/e8018e43126eebf1a7dfcde761e67deb.png?imageView2/1/w/200/h/200)<br>
+<h4>Android</h4>
+</div>
+
+<div>
+![](https://cdn.haokui.top/chick/1/20230201/e8018e43126eebf1a7dfcde761e67deb.png?imageView2/1/w/200/h/200)<br>
+<h4>IOS/Android上架项目</h4>
+</div>
+
+
+</div>
 
 ## 以下是暂未支持的组件
 Elevator 电梯楼层<br>
@@ -36,7 +52,7 @@ TextArea 文本域<br>
 BackTop 返回顶部<br>
 Collapse 折叠面板<br>
 CountUp 数字滚动<br>
-Swiper 轮播  建议使用uniapp自带组件替换<br>
+Swiper 轮播  建议使用uniapp自带组件替代<br>
 AddressList 地址列表<br>
 InfiniteLoading 滚动加载  建议使用onReachBottom和onPullDownRefresh替代<br>
 Notify 消息通知 (动态调用模式) uniapp无法操作dom<br>
@@ -146,7 +162,7 @@ module.exports = {
 
 
 ## 交流群
-![](https://cdn.1s1s.vip/nutui/contact_me_qr.png)
+![](https://cdn.1s1s.vip/nutui/contact_me_qr.png?imageView2/1/w/200/h/200)
 
 
 

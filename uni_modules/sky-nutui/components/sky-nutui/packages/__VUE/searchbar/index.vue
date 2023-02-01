@@ -137,8 +137,8 @@ export default create({
       };
     });
 
-    const valueChange = (event: Event) => {
-      const input = event.target as HTMLInputElement;
+    const valueChange = (event: any) => {
+      const input = event.detail;
       let val = input.value;
 
       if (props.maxLength && val.length > Number(props.maxLength)) {
@@ -155,12 +155,12 @@ export default create({
       emit('focus', value, event);
     };
 
-    const valueBlur = (event: Event) => {
+    const valueBlur = (event: any) => {
       setTimeout(() => {
         state.active = false;
       }, 0);
 
-      const input = event.target as HTMLInputElement;
+      const input = event.detail;
       let value = input.value;
       if (props.maxLength && value.length > Number(props.maxLength)) {
         value = value.slice(0, Number(props.maxLength));
