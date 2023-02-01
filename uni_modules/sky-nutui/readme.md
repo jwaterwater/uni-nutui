@@ -22,22 +22,22 @@
 
 
 <div>
-![](https://cdn.haokui.top/chick/1/20230201/9a2e13da6111edda5f383becc0973081.jpg?imageView2/1/w/200/h/200)<br>
+<img src="https://cdn.haokui.top/chick/1/20230201/9a2e13da6111edda5f383becc0973081.jpg?imageView2/1/w/200/h/200"/>
 <h4>微信小程序</h4>
 </div>
 
 <div>
-![](https://cdn.haokui.top/chick/1/20220909/223445daa1bff63c05a320c23c2e44d4.png?imageView2/1/w/200/h/200)<br>
+<img src="https://cdn.haokui.top/chick/1/20220909/223445daa1bff63c05a320c23c2e44d4.png?imageView2/1/w/200/h/200"/>
 <h4>H5</h4>
 </div>
 
 <div>
-![](https://cdn.1s1s.vip/nutui/download.png?imageView2/1/w/200/h/200)<br>
+<img src="https://cdn.1s1s.vip/nutui/download.png?imageView2/1/w/200/h/200"/>
 <h4>Android</h4>
 </div>
 
 <div>
-![](https://cdn.haokui.top/chick/1/20230201/e8018e43126eebf1a7dfcde761e67deb.png?imageView2/1/w/200/h/200)<br>
+<img src="https://cdn.haokui.top/chick/1/20230201/e8018e43126eebf1a7dfcde761e67deb.png?imageView2/1/w/200/h/200"/>
 <h4>IOS/Android上架项目</h4>
 </div>
 
