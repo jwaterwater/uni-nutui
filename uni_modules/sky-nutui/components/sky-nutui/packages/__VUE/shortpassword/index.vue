@@ -157,25 +157,9 @@ export default create({
       emit('tips');
     }
     function systemStyle() {
-        let sys = uni.getSystemInfoSync()
-    
-      let isIOS,isAndroid
-      if(sys.osName=='ios') {
-          isIOS = true
-      }else{
-          isAndroid = true
-      }
-      if (isIOS) {
         return {
           paddingRight: '1200px'
         };
-      }
-      if (isAndroid) {
-        return {
-          opacity: 0,
-          zindex: 10
-        };
-      }
     }
     
     function onBlur () {
