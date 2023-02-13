@@ -1,5 +1,6 @@
 import { pxCheck } from '../../utils/pxCheck';
 import { onMounted, provide, VNode, ref, Ref, computed, onActivated, watch } from 'vue';
+import Icon from '../icon/index'
 export class Title {
   title: string = '';
   titleSlot?: VNode[];
@@ -9,6 +10,7 @@ export class Title {
 }
 export type TabsSize = 'large' | 'normal' | 'small';
 export const component = {
+    
     options: {
         virtualHost: true,
         addGlobalClass: true,
@@ -64,7 +66,9 @@ export const component = {
     }
   },
 
-  components: {},
+  components: {
+      [Icon.name]: Icon
+  },
   emits: ['update:modelValue', 'click', 'change'],
 
   setup(props: any, { emit, slots }: any) {

@@ -3,8 +3,13 @@ import { createComponent } from '../../utils/create';
 import { pxCheck } from '../../utils/pxCheck';
 import { useTouch } from '../../utils/useTouch';
 const { componentName } = createComponent('rate');
+import Icon from '../icon/index'
 const useComponent = (touchable: Boolean = true) => {
+    
   return {
+      components: {
+          [Icon.name]: Icon
+      },
     props: {
       count: {
         type: [String, Number],
