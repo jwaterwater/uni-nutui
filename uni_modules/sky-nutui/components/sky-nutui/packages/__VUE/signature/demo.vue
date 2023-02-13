@@ -4,6 +4,7 @@
     <div>
       <nut-signature @confirm="confirm" @clear="clear" custom-class="test"></nut-signature>
       <p class="demo-tips demo1">{{ translate('tips') }}</p>
+      <image with="300" height="100" v-if="resUrl" :src="resUrl"/>
     </div>
     <h2 class="h2">{{ translate('title') }}</h2>
     <div>
@@ -13,7 +14,7 @@
 </template>
 
 <script lang="ts">
-import { reactive } from 'vue';
+import { reactive,ref } from 'vue';
 import { createComponent } from '../../utils/create';
 const { createDemo, translate } = createComponent('signature');
 import { useTranslate } from '../../../sites/assets/util/useTranslate';
@@ -38,16 +39,16 @@ export default createDemo({
       lineWidth: 4,
       strokeStyle: 'green'
     });
+    
+    const resUrl = ref(false)
 
-    const confirm = (canvas: any, data: any) => {
-      let img = document.createElement('img');
-      img.src = data;
-      (document.querySelector('.demo1') as any).appendChild(img);
+    const confirm = (data) => {
+        resUrl.value = data
     };
     const clear = () => {
       console.log('清除');
     };
-    return { ...state, confirm, clear, translate };
+    return { ...state, confirm, clear, translate,resUrl };
   }
 });
 </script>

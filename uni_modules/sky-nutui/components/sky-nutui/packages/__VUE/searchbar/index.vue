@@ -51,12 +51,8 @@
 <script lang="ts">
 import { toRefs, reactive, computed, onMounted, ref } from 'vue';
 import { createComponent } from '../../utils/create';
-import { nextTick } from '@tarojs/taro';
 const { create, translate } = createComponent('searchbar');
-interface Events {
-  eventName: 'change' | 'focus' | 'blur' | 'clear' | 'update:modelValue';
-  params: (string | number | Event)[];
-}
+
 export default create({
   props: {
     modelValue: {

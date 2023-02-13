@@ -1,16 +1,26 @@
+
 <template>
   <div :class="classes">
-    <div class="nut-signature-inner" ref="wrap">
-      <canvas ref="canvas" :height="canvasHeight" :width="canvasWidth" v-show="isCanvasSupported()"></canvas>
-      <p class="nut-signature-unsopport" v-if="!isCanvasSupported()">{{ unSupportTpl || translate('unSupportTpl') }}</p>
+    <div class="nut-signature-inner">
+      <canvas
+        class="spcanvas"
+        :id="refRandomId"
+        canvasId="spcanvas"
+        :canvas-id="refRandomId"
+        type="2d"
+        disable-scroll="true"
+        @touchstart="startEventHandler"
+        @touchmove="moveEventHandler"
+        @touchend="endEventHandler"
+        @touchleave="leaveEventHandler"
+      ></canvas>
     </div>
-
     <nut-button class="nut-signature-btn" type="default" @click="clear()">{{ translate('reSign') }}</nut-button>
     <nut-button class="nut-signature-btn" type="primary" @click="confirm()">{{ translate('confirm') }}</nut-button>
   </div>
 </template>
 <script lang="ts">
-import { ref, reactive, onMounted, computed, toRefs } from 'vue';
+import { ref, reactive, onMounted, computed ,getCurrentInstance, nextTick} from 'vue';
 import { createComponent } from '../../utils/create';
 const { componentName, create, translate } = createComponent('signature');
 
@@ -41,8 +51,7 @@ export default create({
   emits: ['confirm', 'clear'],
 
   setup(props, { emit }) {
-    const canvas: any = ref<HTMLElement | null>(null);
-    const wrap: any = ref<HTMLElement | null>(null);
+      const refRandomId = 'canvas-'+Math.random().toString(36).slice(-8);
     const classes = computed(() => {
       const prefixCls = componentName;
       return {
@@ -51,95 +60,93 @@ export default create({
       };
     });
     const state: any = reactive({
+      canvas: null,
       canvasHeight: 0,
       canvasWidth: 0,
-      ctx: null,
-      isSupportTouch: 'ontouchstart' in window,
-      events:
-        'ontouchstart' in window
-          ? ['touchstart', 'touchmove', 'touchend', 'touchleave']
-          : ['mousedown', 'mousemove', 'mouseup', 'mouseleave']
+      ctx: null
     });
-    const isCanvasSupported = () => {
-      let elem = document.createElement('canvas');
-      return !!(elem.getContext && elem.getContext('2d'));
-    };
-    const addEvent = () => {
-      canvas.value.addEventListener(state.events[0], startEventHandler, false);
-    };
 
     const startEventHandler = (event: MouseEvent) => {
       event.preventDefault();
       state.ctx.beginPath();
       state.ctx.lineWidth = props.lineWidth;
       state.ctx.strokeStyle = props.strokeStyle;
-
-      canvas.value.addEventListener(state.events[1], moveEventHandler, false);
-      canvas.value.addEventListener(state.events[2], endEventHandler, false);
-      canvas.value.addEventListener(state.events[3], leaveEventHandler, false);
     };
 
-    const moveEventHandler = (event) => {
-      event.preventDefault();
+    const moveEventHandler =  (event) => {
 
-      let evt = state.isSupportTouch ? event.touches[0] : event;
-      let coverPos = canvas.value.getBoundingClientRect();
-      let mouseX = evt.clientX - coverPos.left;
-      let mouseY = evt.clientY - coverPos.top;
-
+      let evt = event.changedTouches[0];
+      let mouseX = evt.x;
+      let mouseY = evt.y;
+      console.log(mouseX, mouseY)
+     
       state.ctx.lineTo(mouseX, mouseY);
       state.ctx.stroke();
     };
 
     const endEventHandler = (event) => {
-      event.preventDefault();
-
-      canvas.value.removeEventListener(state.events[1], moveEventHandler, false);
-      canvas.value.removeEventListener(state.events[2], endEventHandler, false);
+        state.ctx.draw(true);
     };
     const leaveEventHandler = (event) => {
-      event.preventDefault();
-      canvas.value.removeEventListener(state.events[1], moveEventHandler, false);
-      canvas.value.removeEventListener(state.events[2], endEventHandler, false);
+        state.ctx.draw(true);
     };
+    
     const clear = () => {
-      canvas.value.addEventListener(state.events[2], endEventHandler, false);
       state.ctx.clearRect(0, 0, state.canvasWidth, state.canvasHeight);
       state.ctx.closePath();
+        state.ctx.draw()
       emit('clear');
     };
 
     const confirm = () => {
-      onSave(canvas.value);
+      onSave();
     };
 
-    const onSave = (canvas) => {
-      let dataurl;
-      switch (props.type) {
-        case 'png':
-          dataurl = canvas.toDataURL('image/png');
-          break;
-        case 'jpg':
-          dataurl = canvas.toDataURL('image/jpeg', 0.8);
-          break;
-      }
-      clear();
-      emit('confirm', canvas, dataurl);
+    const onSave = () => {
+      uni.canvasToTempFilePath({
+        canvasId: refRandomId,
+        success: function(res) {
+          // 在H5平台下，tempFilePath 为 base64
+          emit('confirm', res.tempFilePath);
+        } 
+      })
     };
 
+    const {proxy} = getCurrentInstance()
     onMounted(() => {
-      if (isCanvasSupported()) {
-        state.ctx = canvas.value.getContext('2d');
-        state.canvasWidth = wrap.value.offsetWidth;
-        state.canvasHeight = wrap.value.offsetHeight;
-        addEvent();
-      }
+        uni.createSelectorQuery().in(proxy)
+        .select('#'+refRandomId)
+        .fields(
+          {
+            size: true
+          },
+          function (res) {
+            const ctx = uni.createCanvasContext(refRandomId)
+            console.log(res,'res')
+            
+            //window.ctx = ctx
+            state.ctx = ctx;
+            state.canvasWidth = res.width;
+            state.canvasHeight = res.height;
+          }
+        )
+        .exec();
     });
-
-    return { ...toRefs(state), canvas, wrap, isCanvasSupported, confirm, clear, classes, translate };
+    return {
+      confirm,
+      clear,
+      classes,
+      startEventHandler,
+      moveEventHandler,
+      endEventHandler,
+      leaveEventHandler,
+      translate,
+      refRandomId
+    };
   }
 });
 </script>
+
 <style lang="scss">
 @import './index.scss'
 </style>
