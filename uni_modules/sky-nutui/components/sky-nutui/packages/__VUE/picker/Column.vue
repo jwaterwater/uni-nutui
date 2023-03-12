@@ -57,6 +57,10 @@ export default create({
     threeDimensional: {
       type: Boolean,
       default: true
+    },
+    swipeDuration: {
+      type: [Number, String],
+      default: 1000
     }
   },
 
@@ -161,10 +165,10 @@ export default create({
       if (moveTime <= INERTIA_TIME && Math.abs(move) > INERTIA_DISTANCE) {
         // 惯性滚动
         const distance = momentum(move, moveTime);
-        setMove(distance, 'end', moveTime + 1000);
+        setMove(distance, 'end', +props.swipeDuration);
         return;
       } else {
-        setMove(move, 'end');
+        setMove(move, 'end',+props.swipeDuration);
       }
 
       setTimeout(() => {

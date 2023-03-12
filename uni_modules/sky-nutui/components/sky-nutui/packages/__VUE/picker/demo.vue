@@ -15,6 +15,8 @@
       :columns="columns"
       :title="translate('chooseCity')"
       @change="change"
+      :swipeDuration="200"
+      :threeDimensional="false"
       @confirm="(options) => confirm('index', options)"
     ></nut-picker>
 

@@ -32,6 +32,7 @@
             :columnsType="columnsType"
             :value="defaultValues[columnIndex]"
             :threeDimensional="threeDimensional"
+            :swipeDuration="swipeDuration"
             @change="
               (option) => {
                 changeHandler(columnIndex, option);
@@ -99,7 +100,11 @@ export default create({
     threeDimensional: {
       type: Boolean,
       default: true
-    }
+    },
+    swipeDuration: {
+      type: [Number, String],
+      default: 1000
+    },
   },
   emits: ['close', 'change', 'confirm', 'update:visible', 'update:modelValue'],
   setup(props, { emit }) {
